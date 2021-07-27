@@ -99,6 +99,9 @@ of aemet_daily_clim()." />
   </a>
 </li>
 <li>
+  <a href="../articles/climaemet.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -219,28 +222,28 @@ representing the year(s) to be extracted: "2020", "2018".</p></li>
   <span class='va'>obs</span> <span class='op'>&lt;-</span> <span class='fu'>aemet_daily_clim</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"9434"</span>, <span class='st'>"3195"</span><span class='op'>)</span><span class='op'>)</span>
   <span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; Rows: 8
+</div><div class='output co'>#&gt; Rows: 10
 #&gt; Columns: 20
-#&gt; $ fecha       <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span> 2021-07-17, 2021-07-18, 2021-07-19, 2021-07-20, 2021-07-1…
-#&gt; $ indicativo  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…
-#&gt; $ nombre      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
-#&gt; $ provincia   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …
-#&gt; $ altitud     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 249, 249, 249, 249, 667, 667, 667, 667
-#&gt; $ tmed        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 26.2, 27.1, 28.7, 29.8, 29.0, 29.2, 28.6, 28.8
-#&gt; $ prec        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "0,0", "0,0", "0,0", "Ip", "0,0", "0,0", "0,0", "0,0"
-#&gt; $ tmin        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 17.9, 20.2, 21.2, 21.9, 21.0, 22.3, 21.3, 22.0
-#&gt; $ horatmin    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "04:50", "04:50", "04:10", "05:20", "06:20", "05:50", "06:…
-#&gt; $ tmax        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 34.5, 34.0, 36.2, 37.8, 36.9, 36.2, 36.0, 35.7
-#&gt; $ horatmax    <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 17:20:00, 14:50:00, 17:30:00, 15:50:00, 14:20:00, 14:50:00…
-#&gt; $ dir         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 30, 30, 29, 28, NA, NA, NA, NA
-#&gt; $ velmedia    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 5.8, 7.8, 3.6, 2.5, NA, NA, NA, NA
-#&gt; $ racha       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 16.4, 13.9, 9.7, 16.7, NA, NA, NA, NA
-#&gt; $ horaracha   <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 23:50:00, 20:10:00, 00:10:00, 19:50:00,       NA,       NA…
-#&gt; $ sol         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 13.7, 13.8, 13.6, 11.1, NA, NA, NA, NA
-#&gt; $ presMax     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 989.5, 986.3, 985.0, 987.1, 941.8, 939.9, 938.2, 939.4
-#&gt; $ horaPresMax <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "08", "01", "08", "24", "08", "08", "08", "23"
-#&gt; $ presMin     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 984.0, 981.5, 979.7, 981.2, 937.7, 936.5, 934.7, 936.1
-#&gt; $ horaPresMin <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Varias", "17", "17", "16", "18", "17", "18", "00"</div></pre>
+#&gt; $ fecha       <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span> 2021-07-20, 2021-07-21, 2021-07-22, 2021-07-23, 2021-07-2~
+#&gt; $ indicativo  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "9434", "9434", "9434", "9434", "9434", "3195", "3195", "3~
+#&gt; $ nombre      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,~
+#&gt; $ provincia   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA"~
+#&gt; $ altitud     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 249, 249, 249, 249, 249, 667, 667, 667, 667, 667
+#&gt; $ tmed        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 29.8, 30.2, 31.8, 30.8, 25.6, 28.8, 29.4, 30.2, 26.8, 25.0
+#&gt; $ prec        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Ip", "0,0", "0,0", "0,0", "0,0", "0,0", "0,0", "0,0", "0,~
+#&gt; $ tmin        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 21.9, 22.1, 23.7, 22.1, 19.2, 22.0, 22.4, 23.5, 20.2, 18.3
+#&gt; $ horatmin    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "05:20", "04:10", "05:20", "05:10", "05:30", "Varias", "06~
+#&gt; $ tmax        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 37.8, 38.3, 39.9, 39.4, 32.0, 35.7, 36.3, 36.8, 33.5, 31.7
+#&gt; $ horatmax    <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 15:50:00, 16:40:00, 16:20:00, 15:30:00, 16:40:00, 14:30:00~
+#&gt; $ dir         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 28, 14, 13, 30, 99, NA, NA, NA, NA, NA
+#&gt; $ velmedia    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 2.5, 3.1, 4.4, 3.1, 5.0, NA, NA, NA, NA, NA
+#&gt; $ racha       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 16.7, 9.4, 9.7, 14.2, 11.1, NA, NA, NA, NA, NA
+#&gt; $ horaracha   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "19:50", "00:30", "18:30", "20:00", "Varias", NA, NA, NA, ~
+#&gt; $ sol         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 11.1, NA, 13.4, 9.4, 11.4, NA, NA, NA, NA, NA
+#&gt; $ presMax     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 987.1, 988.4, 987.8, 983.3, 982.5, 939.4, 942.0, 942.3, 93~
+#&gt; $ horaPresMax <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "24", "08", "08", "01", "Varias", "23", "08", "Varias", "0~
+#&gt; $ presMin     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 981.2, 983.9, 981.3, 976.4, 978.8, 936.1, 939.1, 937.4, 9~
+#&gt; $ horaPresMin <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "16", "18", "18", "17", "17", "00", "18", "24", "18", "Var~</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -260,7 +263,7 @@ representing the year(s) to be extracted: "2020", "2018".</p></li>
 		</div>
 		<div class="col-md-3 col-sm-6 col-md-offset-4">
 			<h4 data-toc-skip>About <img src="../ROS-logo.png" alt="ROpenSpain Logo" height="24"><span class="ROS-light"> rOpenSpain</span></h4>
-			<a href="https://ropenspain.es/"><span class="ROS-light">rOpenSpain</span></a> is a community of R enthusiasts whose ultimate goal is to create high-quality R packages for data mining public spanish open sources.
+			<a href="https://ropenspain.es/"><span class="ROS-light">rOpenSpain</span></a> is a community of R enthusiasts whose ultimate goal is to create high-quality R packages for data mining public Spanish open sources.
 			<hr class="hidden-md hidden-lg hidden-sm">
 		</div>
 	</div>

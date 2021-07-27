@@ -51,6 +51,9 @@
   </a>
 </li>
 <li>
+  <a href="../../articles/climaemet.html">Get started</a>
+</li>
+<li>
   <a href="../../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -220,13 +223,14 @@
 
 <span class="co"># Interpolate temp</span>
 
-<span class="va">interp_temp</span> <span class="op">&lt;-</span>  <span class="fu">gstat</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.html">idw</a></span><span class="op">(</span><span class="va">tmed</span> <span class="op">~</span> <span class="fl">1</span>,
-                           <span class="co"># Formula interpolation</span>
-                           <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="va">test_day</span>, <span class="st">"Spatial"</span><span class="op">)</span>,
-                           <span class="co"># Origin</span>
-                           newdata <span class="op">=</span> <span class="va">grd</span>,
-                           <span class="co"># Destination</span>
-                           idp <span class="op">=</span> <span class="fl">2.0</span><span class="op">)</span>
+<span class="va">interp_temp</span> <span class="op">&lt;-</span> <span class="fu">gstat</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.html">idw</a></span><span class="op">(</span><span class="va">tmed</span> <span class="op">~</span> <span class="fl">1</span>,
+  <span class="co"># Formula interpolation</span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="va">test_day</span>, <span class="st">"Spatial"</span><span class="op">)</span>,
+  <span class="co"># Origin</span>
+  newdata <span class="op">=</span> <span class="va">grd</span>,
+  <span class="co"># Destination</span>
+  idp <span class="op">=</span> <span class="fl">2.0</span>
+<span class="op">)</span>
 <span class="co">#&gt; [inverse distance weighted interpolation]</span>
 
 
@@ -283,24 +287,24 @@
 <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">thisdate</span> <span class="op">&lt;-</span> <span class="va">dates</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>
   <span class="va">tmp_day</span> <span class="op">&lt;-</span> <span class="va">clim_data_utm</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">fecha</span> <span class="op">==</span> <span class="va">thisdate</span><span class="op">)</span>
-  
+
   <span class="va">interp_day</span> <span class="op">&lt;-</span>
     <span class="fu">gstat</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.html">idw</a></span><span class="op">(</span><span class="va">tmed</span> <span class="op">~</span> <span class="fl">1</span>,
-               <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="va">tmp_day</span>, <span class="st">"Spatial"</span><span class="op">)</span>,
-               newdata <span class="op">=</span> <span class="va">grd</span>,
-               idp <span class="op">=</span> <span class="fl">2.0</span><span class="op">)</span>
-  
+      <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="va">tmp_day</span>, <span class="st">"Spatial"</span><span class="op">)</span>,
+      newdata <span class="op">=</span> <span class="va">grd</span>,
+      idp <span class="op">=</span> <span class="fl">2.0</span>
+    <span class="op">)</span>
+
   <span class="va">interp_day</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html">raster</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/mask.html">mask</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span>
-  
-  
+
+
   <span class="va">interp_day</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">interp_day</span>, xy <span class="op">=</span> <span class="cn">TRUE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
   <span class="fu"><a href="https://rdrr.io/pkg/raster/man/names.html">names</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"temp"</span><span class="op">)</span>
   <span class="va">interp_day</span><span class="op">$</span><span class="va">id</span> <span class="op">&lt;-</span>
     <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/ncell.html">nrow</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span><span class="op">)</span> <span class="co"># We would need the id later</span>
   <span class="va">interp_day</span><span class="op">$</span><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="va">thisdate</span>
-  
+
   <span class="va">interp_res</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">interp_res</span>, <span class="va">interp_day</span><span class="op">)</span>
-  
 <span class="op">}</span></code></pre></div>
 <p>Now we loop trough the interpolated results again to create the animation:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -308,7 +312,7 @@
 <span class="co"># Extending and animating</span>
 
 <span class="co"># File array</span>
-<span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"frame_"</span>,<span class="va">dates</span>,<span class="st">".png"</span><span class="op">)</span>
+<span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"frame_"</span>, <span class="va">dates</span>, <span class="st">".png"</span><span class="op">)</span>
 <span class="va">file_array</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">files</span><span class="op">)</span>
 
 
@@ -318,8 +322,8 @@
 
 <span class="kw">for</span> <span class="op">(</span><span class="va">j</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">today</span> <span class="op">&lt;-</span> <span class="va">dates</span><span class="op">[</span><span class="va">j</span><span class="op">]</span>
-  
-  <span class="va">temp_values</span> <span class="op">&lt;-</span> <span class="va">interp_res</span><span class="op">[</span><span class="va">interp_res</span><span class="op">$</span><span class="va">fecha</span> <span class="op">==</span> <span class="va">today</span>,<span class="op">]</span>
+
+  <span class="va">temp_values</span> <span class="op">&lt;-</span> <span class="va">interp_res</span><span class="op">[</span><span class="va">interp_res</span><span class="op">$</span><span class="va">fecha</span> <span class="op">==</span> <span class="va">today</span>, <span class="op">]</span>
   <span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">temp_values</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">temp_values</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span>, fill <span class="op">=</span> <span class="va">temp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">CCAA_utm</span>, fill <span class="op">=</span> <span class="st">"transparent"</span><span class="op">)</span> <span class="op">+</span>
@@ -338,9 +342,10 @@
       fill <span class="op">=</span> <span class="st">"C"</span>
     <span class="op">)</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="va">file_array</span><span class="op">[</span><span class="va">j</span><span class="op">]</span>,
-         plot <span class="op">=</span> <span class="va">gg</span>,
-         width <span class="op">=</span> <span class="fl">8.28</span>,
-         height <span class="op">=</span> <span class="fl">7.33</span><span class="op">)</span>
+    plot <span class="op">=</span> <span class="va">gg</span>,
+    width <span class="op">=</span> <span class="fl">8.28</span>,
+    height <span class="op">=</span> <span class="fl">7.33</span>
+  <span class="op">)</span>
 <span class="op">}</span>
 
 
@@ -353,7 +358,7 @@
   width <span class="op">=</span> <span class="fl">800</span>,
   height <span class="op">=</span> <span class="fl">700</span>,
   loop <span class="op">=</span> <span class="cn">FALSE</span>,
-  delay <span class="op">=</span> <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>
+  delay <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span>
 <span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -456,51 +461,53 @@
 <p><strong>Details</strong></p>
 <p></p>
 <pre><code>#&gt; R version 4.1.0 (2021-05-18)
-#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
-#&gt; Running under: macOS Catalina 10.15.7
+#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)
+#&gt; Running under: Windows Server x64 (build 17763)
 #&gt; 
 #&gt; Matrix products: default
-#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
-#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 #&gt; 
 #&gt; locale:
-#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt; [1] LC_COLLATE=English_United States.1252 
+#&gt; [2] LC_CTYPE=English_United States.1252   
+#&gt; [3] LC_MONETARY=English_United States.1252
+#&gt; [4] LC_NUMERIC=C                          
+#&gt; [5] LC_TIME=English_United States.1252    
 #&gt; 
 #&gt; attached base packages:
 #&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
 #&gt; 
 #&gt; other attached packages:
 #&gt;  [1] geofacet_0.2.0  gifski_1.4.3-1  ggplot2_3.3.5   dplyr_1.0.7    
-#&gt;  [5] gstat_2.0-7     sf_1.0-0        raster_3.4-10   sp_1.4-5       
+#&gt;  [5] gstat_2.0-7     sf_1.0-2        raster_3.4-13   sp_1.4-5       
 #&gt;  [9] mapSpain_0.2.3  climaemet_1.0.0
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] httr_1.4.2          rnaturalearth_0.1.0 jsonlite_1.7.2     
-#&gt;  [4] countrycode_1.2.0   highr_0.9           yaml_2.2.1         
+#&gt;  [1] rnaturalearth_0.1.0 httr_1.4.2          jsonlite_1.7.2     
+#&gt;  [4] countrycode_1.3.0   highr_0.9           yaml_2.2.1         
 #&gt;  [7] ggrepel_0.9.1       pillar_1.6.1        lattice_0.20-44    
 #&gt; [10] glue_1.4.2          digest_0.6.27       colorspace_2.0-2   
 #&gt; [13] htmltools_0.5.1.1   pkgconfig_2.0.3     s2_1.0.6           
 #&gt; [16] purrr_0.3.4         scales_1.1.1        intervals_0.15.2   
-#&gt; [19] jpeg_0.1-8.1        tzdb_0.1.2          tibble_3.1.3       
-#&gt; [22] proxy_0.4-26        farver_2.1.0        generics_0.1.0     
+#&gt; [19] jpeg_0.1-9          tzdb_0.1.2          tibble_3.1.3       
+#&gt; [22] proxy_0.4-26        generics_0.1.0      farver_2.1.0       
 #&gt; [25] ellipsis_0.3.2      cachem_1.0.5        withr_2.4.2        
 #&gt; [28] magrittr_2.0.1      crayon_1.4.1        memoise_2.0.0      
 #&gt; [31] evaluate_0.14       fs_1.5.0            fansi_0.5.0        
 #&gt; [34] xts_0.12.1          class_7.3-19        FNN_1.1.3          
-#&gt; [37] textshaping_0.3.5   tools_4.1.0         imguR_1.0.3        
+#&gt; [37] textshaping_0.3.5   imguR_1.0.3         tools_4.1.0        
 #&gt; [40] hms_1.1.0           lifecycle_1.0.0     stringr_1.4.0      
 #&gt; [43] munsell_0.5.0       geogrid_0.1.1       compiler_4.1.0     
-#&gt; [46] pkgdown_1.6.1       e1071_1.7-7         spacetime_1.2-4    
+#&gt; [46] pkgdown_1.6.1       e1071_1.7-7         spacetime_1.2-5    
 #&gt; [49] systemfonts_1.0.2   rlang_0.4.11        classInt_0.4-3     
 #&gt; [52] units_0.7-2         grid_4.1.0          labeling_0.4.2     
 #&gt; [55] rmarkdown_2.9       wk_0.5.0            gtable_0.3.0       
 #&gt; [58] codetools_0.2-18    DBI_1.1.1           curl_4.3.2         
 #&gt; [61] R6_2.5.0            gridExtra_2.3       zoo_1.8-9          
 #&gt; [64] lubridate_1.7.10    knitr_1.33          fastmap_1.1.0      
-#&gt; [67] rgeos_0.5-5         utf8_1.2.1          rprojroot_2.0.2    
+#&gt; [67] rgeos_0.5-5         utf8_1.2.2          rprojroot_2.0.2    
 #&gt; [70] ragg_1.1.3          KernSmooth_2.23-20  readr_2.0.0        
 #&gt; [73] desc_1.3.0          stringi_1.7.3       Rcpp_1.0.7         
-#&gt; [76] vctrs_0.3.8         png_0.1-7           tidyselect_1.1.1   
+#&gt; [76] png_0.1-7           vctrs_0.3.8         tidyselect_1.1.1   
 #&gt; [79] xfun_0.24</code></pre>
 </details>
 </div>
@@ -526,7 +533,7 @@
 		<div class="col-md-3 col-sm-6 col-md-offset-4">
 			<h4 data-toc-skip>About <img src="../../ROS-logo.png" alt="ROpenSpain Logo" height="24"><span class="ROS-light"> rOpenSpain</span>
 </h4>
-			<a href="https://ropenspain.es/"><span class="ROS-light">rOpenSpain</span></a> is a community of R enthusiasts whose ultimate goal is to create high-quality R packages for data mining public spanish open sources.
+			<a href="https://ropenspain.es/"><span class="ROS-light">rOpenSpain</span></a> is a community of R enthusiasts whose ultimate goal is to create high-quality R packages for data mining public Spanish open sources.
 			<hr class="hidden-md hidden-lg hidden-sm">
 </div>
 	</div>
