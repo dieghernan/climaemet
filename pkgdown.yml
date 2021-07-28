@@ -5,7 +5,7 @@ articles:
   articles/Spatial-Interpolation-with-climaemet: Spatial-Interpolation-with-climaemet.html
   articles/x01_aemet_stations: x01_aemet_stations.html
   climaemet: climaemet.html
-last_built: 2021-07-28T08:48Z
+last_built: 2021-07-28T10:02Z
 urls:
   reference: https://ropenspain.github.io/climaemet//reference
   article: https://ropenspain.github.io/climaemet//articles
