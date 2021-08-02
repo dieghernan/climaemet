@@ -183,7 +183,7 @@ information between the client and server.</p></td>
 <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='aemet_detect_api_key.html'>aemet_detect_api_key</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='fu'>get_data_aemet</span><span class='op'>(</span><span class='va'>url</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 291 x 7</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 291 × 7</span>
 #&gt;    latitud provincia altitud indicativo nombre                 indsinop longitud
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
 #&gt; <span style='color: #BCBCBC;'> 1</span> 413515N BARCELONA 74      0252D      ARENYS DE MAR          <span style='color: #949494;'>"</span>08186<span style='color: #949494;'>"</span>  023224E 
@@ -196,22 +196,22 @@ information between the client and server.</p></td>
 #&gt; <span style='color: #BCBCBC;'> 8</span> 415442N GIRONA    143     0367       GIRONA AEROPUERTO      <span style='color: #949494;'>"</span>08184<span style='color: #949494;'>"</span>  024548E 
 #&gt; <span style='color: #BCBCBC;'> 9</span> 415848N GIRONA    95      0370B      GIRONA, ANTIC INSTITUT <span style='color: #949494;'>""</span>       024931E 
 #&gt; <span style='color: #BCBCBC;'>10</span> 420616N GIRONA    157     0372C      PORQUERES              <span style='color: #949494;'>"</span>08120<span style='color: #949494;'>"</span>  024549E 
-#&gt; <span style='color: #949494;'># ... with 281 more rows</span></div><div class='input'>
+#&gt; <span style='color: #949494;'># … with 281 more rows</span></div><div class='input'>
 <span class='co'># Metadata</span>
 <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='aemet_detect_api_key.html'>aemet_detect_api_key</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='fu'>get_metadata_aemet</span><span class='op'>(</span><span class='va'>url</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 x 7</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 7 × 7</span>
 #&gt;   unidad_generadora  periodicidad descripcion    formato copyright    notaLegal 
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
-#&gt; <span style='color: #BCBCBC;'>1</span> Servicio del Banc~ 1 vez al día Inventario de~ applic~ © AEMET. Au~ http://ww~
-#&gt; <span style='color: #BCBCBC;'>2</span> Servicio del Banc~ 1 vez al día Inventario de~ applic~ © AEMET. Au~ http://ww~
-#&gt; <span style='color: #BCBCBC;'>3</span> Servicio del Banc~ 1 vez al día Inventario de~ applic~ © AEMET. Au~ http://ww~
-#&gt; <span style='color: #BCBCBC;'>4</span> Servicio del Banc~ 1 vez al día Inventario de~ applic~ © AEMET. Au~ http://ww~
-#&gt; <span style='color: #BCBCBC;'>5</span> Servicio del Banc~ 1 vez al día Inventario de~ applic~ © AEMET. Au~ http://ww~
-#&gt; <span style='color: #BCBCBC;'>6</span> Servicio del Banc~ 1 vez al día Inventario de~ applic~ © AEMET. Au~ http://ww~
-#&gt; <span style='color: #BCBCBC;'>7</span> Servicio del Banc~ 1 vez al día Inventario de~ applic~ © AEMET. Au~ http://ww~
-#&gt; <span style='color: #949494;'># ... with 1 more variable: campos &lt;df[,4]&gt;</span></div></pre>
+#&gt; <span style='color: #BCBCBC;'>1</span> Servicio del Banc… 1 vez al día Inventario de… applic… © AEMET. Au… http://ww…
+#&gt; <span style='color: #BCBCBC;'>2</span> Servicio del Banc… 1 vez al día Inventario de… applic… © AEMET. Au… http://ww…
+#&gt; <span style='color: #BCBCBC;'>3</span> Servicio del Banc… 1 vez al día Inventario de… applic… © AEMET. Au… http://ww…
+#&gt; <span style='color: #BCBCBC;'>4</span> Servicio del Banc… 1 vez al día Inventario de… applic… © AEMET. Au… http://ww…
+#&gt; <span style='color: #BCBCBC;'>5</span> Servicio del Banc… 1 vez al día Inventario de… applic… © AEMET. Au… http://ww…
+#&gt; <span style='color: #BCBCBC;'>6</span> Servicio del Banc… 1 vez al día Inventario de… applic… © AEMET. Au… http://ww…
+#&gt; <span style='color: #BCBCBC;'>7</span> Servicio del Banc… 1 vez al día Inventario de… applic… © AEMET. Au… http://ww…
+#&gt; <span style='color: #949494;'># … with 1 more variable: campos &lt;df[,4]&gt;</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
