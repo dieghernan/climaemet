@@ -109,7 +109,14 @@
 <p>You can easily spot which version of <strong>climaemet</strong> is running in your computer. On load, you could see the following message:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; Welcome to climaemet (1.0.0)</span>
+<span class="co">#&gt; Note that since climaemet (&gt;=1.0.0) the results are provided on tibble format. Run #&gt; `climaemet_news()` to see the changelog.</span>
+<span class="co">#&gt; If you experience any problem open an issue on https://github.com/rOpenSpain/climaemet/issues</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt;</span>
+<span class="co">#&gt; AEMET_API_KEY variable detected on this session.</span></code></pre></div>
 <p>If it is your first time using <strong>climaemet v1.0.0</strong> you may see the following message:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
@@ -175,20 +182,21 @@
 
 <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 23 x 25</span>
-<span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       pres    hr stdvv    ts</span>
-<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 9434  -1.00 2021-08-02 14:00:00     0   249   6     2.6   102  41.7   100 ZARAGOZ~  985     31   1.3  34.4</span>
-<span class="co">#&gt;  2 9434  -1.00 2021-08-02 15:00:00     0   249   5.9   2.9   101  41.7   115 ZARAGOZ~  984.    28   0.8  34.2</span>
-<span class="co">#&gt;  3 9434  -1.00 2021-08-02 16:00:00     0   249   5.6   2.8    80  41.7   120 ZARAGOZ~  984     24   0.7  34.7</span>
-<span class="co">#&gt;  4 9434  -1.00 2021-08-02 17:00:00     0   249   6     3.9   130  41.7    73 ZARAGOZ~  984.    26   0.7  33.8</span>
-<span class="co">#&gt;  5 9434  -1.00 2021-08-02 18:00:00     0   249   6.3   3.3   146  41.7   135 ZARAGOZ~  984.    27   0.8  30.1</span>
-<span class="co">#&gt;  6 9434  -1.00 2021-08-02 19:00:00     0   249   5.1   2.3    96  41.7   130 ZARAGOZ~  984     32   0.4  27.3</span>
-<span class="co">#&gt;  7 9434  -1.00 2021-08-02 20:00:00     0   249   7.1   2.1    80  41.7   248 ZARAGOZ~  985     49   1.1  25.3</span>
-<span class="co">#&gt;  8 9434  -1.00 2021-08-02 21:00:00     0   249   8.6   1.2   199  41.7   208 ZARAGOZ~  986.    48   0.4  23.2</span>
-<span class="co">#&gt;  9 9434  -1.00 2021-08-02 22:00:00     0   249   5     1.7   351  41.7   323 ZARAGOZ~  987.    52   1    22.2</span>
-<span class="co">#&gt; 10 9434  -1.00 2021-08-02 23:00:00     0   249   7.2   5     321  41.7   340 ZARAGOZ~  987.    59   0.8  22  </span>
-<span class="co">#&gt; # ... with 13 more rows, and 10 more variables: pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 9434  -1.00 2021-08-02 22:00:00     0   249   5     1.7   351  41.7   323 ZARAG~  987.</span>
+<span class="co">#&gt;  2 9434  -1.00 2021-08-02 23:00:00     0   249   7.2   5     321  41.7   340 ZARAG~  987.</span>
+<span class="co">#&gt;  3 9434  -1.00 2021-08-03 00:00:00     0   249   6.6   4.5   302  41.7   305 ZARAG~  987.</span>
+<span class="co">#&gt;  4 9434  -1.00 2021-08-03 01:00:00     0   249   8.6   5.6   294  41.7   298 ZARAG~  987.</span>
+<span class="co">#&gt;  5 9434  -1.00 2021-08-03 02:00:00     0   249   8.6   5.2   310  41.7   298 ZARAG~  987.</span>
+<span class="co">#&gt;  6 9434  -1.00 2021-08-03 03:00:00     0   249   6.9   5.3   296  41.7   298 ZARAG~  987.</span>
+<span class="co">#&gt;  7 9434  -1.00 2021-08-03 04:00:00     0   249   6.4   4     291  41.7   293 ZARAG~  987.</span>
+<span class="co">#&gt;  8 9434  -1.00 2021-08-03 05:00:00     0   249   5.2   3.5   282  41.7   285 ZARAG~  988.</span>
+<span class="co">#&gt;  9 9434  -1.00 2021-08-03 06:00:00     0   249   5.4   3.2   285  41.7   283 ZARAG~  988.</span>
+<span class="co">#&gt; 10 9434  -1.00 2021-08-03 07:00:00     0   249   5.2   3.3   311  41.7   310 ZARAG~  988.</span>
+<span class="co">#&gt; # ... with 13 more rows, and 13 more variables: hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
 </div>
 <div id="spatial-objects-sf" class="section level3">
@@ -203,29 +211,40 @@
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'dplyr'</span>
-<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter, lag</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 
 <span class="va">all_stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span>return_sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co"># Last hour</span>
 <span class="va">all_last</span> <span class="op">&lt;-</span>
   <span class="va">all_stations</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">fint</span> <span class="op">==</span> <span class="va">all_stations</span><span class="op">[[</span><span class="st">"fint"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>
 
+<span class="va">last_hour</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">all_last</span><span class="op">$</span><span class="va">fint</span><span class="op">)</span>
+
+
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">all_last</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">ta</span><span class="op">)</span>,
     shape <span class="op">=</span> <span class="fl">19</span>,
     size <span class="op">=</span> <span class="fl">2</span>
   <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"Max temp."</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_colour_gradientn</a></span><span class="op">(</span>colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">5</span>, <span class="st">"RdBu"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Temperature in Spain"</span>,
+    subtitle <span class="op">=</span> <span class="va">last_hour</span>,
+    color <span class="op">=</span> <span class="st">"Max temp.\n(celsius)"</span>,
+    caption <span class="op">=</span> <span class="st">"Source: AEMET"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_colour_gradientn</a></span><span class="op">(</span>
+    colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">5</span>, <span class="st">"RdBu"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    guide <span class="op">=</span> <span class="st">"legend"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>n.breaks <span class="op">=</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
+    panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">23</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>, face <span class="op">=</span> <span class="st">"italic"</span><span class="op">)</span>,
+    plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
+    legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,
+    legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
 <p><img src="spatial-1.png" title="plot of chunk spatial" alt="plot of chunk spatial" width="100%"></p>
 </div>
 </div>
