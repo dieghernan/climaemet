@@ -163,16 +163,16 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>station</th>
-      <td><p>Character string as station identifier code
-(see <code><a href='aemet_stations.html'>aemet_stations()</a></code>).</p></td>
+      <td><p>Character string with station identifier code(s)
+(see <code><a href='aemet_stations.html'>aemet_stations()</a></code>)</p></td>
     </tr>
     <tr>
       <th>start</th>
-      <td><p>Numeric value as start year (format: %Y).</p></td>
+      <td><p>Numeric value as start year (format: YYYY).</p></td>
     </tr>
     <tr>
       <th>end</th>
-      <td><p>Numeric value as end year (format: %Y).</p></td>
+      <td><p>Numeric value as end year (format: YYYY).</p></td>
     </tr>
     <tr>
       <th>with_labels</th>
@@ -181,18 +181,27 @@ labels for the graph or not.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Logical TRUE/FALSE. Provides information about the flow of
+      <td><p>Logical <code>TRUE/FALSE</code>. Provides information about the flow of
 information between the client and server.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Further arguments of <code><a href='ggstripes.html'>ggstripes()</a></code></p></td>
+      <td><p>Arguments passed on to <code><a href='ggstripes.html'>ggstripes</a></code></p><dl>
+    <dt><code>n_temp</code></dt><dd><p>Numeric value as the number of colors of the palette.
+(default 11).</p></dd>
+    <dt><code>col_pal</code></dt><dd><p>Character string indicating the name of the
+<code><a href='https://rdrr.io/r/grDevices/palettes.html'>hcl.pals()</a></code> colour palette to be used for plotting.</p></dd>
+  
+</dl></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <code>ggplot2</code> object</p>
+    <p>A <code>ggplot2</code> object</p>
+    <h2 class="hasAnchor" id="api-key"><a class="anchor" href="#api-key"></a>API Key</h2>
+
+    <p>You need to set your API Key globally using <code><a href='aemet_api_key.html'>aemet_api_key()</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='ggstripes.html'>ggstripes()</a></code></p></div>

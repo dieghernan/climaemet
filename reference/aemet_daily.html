@@ -190,29 +190,36 @@ of <code>aemet_daily_clim()</code>.</p>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Logical TRUE/FALSE. Provides information about the flow of
+      <td><p>Logical <code>TRUE/FALSE</code>. Provides information about the flow of
 information between the client and server.</p></td>
     </tr>
     <tr>
       <th>return_sf</th>
-      <td><p>Logical. Should the function return an <code>sf</code> spatial object?
-If FALSE (the default value) it returns a tibble. Note that you need to
+      <td><p>Logical <code>TRUE</code> or <code>FALSE</code>.
+Should the function return an <code>sf</code> spatial object? If <code>FALSE</code>
+(the default value) it returns a tibble. Note that you need to
 have the <code>sf</code> package installed.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble or a <code>sf</code> object</p>
+    <p>A tibble or a <code>sf</code> object</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>start</code> and <code>end</code> parameters should be:</p><ul>
 <li><p>For <code>aemet_daily_clim()</code>: A <code>Date</code> object or a string with format:
-%Y%m%d (2020-12-31).</p></li>
+YYYY-MM-DD (2020-12-31).</p></li>
 <li><p>For <code>aemet_daily_period()</code> and <code>aemet_daily_period_all()</code>: A string
 representing the year(s) to be extracted: "2020", "2018".</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="api-key"><a class="anchor" href="#api-key"></a>API Key</h2>
+
+    <p>You need to set your API Key globally using <code><a href='aemet_api_key.html'>aemet_api_key()</a></code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='aemet_api_key.html'>aemet_api_key()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Run this example only if AEMET_API_KEY is detected</span>
@@ -222,28 +229,28 @@ representing the year(s) to be extracted: "2020", "2018".</p></li>
   <span class='va'>obs</span> <span class='op'>&lt;-</span> <span class='fu'>aemet_daily_clim</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"9434"</span>, <span class='st'>"3195"</span><span class='op'>)</span><span class='op'>)</span>
   <span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>obs</span><span class='op'>)</span>
 <span class='op'>}</span>
-</div><div class='output co'>#&gt; Rows: 10
+</div><div class='output co'>#&gt; Rows: 8
 #&gt; Columns: 20
-#&gt; $ fecha       <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span> 2021-07-26, 2021-07-27, 2021-07-28, 2021-07-29, 2021-07-3…
-#&gt; $ indicativo  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "9434", "9434", "9434", "9434", "9434", "3195", "3195", "3…
+#&gt; $ fecha       <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span> 2021-07-27, 2021-07-28, 2021-07-29, 2021-07-30, 2021-07-2…
+#&gt; $ indicativo  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…
 #&gt; $ nombre      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…
-#&gt; $ provincia   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA"…
-#&gt; $ altitud     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 249, 249, 249, 249, 249, 667, 667, 667, 667, 667
-#&gt; $ tmed        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 23.9, 26.1, 26.4, 28.0, 25.8, 23.3, 26.1, 28.2, 28.8, 27.0
-#&gt; $ prec        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-#&gt; $ tmin        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 17.9, 18.2, 19.2, 19.9, 20.5, 17.0, 19.5, 20.7, 22.0, 19.9
-#&gt; $ horatmin    <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 06:00:00, 05:30:00, 05:30:00, 03:10:00, 05:30:00, 04:30:00…
-#&gt; $ tmax        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 29.9, 34.0, 33.7, 36.2, 31.2, 29.6, 32.7, 35.6, 35.7, 34.1
-#&gt; $ horatmax    <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 16:40:00, 14:30:00, 18:40:00, 15:50:00, 13:20:00, 14:30:00…
-#&gt; $ dir         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 29, 31, 31, 12, 30, NA, NA, NA, NA, NA
-#&gt; $ velmedia    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 5.6, 3.3, 3.3, 5.3, 8.1, NA, NA, NA, NA, NA
-#&gt; $ racha       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 13.6, 17.8, 13.6, 10.6, 15.0, NA, NA, NA, NA, NA
-#&gt; $ horaracha   <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 02:50:00, 23:40:00, 01:30:00, 17:30:00, 17:00:00,       NA…
-#&gt; $ sol         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 12.0, 9.6, 12.1, 9.2, 13.1, NA, NA, NA, NA, NA
-#&gt; $ presMax     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 986.3, 986.2, 986.3, 986.0, 984.1, 938.4, 939.2, 937.7, 93…
-#&gt; $ horaPresMax <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "23", "00", "08", "Varias", "08", "11", "08", "Varias", "…
-#&gt; $ presMin     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 983.0, 979.4, 982.6, 978.7, 980.5, 935.7, 934.7, 935.3, 93…
-#&gt; $ horaPresMin <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "00", "Varias", "18", "18", "16", "04", "18", "17", "18",…</div></pre>
+#&gt; $ provincia   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …
+#&gt; $ altitud     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 249, 249, 249, 249, 667, 667, 667, 667
+#&gt; $ tmed        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 26.1, 26.4, 28.0, 25.8, 26.1, 28.2, 28.8, 27.0
+#&gt; $ prec        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0
+#&gt; $ tmin        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 18.2, 19.2, 19.9, 20.5, 19.5, 20.7, 22.0, 19.9
+#&gt; $ horatmin    <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 05:30:00, 05:30:00, 03:10:00, 05:30:00, 04:30:00, 05:30:00…
+#&gt; $ tmax        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 34.0, 33.7, 36.2, 31.2, 32.7, 35.6, 35.7, 34.1
+#&gt; $ horatmax    <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 14:30:00, 18:40:00, 15:50:00, 13:20:00, 13:40:00, 14:40:00…
+#&gt; $ dir         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 31, 31, 12, 30, NA, NA, NA, NA
+#&gt; $ velmedia    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 3.3, 3.3, 5.3, 8.1, NA, NA, NA, NA
+#&gt; $ racha       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 17.8, 13.6, 10.6, 15.0, NA, NA, NA, NA
+#&gt; $ horaracha   <span style='color: #949494; font-style: italic;'>&lt;time&gt;</span> 23:40:00, 01:30:00, 17:30:00, 17:00:00,       NA,       NA…
+#&gt; $ sol         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 9.6, 12.1, 9.2, 13.1, NA, NA, NA, NA
+#&gt; $ presMax     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 986.2, 986.3, 986.0, 984.1, 939.2, 937.7, 938.6, 937.6
+#&gt; $ horaPresMax <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "00", "08", "Varias", "08", "08", "Varias", "08", "08"
+#&gt; $ presMin     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> 979.4, 982.6, 978.7, 980.5, 934.7, 935.3, 935.1, 934.5
+#&gt; $ horaPresMin <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> "Varias", "18", "18", "16", "18", "17", "18", "18"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

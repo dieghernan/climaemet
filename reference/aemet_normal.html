@@ -56,8 +56,7 @@
 
 <meta property="og:title" content="Normal climatology values — aemet_normal" />
 <meta property="og:description" content="Get normal climatology values for a station (or all the stations with
-aemet_normal_clim_all(). Standard climatology from 1981 to 2010.
-Get normal climatology values for all stations." />
+aemet_normal_clim_all(). Standard climatology from 1981 to 2010." />
 <meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png" />
 
 
@@ -150,7 +149,6 @@ Get normal climatology values for all stations." />
     <div class="ref-description">
     <p>Get normal climatology values for a station (or all the stations with
 <code>aemet_normal_clim_all()</code>. Standard climatology from 1981 to 2010.</p>
-<p>Get normal climatology values for all stations.</p>
     </div>
 
     <pre class="usage"><span class='fu'>aemet_normal_clim</span><span class='op'>(</span>station <span class='op'>=</span> <span class='cn'>NULL</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, return_sf <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
@@ -167,24 +165,28 @@ Get normal climatology values for all stations." />
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Logical TRUE/FALSE. Provides information about the flow of
+      <td><p>Logical <code>TRUE/FALSE</code>. Provides information about the flow of
 information between the client and server.</p></td>
     </tr>
     <tr>
       <th>return_sf</th>
-      <td><p>Logical. Should the function return an <code>sf</code> spatial object?
-If FALSE (the default value) it returns a tibble. Note that you need to
+      <td><p>Logical <code>TRUE</code> or <code>FALSE</code>.
+Should the function return an <code>sf</code> spatial object? If <code>FALSE</code>
+(the default value) it returns a tibble. Note that you need to
 have the <code>sf</code> package installed.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble or a <code>sf</code> object.</p>
+    <p>A tibble or a <code>sf</code> object.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>Code modified from project
 <a href='https://github.com/SevillaR/aemet'>https://github.com/SevillaR/aemet</a></p>
+    <h2 class="hasAnchor" id="api-key"><a class="anchor" href="#api-key"></a>API Key</h2>
+
+    <p>You need to set your API Key globally using <code><a href='aemet_api_key.html'>aemet_api_key()</a></code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

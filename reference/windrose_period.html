@@ -174,11 +174,11 @@ time period.</p>
     </tr>
     <tr>
       <th>start</th>
-      <td><p>Numeric value as start year (format: %Y).</p></td>
+      <td><p>Numeric value as start year (format: YYYY).</p></td>
     </tr>
     <tr>
       <th>end</th>
-      <td><p>Numeric value as end year (format: %Y).</p></td>
+      <td><p>Numeric value as end year (format: YYYY).</p></td>
     </tr>
     <tr>
       <th>n_directions</th>
@@ -188,12 +188,12 @@ time period.</p>
     <tr>
       <th>n_speeds</th>
       <td><p>Numeric value as the number of equally spaced wind speed
-bins to plot. This is used if <code>speed_cuts</code> is "NA" (default 5).</p></td>
+bins to plot. This is used if <code>speed_cuts</code> is <code>NA</code> (default 5).</p></td>
     </tr>
     <tr>
       <th>speed_cuts</th>
       <td><p>Numeric vector containing the cut points for the wind
-speed intervals, or "NA" (default).</p></td>
+speed intervals, or <code>NA</code> (default).</p></td>
     </tr>
     <tr>
       <th>col_pal</th>
@@ -211,14 +211,17 @@ considered calm (default 0).</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Logical TRUE/FALSE. Provides information about the flow of
+      <td><p>Logical <code>TRUE/FALSE</code>. Provides information about the flow of
 information between the client and server.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a <code>ggplot2</code> object</p>
+    <p>A <code>ggplot2</code> object</p>
+    <h2 class="hasAnchor" id="api-key"><a class="anchor" href="#api-key"></a>API Key</h2>
+
+    <p>You need to set your API Key globally using <code><a href='aemet_api_key.html'>aemet_api_key()</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='ggwindrose.html'>ggwindrose()</a></code>, <code><a href='windrose_days.html'>windrose_days()</a></code>, <code><a href='aemet_daily_clim.html'>aemet_daily_period()</a></code></p></div>
