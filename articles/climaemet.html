@@ -24,6 +24,9 @@
 <meta property="og:title" content="Get started with climaemet 1.0.0">
 <meta property="og:description" content="climaemet">
 <meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@dhernangomez">
+<meta name="twitter:site" content="@dhernangomez">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -95,7 +98,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Get started with climaemet 1.0.0</h1>
             
-            <h4 class="date">2021-08-03</h4>
+            <h4 class="date">2021-08-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/master/vignettes/climaemet.Rmd"><code>vignettes/climaemet.Rmd</code></a></small>
       <div class="hidden name"><code>climaemet.Rmd</code></div>
@@ -184,16 +187,16 @@
 <span class="co">#&gt; # A tibble: 24 x 25</span>
 <span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 9434  -1.00 2021-08-02 22:00:00     0   249   5     1.7   351  41.7   323</span>
-<span class="co">#&gt;  2 9434  -1.00 2021-08-02 23:00:00     0   249   7.2   5     321  41.7   340</span>
-<span class="co">#&gt;  3 9434  -1.00 2021-08-03 00:00:00     0   249   6.6   4.5   302  41.7   305</span>
-<span class="co">#&gt;  4 9434  -1.00 2021-08-03 01:00:00     0   249   8.6   5.6   294  41.7   298</span>
-<span class="co">#&gt;  5 9434  -1.00 2021-08-03 02:00:00     0   249   8.6   5.2   310  41.7   298</span>
-<span class="co">#&gt;  6 9434  -1.00 2021-08-03 03:00:00     0   249   6.9   5.3   296  41.7   298</span>
-<span class="co">#&gt;  7 9434  -1.00 2021-08-03 04:00:00     0   249   6.4   4     291  41.7   293</span>
-<span class="co">#&gt;  8 9434  -1.00 2021-08-03 05:00:00     0   249   5.2   3.5   282  41.7   285</span>
-<span class="co">#&gt;  9 9434  -1.00 2021-08-03 06:00:00     0   249   5.4   3.2   285  41.7   283</span>
-<span class="co">#&gt; 10 9434  -1.00 2021-08-03 07:00:00     0   249   5.2   3.3   311  41.7   310</span>
+<span class="co">#&gt;  1 9434  -1.00 2021-08-03 14:00:00     0   249   6.8   4.6   108  41.7   105</span>
+<span class="co">#&gt;  2 9434  -1.00 2021-08-03 15:00:00     0   249   7.2   3.6    86  41.7    83</span>
+<span class="co">#&gt;  3 9434  -1.00 2021-08-03 16:00:00     0   249   7.5   4.2   110  41.7   100</span>
+<span class="co">#&gt;  4 9434  -1.00 2021-08-03 17:00:00     0   249   6.7   3     110  41.7    98</span>
+<span class="co">#&gt;  5 9434  -1.00 2021-08-03 18:00:00     0   249   6.1   3.9   122  41.7   120</span>
+<span class="co">#&gt;  6 9434  -1.00 2021-08-03 19:00:00     0   249   5.3   1.9    92  41.7   100</span>
+<span class="co">#&gt;  7 9434  -1.00 2021-08-03 20:00:00     0   249   2.8   2      77  41.7    93</span>
+<span class="co">#&gt;  8 9434  -1.00 2021-08-03 21:00:00     0   249   5.5   3.4   102  41.7    95</span>
+<span class="co">#&gt;  9 9434  -1.00 2021-08-03 22:00:00     0   249   9.3   6.2   316  41.7   310</span>
+<span class="co">#&gt; 10 9434  -1.00 2021-08-03 23:00:00     0   249   8.6   5.6   310  41.7   305</span>
 <span class="co">#&gt; # ... with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span>
