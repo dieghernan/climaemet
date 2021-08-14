@@ -1,0 +1,435 @@
+---
+title: "Dealing with spatial data"
+author: "Gema Fernández-Avilés, Diego Hernangómez"
+date: "`r Sys.Date()`"
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE,comment=FALSE, error=FALSE, fig.width=8, fig.height=3.5, fig.align= "center") #fig.retina=3, 
+```
+
+
+## 0. What is a spatial data?
+
+Spatial data 
+
+:   Or geospatial data is any data that contain information about a specific location on the Earth's surface. Spatial data arise in a myriad of fields and applications, so there is also a myriad of spatial data types. Cressie (1993, pp. 8–13) provides a simple and useful classification of spatial data: **geostatistical data** (air temperature values in a country), **lattice data** (unemployment rate by states) and **point patterns** (the location of fires in a region), see Montero et al. (2015), for more details.
+
+In this work,we focus on geostatistical data.   
+
+### What we need to run geostatistical data in R?
+Some useful libraries.
+```{r}
+library(climaemet) # metereological data 
+library(mapSpain) # base maps of Spain
+library(raster) # raster handling
+library(sf) # spatial shape handling
+library(gstat) # for spatial interpolation
+library(dplyr) # data handling
+library(ggplot2) # for plots
+library(gifski) # we would create an animation
+```
+
+
+### Where can we find geostatistical data? DIEGO
+
+In this paper, we are going to deal with geostatistical data, specifically we are going to model the level of air temperature in Spain in XXXXX (fecha)
+
+DIEGO?? We are going to download the data with with climaemet package in R which has an API ...?
+
+
+```{r}
+#library(remotes)
+#install_github("ropenspain/climaemet")
+```
+
+```{r}
+library(climaemet)
+
+## Get api key from AEMET
+# Una vez que lo tengo lo oculto
+#browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
+
+```
+
+
+
+## 1. How is the structure of geostatistical data?
+
+Geostatistical data arise when the domain under study is a fixed set $D$ that is continuous. That is: (i) $Z(s)$ can be observed at whichever point of the domain (continuous); and (ii) the points in $D$ are non-stochastic (fixed, $D$ is the same for all the realizations of the spatial random function).
+
+First, take a look of the characteristics of the stations. We are interesting in **latitude** and **longitude** attributes.
+
+```{r}
+stations <- aemet_stations() # Need to have the API Key registered
+# knitr::kable(head(stations))
+#View(stations)
+str(stations)
+```
+
+DIEGO SUPRIMIMOS LAS DOS O DEJAMOS BALEARES O DEJAMOS TAMBIEN CANARIAS, TOTAL COMO LUEGO VAMOS A RECORTAR NO VEO TANTO PROBLEMA.
+
+Note: For a simple of the compresion we delete the Spanis Island (Canary and Balearic)
+
+```{r}
+library(ggplot2)
+library(dplyr)
+clim_data <- aemet_daily_clim(
+  start = "2020-12-21",
+  end = "2021-03-20",
+  return_sf = TRUE
+)
+
+clim_data_clean <- clim_data %>%
+  # Exclude Canary Islands from analysis
+  filter(!provincia %in% c("LAS PALMAS", "STA. CRUZ DE TENERIFE")) %>%
+  dplyr::select(fecha, tmed) %>%
+  # Exclude NAs
+  filter(!is.na(tmed))
+
+
+## PONER SOLO UN MAPA, cuál prefieres?
+## ==================== ##
+ggplot(clim_data_clean) +
+  geom_sf()
+
+
+CCAA <- esp_get_ccaa(epsg = 4326) %>%
+  # Exclude Canary Islands from analysis
+  filter(ine.ccaa.name != "Canarias")
+
+ggplot(CCAA) +
+  geom_sf() +
+  geom_sf(data = clim_data_clean)
+```
+
+
+
+Second, we examine the possible variables that can be analyzed. We are interested in **maximum temperature** (hour frequency).
+
+```{r}
+all_stations <- aemet_last_obs(return_sf = TRUE)
+# Last hour
+all_last <-
+  all_stations %>% filter(fint == all_stations[["fint"]][1])
+names(all_last)
+```
+
+
+
+```{r}
+summary(clim_data_clean$tmed)
+#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+#> -15.200   6.100   9.500   8.877  12.200  25.000
+```
+
+Third, we download and plot the maximum temperature (hour frequency) for each monitoring station around the county. 
+
+```{r}
+all_stations <- aemet_last_obs(return_sf = TRUE)
+# Last hour
+all_last <-
+  all_stations %>% filter(fint == all_stations[["fint"]][1])
+
+ggplot(all_last) +
+  geom_sf(aes(col = ta, stroke = 0, geometry = geometry),
+    shape = 19,
+    size = 2) +
+  labs(col = "Max temp.") +
+  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
+  theme_bw() +
+  theme(panel.border = element_blank())
+```
+
+
+### Are independent the observations or they exib spatial dependence?
+
+Everything is related to everything else. But near things are more related than distant things (Tobler, 1969).
+
+In our study, we can observe positive spatial dependence (see Figure XX), high values of temperature are all together in the south of Spain and low temperatures are also toguether in the north of Spain.
+
+
+
+## 4. Prepare the data as spatial object
+
+### Check the projection of the data
+
+```{r}
+clim_data_utm <- st_transform(clim_data_clean, 25830)
+CCAA_utm <- st_transform(CCAA, 25830)
+# Note the original projection
+st_crs(CCAA)$proj4string
+#> [1] "+proj=longlat +datum=WGS84 +no_defs"
+# vs the utm projection
+st_crs(CCAA_utm)$proj4string
+#> [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
+```
+
+
+### Create a grig for the spatial prediction
+
+```{r}
+
+# Create grid 5*5 km (25 km2)
+
+grd_sf <- st_as_sfc(st_bbox(CCAA_utm)) %>%
+  st_make_grid(cellsize = 5000, what = "centers")
+
+# Number of points
+#length(grd_sf)
+#> [1] 44426
+
+# Convert to sp object - interpolation should be made with sp/raster
+grd <- as(grd_sf, "Spatial") %>% as("SpatialPixels")
+```
+
+
+```{r}
+# Prepare the data 
+# Change to sp for this analysis
+test_day_sp <- as(test_day,"Spatial")
+
+# Remove duplicate locations
+zd <- zerodist(test_day_sp)
+
+# remove the duplicate rows:
+test_day_sp2 <- test_day_sp[-zd[,2], ]
+zerodist(test_day_sp2)
+
+library(classInt)
+
+# Spatial Exploratory Analysis (Esto aquí o antes de IDW)
+
+# Hago algo parecido pero con ggplot2
+# Una vez que he quitado los duplicados, vuelvo a pasar a sf
+test_day_sf2 <- st_as_sf(test_day_sp2)
+
+# Y me quedo solo con los datos (quito la geometria)
+test_day_df2 <- st_drop_geometry(test_day_sf2)
+```
+
+### Exploratory Spatial Data Analysis
+Look the histogram, the dataset is gaussian!! Note that kriging is BLUP
+
+```{r}
+ggplot(test_day_df2, aes(x=tmed)) + 
+geom_histogram(aes(y=..density..),alpha=.5, position="identity", binwidth = 1) + 
+geom_density(alpha=.3) +
+  theme_light()
+
+# Bubble plot, con el objeto sf
+#https://r-charts.com/es/espacial/mapa-simbolos-proporcionales-ggplot2/
+
+# Ordeno por tamaño
+test_day_sf2 <- test_day_sf2[order(test_day_sf2$tmed, decreasing = TRUE), ]
+
+# Creo quartiles y categorizo
+cuart <- classIntervals(test_day_sf2$tmed, n=4)
+test_day_sf2$quart <- cut(test_day_sf2$tmed, breaks= cuart$brks, labels=FALSE)
+
+ggplot() +
+  geom_sf(
+    data = test_day_sf2,
+    pch = 21,
+    aes(size = quart, fill = quart),
+    col = "grey20") +
+  scale_size(
+    range = c(2, 8),
+    labels = function(x) paste0("Q",x),
+    guide = guide_legend()) +
+  scale_fill_gradientn(colours = hcl.colors(5, "RdBu",
+                                            rev = TRUE,
+                                            alpha = 0.7),
+                       labels = function(x) paste0("Q",x)) +
+  guides(fill = guide_legend(title = "")) +
+labs(title = "Quartil Map of Avg. Temperature in Spain",
+     size = "")
+```
+
+
+
+DIEGO: QUITARÍAMOS IDW O LO DEJAMOS PARA COMPARAR...?
+```{r}
+# ##  Spatial prediction with deterministic methods: Inverst Distanat Weight (IDW)
+# 
+# # Test with a single day
+# test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
+# 
+# # Interpolate temp
+# 
+# interp_temp <-  gstat::idw(tmed ~ 1,
+#                            # Formula interpolation
+#                            as(test_day, "Spatial"),
+#                            # Origin
+#                            newdata = grd,
+#                            # Destination
+#                            idp = 2.0)
+# #> [inverse distance weighted interpolation]
+# 
+# 
+# 
+# interp_temp_rast <- raster(interp_temp) %>%
+#   mask(CCAA_utm)
+# 
+# plot(interp_temp_rast, axes = FALSE)
+```
+
+## 5. Kriging Ordinay 
+
+
+### Prepare the geospatial object with geoR package
+```{r}
+library(geoR)
+z=test_day_sp2$tmed
+# Coordinate Reference System
+#sf::st_crs(test_day_sp2) 
+
+xy=st_coordinates(st_as_sfc(test_day_sp2))
+xy=as.data.frame(xy)
+lon=xy [ ,1]
+lat=xy [ ,2]
+
+coord=cbind(lon,lat)
+mydata.geo=as.data.frame(cbind(coord, z))
+mydata<-as.geodata(obj=mydata.geo, coords.col = 1:2, data.col = 3)
+```
+
+### The semivariogram function requiere a more depth study. Now, we show two different functions to fit the empirical semivariogram to a theoretical semivariogram.
+```{r}
+#geoR::variog()
+vario.b=variog(mydata, coords = mydata$coords, data = mydata$data)
+plot(vario.b)
+
+# eyefit() is an interactive function to play with the types and parameters of semivariogram. 
+
+#eyefit(vario.b)
+#  cov.model sigmasq       phi tausq kappa kappa2 practicalRange
+# spherical   29.26 766374.98  0.98  <NA>   <NA>      766374.98
+
+
+# Fit the semivariogram by eye in gstat()
+vgm=variogram(tmed~1, test_day_sp2) #
+plot(vgm) #
+fit.var = fit.variogram(vgm, model = vgm(0, "Sph", 766374.98, 29.26))
+# Plot empirical (dots) and theoretical semivariograms (line)
+plot(vgm, fit.var, col=2)
+```
+
+
+## Compute ordinary kriging and plot the results
+
+There are differets kinds of kriging depend on the characteristics of the spatial process: simple, ordinary or universal kriging (external drift kriging), kriging in a local neighbourhood, point kriging or kriging of block mean values and conditional (Gaussian or indicator) simulation equivalents for all kriging varieties.
+
+In this work we deal with rdinary kriging, the most widely used kriging method. It serves to estimate a value at a point of a region for which a variogram is known, using data in the neighborhood of the estimation location. 
+```{r}
+kriged = krige(tmed~1, test_day_sp2, grd, model = fit.var)
+
+spplot(kriged["var1.pred"], main = "Ordinary kriging predictions")
+spplot(kriged["var1.var"], main = "Ordinary kriging variance")
+```
+
+
+## ----------- HASTA AQUÍ TODO BIEN ----------------
+
+```{r}
+
+# Mapas mas bonitos
+#DHH Creamos un mapa con ggplot2
+
+idw_df <- as.data.frame(interp_temp, xy = TRUE, na.rm = TRUE)
+
+# Cortes para hacer choropleth
+library(classInt)
+breaks_idw <- classIntervals(idw_df$var1.pred, style="pretty", n=7)
+
+
+
+ggplot() +
+  geom_tile(data = idw_df, aes(x = coords.x1, y = coords.x2, fill = var1.pred)) +
+  geom_sf(data = CCAA_utm, col = "black", fill = NA) +
+  scale_fill_gradientn(
+    limits=c(-10,18),
+    colours = hcl.colors(11, "RdBu", rev = TRUE, alpha = 0.7),
+    breaks = breaks_idw$brks,
+    labels = function(x)
+      paste0(x, "º"),
+    guide = guide_legend(reverse = TRUE, title = "Ave. of Spain Temperature")
+  ) +
+  theme(panel.background =  element_blank(),
+        axis.title = element_blank()) +
+  labs(title="Ave. of Spain Temperature",
+       subtitle = "Inverse Distance Weighted Interpolation",
+       caption = "Data: AEMET, IGN")
+
+# para krigged
+kriged_df <- as.data.frame(kriged, xy = TRUE, na.rm = TRUE)
+
+#OJO, reutilizo breaks idw para hacerlo comparable
+ggplot() +
+  geom_tile(data = kriged_df, aes(x = coords.x1, y = coords.x2, fill = var1.pred)) +
+  geom_sf(data = CCAA_utm, col = "black", fill = NA) +
+  scale_fill_gradientn(
+    limits=c(-10,18),
+    colours = hcl.colors(11, "RdBu", rev = TRUE, alpha = 0.7),
+    breaks = breaks_idw$brks,
+    labels = function(x)
+      paste0(x, "º"),
+    guide = guide_legend(reverse = TRUE, title = "Temperature")
+  ) +
+  theme(panel.background =  element_blank(),
+        axis.title = element_blank()) +
+  labs(title="Ave. of Spain Temperature",
+       subtitle = "Kriging interpolation",
+       caption = "Data: AEMET, IGN")
+
+ggplot() +
+  geom_tile(data = kriged_df, aes(x = coords.x1, y = coords.x2, fill = var1.var)) +
+  geom_sf(data = CCAA_utm, col = "black", fill = NA) +
+  geom_sf(data=test_day_sf2, col="black",  pch=3) +
+  scale_fill_gradientn(
+    # Creamos una paleta especial
+    colours = c("green4","white",hcl.colors(20, "Reds",alpha = .7, rev = TRUE)),
+    breaks=c(0,3,4,5,10,20, 30),
+    guide = guide_legend(reverse = TRUE, title = "Varianza"
+                         )
+  ) +
+  theme(panel.background =  element_blank(),
+        axis.title = element_blank(),
+        plot.tag.position = c(.8,.2),
+        plot.tag = element_text(hjust =-.3, size=9)) +
+  labs(title="Ave. of Spain Temperature",
+       subtitle = "Kriging variance",
+       caption = "Data: AEMET, IGN",
+       tag = "+ AEMET Monitoring Stations ")
+
+```
+
+```{r}
+
+# Making a nice plot on ggplot2
+temp_values <- as.data.frame(interp_temp, xy = TRUE, na.rm = TRUE)
+names(temp_values) <- c("x", "y", "temp")
+
+# Get min and max from interpolated values
+min_temp <- floor(min(temp_values$temp))
+max_temp <- ceiling(max(temp_values$temp))
+
+ggplot() +
+  geom_sf(data = CCAA_utm, fill = "grey95") +
+  geom_tile(data = temp_values, aes(x = x, y = y, fill = temp)) +
+  scale_fill_gradientn(
+    colours = hcl.colors(11, "Spectral", rev = TRUE, alpha = 0.7),
+    limits = c(min_temp, max_temp)
+  ) +
+  theme_minimal() +
+  ylab(NULL) +
+  xlab(NULL) +
+  labs(
+    title = "Avg. Temperature in Spain",
+    subtitle = "2021-01-08",
+    caption = "Data: AEMET, IGN",
+    fill = "C"
+  )
+```
