@@ -32,8 +32,8 @@ hlp_install("gstat") # for spatial interpolation
 hlp_install("dplyr") # data handling
 hlp_install("ggplot2") # for plots
 hlp_install("gifski") # we would create an animation
-hlp_install("geoR") # we would create an animation
-hlp_install("classInt") # we would create an animation
+hlp_install("geoR") 
+hlp_install("classInt") 
 ```
 
 ## 0. What is a spatial data?
@@ -203,7 +203,7 @@ ggplot(all_last) +
   theme(panel.border = element_blank())
 ```
 
-### Are independent the observations or they exib spatial dependence?
+### Are independent the observations or they show spatial dependence?
 
 Everything is related to everything else. But near things are more related than
 distant things ([@https://doi.org/10.1111/j.1538-4632.1969.tb00621.x].
@@ -367,7 +367,7 @@ mydata.geo <- as.data.frame(cbind(coord, z))
 mydata <- as.geodata(obj = mydata.geo, coords.col = 1:2, data.col = 3)
 ```
 
-### The semivariogram function requiere a more depth study. Now, we show two different functions to fit the empirical semivariogram to a theoretical semivariogram.
+The semivariogram function requiere a more depth study. Now, we show two different functions to fit the empirical semivariogram to a theoretical semivariogram.
 
 ```{r}
 # geoR::variog()
