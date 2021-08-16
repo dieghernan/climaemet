@@ -24,24 +24,25 @@ hlp_install <- function(pkg) {
 }
 
 
-hlp_install("climaemet") # metereological data
-hlp_install("mapSpain") # base maps of Spain
-hlp_install("raster") # raster handling
-hlp_install("sf") # spatial shape handling
-hlp_install("gstat") # for spatial interpolation
-hlp_install("dplyr") # data handling
-hlp_install("ggplot2") # for plots
-hlp_install("gifski") # we would create an animation
-hlp_install("geoR")
-hlp_install("classInt")
+hlp_install("devtools")
+
+devtools::install_cran(c(
+  "mapSpain", "raster", "sf", "gstat",
+  "dplyr", "ggplot2", "geoR", "classInt"
+))
 ```
 
-## 0. What is a spatial data?
+## Gema
+
+-   [ ] Revisa referencias bibliográficas
+-   [ ] Me cuesta encajar la sección de 2.  Exploratory Spatial Data Analysis
+    que mencionabas en el correo. No está incluida de momento
+
+## 0. What is spatial data?
 
 Geospatial data is any data that contain information about a specific location
 on the Earth's surface. Spatial data arise in a myriad of fields and
-applications, so there is also a myriad of spatial data types.
-@cressie93 GEMA COMPROBAR REFERENCIAS
+applications, so there is also a myriad of spatial data types. @cressie93
 provides a simple and useful classification of spatial data: **geostatistical
 data** (air temperature values in a country), **lattice data** (unemployment
 rate by states) and **point patterns** (the location of fires in a region), see
@@ -51,38 +52,37 @@ In this work,we focus on geostatistical data.
 
 ### What we need to run geostatistical data in R?
 
-Some useful libraries.
+Some useful libraries we are going to use on this article:
 
 ```{r libraries}
 library(climaemet) # metereological data
 library(mapSpain) # base maps of Spain
+
+library(dplyr) # data handling
+library(ggplot2) # for plots
+library(classInt) # Classification
+
 library(raster) # raster handling
 library(sf) # spatial shape handling
 library(gstat) # for spatial interpolation
-library(dplyr) # data handling
-library(ggplot2) # for plots
-library(gifski) # we would create an animation
+library(geoR)
 ```
 
-### Where can we find geostatistical data? DIEGO
+### Where can we find geostatistical data?
 
 In this paper, we are going to deal with geostatistical data, specifically we
-are going to model the level of air temperature in Spain in XXXXX (fecha)
+are going to model the level of air temperature in Spain in **08 January 2021**.
 
-DIEGO?? We are going to download the data with with climaemet package in R which
-has an API ...?
-
-You can install the released version of **climaemet** from
-[CRAN](https://CRAN.R-project.org) with:
-
-```{r, eval=FALSE}
-install.packages("climaemet")
-```
+We are going to download the data with with **climaemet** package in R.
+**climaemet** allows to download the climatic data of the Spanish Meteorological
+Agency (AEMET) directly using their API. On this article we would use
+**climaemet (\>=1.0.0)** (not released on CRAN at the time of producing this
+article), so you would need to install the developing version.
 
 You can install the developing version of **climaemet** using the
 [r-universe](https://ropenspain.r-universe.dev/ui#builds):
 
-```{r, eval=FALSE}
+```{r runiverse, eval=FALSE}
 # Enable this universe
 options(repos = c(
   ropenspain = "https://ropenspain.r-universe.dev",
@@ -94,15 +94,17 @@ install.packages("climaemet")
 
 Alternatively, you can install the developing version of **climaemet** with:
 
-```{r, eval=FALSE}
+```{r remotes, eval=FALSE}
 library(remotes)
 install_github("ropenspain/climaemet")
 ```
 
+#### API Key
+
 To be able to download data from AEMET you will need a free API key which you
 can get [here](https://opendata.aemet.es/centrodedescargas/obtencionAPIKey).
 
-```{r, eval=FALSE}
+```{r apikey, eval=FALSE}
 library(climaemet)
 
 ## Get api key from AEMET
@@ -122,109 +124,108 @@ same for all the realizations of the spatial random function).
 First, take a look of the characteristics of the stations. We are interesting in
 **latitude** and **longitude** attributes.
 
-```{r}
-stations <- aemet_stations() # Need to have the API Key registered
+```{r stations}
+stations <- aemet_stations()
 
-
-glimpse(stations)
+# Have a look on the data
+dplyr::glimpse(stations)
 ```
 
-DIEGO SUPRIMIMOS LAS DOS O DEJAMOS BALEARES O DEJAMOS TAMBIEN CANARIAS, TOTAL
-COMO LUEGO VAMOS A RECORTAR NO VEO TANTO PROBLEMA.
+Now we can start extracting the data. We select here the daily values on **08
+January 2021**:
 
-Note: For a simple of the compresion we delete the Spanis Island (Canary and
-Balearic)
+```{r selectdaily}
+# Select data
 
-```{r}
+date_select <- "2021-01-08"
+
 
 clim_data <- aemet_daily_clim(
-  start = "2020-12-21",
-  end = "2021-03-20",
+  start = date_select,
+  end = date_select,
   return_sf = TRUE
 )
+```
 
+We can examine the possible variables that can be analyzed. We are interested in
+**average daily temperature** named `tmed`.
+
+```{r namesdaily}
+names(clim_data)
+```
+
+On this step, we select the variable of interest on each station. For simplicity
+we would focus on mainland Spain only:
+
+```{r selecttemp, fig.cap="Figure 1: AEMET Stations, mainland Spain"}
 clim_data_clean <- clim_data %>%
-  # Exclude Canary Islands from analysis
-  filter(!provincia %in% c("LAS PALMAS", "STA. CRUZ DE TENERIFE")) %>%
+  # Exclude Islands from analysis
+  filter(!provincia %in% c(
+    "LAS PALMAS", "STA. CRUZ DE TENERIFE",
+    "ILLES BALEARS"
+  )) %>%
   dplyr::select(fecha, tmed) %>%
   # Exclude NAs
   filter(!is.na(tmed))
 
 
-## PONER SOLO UN MAPA, cuál prefieres?
-## ==================== ##
-ggplot(clim_data_clean) +
-  geom_sf()
-
+# Plot with outline
 
 CCAA <- esp_get_ccaa(epsg = 4326) %>%
   # Exclude Canary Islands from analysis
-  filter(ine.ccaa.name != "Canarias")
+  filter(!ine.ccaa.name %in% c("Canarias", "Balears, Illes"))
 
 ggplot(CCAA) +
   geom_sf() +
-  geom_sf(data = clim_data_clean)
+  geom_sf(data = clim_data_clean) +
+  theme_bw()
 ```
 
-Second, we examine the possible variables that can be analyzed. We are
-interested in **maximum temperature** (hour frequency).
-
-```{r}
-all_stations <- aemet_last_obs(return_sf = TRUE)
-# Last hour
-all_last <-
-  all_stations %>% filter(fint == all_stations[["fint"]][1])
-names(all_last)
-```
-
-```{r}
+```{r tempstats}
 summary(clim_data_clean$tmed)
-#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
-#> -15.200   6.100   9.500   8.877  12.200  25.000
 ```
 
-Third, we download and plot the maximum temperature (hour frequency) for each
-monitoring station around the county.
+Let's plot now the values as a choropleth map:
 
-```{r}
-all_stations <- aemet_last_obs(return_sf = TRUE)
-# Last hour
-all_last <-
-  all_stations %>% filter(fint == all_stations[["fint"]][1])
+```{r choro, fig.cap="Figure 2: Spain - Avg temperature 08 Jan. 2021"}
 
-ggplot(all_last) +
-  geom_sf(aes(col = ta, stroke = 0, geometry = geometry),
-    shape = 19,
-    size = 2
+ggplot(clim_data_clean) +
+  geom_sf(aes(col = tmed),
+    size = 4,
+    alpha = 0.7
   ) +
-  labs(col = "Max temp.") +
-  scale_colour_gradientn(colours = hcl.colors(5, "RdBu", rev = TRUE)) +
+  labs(col = "Avg. temp") +
+  scale_colour_gradientn(
+    colours = hcl.colors(5, "RdBu", rev = TRUE),
+    n.breaks = 10,
+    guide = "legend"
+  ) +
   theme_bw() +
-  theme(panel.border = element_blank())
+  theme(
+    panel.border = element_blank(),
+    panel.grid = element_blank()
+  )
 ```
 
-### Are independent the observations or they show spatial dependence?
+## 3. Are independent the observations or they exhibit spatial dependence?
 
 Everything is related to everything else. But near things are more related than
 distant things [@tobler69].
 
-In our study, we can observe positive spatial dependence (see Figure XX), high
-values of temperature are all together in the south of Spain and low
+In our study, we can observe positive spatial dependence (see \@ref(fig:choro)),
+high values of temperature are all together in the south of Spain and low
 temperatures are also together in the north of Spain.
 
 ## 4. Prepare the data as spatial object
 
-### Check the projection of the data
+On this exercise, we choose to project our objects to ETRS89 / UTM zone 30N
+[EPSG:25830](https://epsg.io/25830), that provides projected x and y values on
+meters and maximizes the accuracy for Spain.
 
 ```{r}
 clim_data_utm <- st_transform(clim_data_clean, 25830)
+
 CCAA_utm <- st_transform(CCAA, 25830)
-# Note the original projection
-st_crs(CCAA)$proj4string
-#> [1] "+proj=longlat +datum=WGS84 +no_defs"
-# vs the utm projection
-st_crs(CCAA_utm)$proj4string
-#> [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"
 ```
 
 ### Create a grid for the spatial prediction
@@ -236,10 +237,6 @@ st_crs(CCAA_utm)$proj4string
 grd_sf <- st_as_sfc(st_bbox(CCAA_utm)) %>%
   st_make_grid(cellsize = 5000, what = "centers")
 
-# Number of points
-# length(grd_sf)
-#> [1] 44426
-
 # Convert to sp object - interpolation should be made with sp/raster
 grd <- as(grd_sf, "Spatial") %>% as("SpatialPixels")
 ```
@@ -249,7 +246,7 @@ grd <- as(grd_sf, "Spatial") %>% as("SpatialPixels")
 
 # Test with a single day
 
-test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
+test_day <- clim_data_utm
 
 # Change to sp for this analysis
 test_day_sp <- as(test_day, "Spatial")
@@ -259,7 +256,6 @@ zd <- zerodist(test_day_sp)
 
 # remove the duplicate rows:
 test_day_sp2 <- test_day_sp[-zd[, 2], ]
-zerodist(test_day_sp2)
 
 library(classInt)
 
@@ -325,7 +321,7 @@ DIEGO: QUITARÍAMOS IDW O LO DEJAMOS PARA COMPARAR...?
 ##  Spatial prediction with deterministic methods: Inverst Distanat Weight (IDW)
 
 # Test with a single day
-test_day <- clim_data_utm %>% filter(fecha == "2021-01-08")
+test_day <- clim_data_utm
 
 # Interpolate temp
 
@@ -337,7 +333,6 @@ interp_temp <- gstat::idw(tmed ~ 1,
   # Destination
   idp = 2.0
 )
-#> [inverse distance weighted interpolation]
 
 
 
@@ -367,7 +362,9 @@ mydata.geo <- as.data.frame(cbind(coord, z))
 mydata <- as.geodata(obj = mydata.geo, coords.col = 1:2, data.col = 3)
 ```
 
-The semivariogram function requiere a more depth study. Now, we show two different functions to fit the empirical semivariogram to a theoretical semivariogram.
+The semivariogram function requiere a more depth study. Now, we show two
+different functions to fit the empirical semivariogram to a theoretical
+semivariogram.
 
 ```{r}
 # geoR::variog()
