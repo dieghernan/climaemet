@@ -32,8 +32,8 @@ hlp_install("gstat") # for spatial interpolation
 hlp_install("dplyr") # data handling
 hlp_install("ggplot2") # for plots
 hlp_install("gifski") # we would create an animation
-hlp_install("geoR") 
-hlp_install("classInt") 
+hlp_install("geoR")
+hlp_install("classInt")
 ```
 
 ## 0. What is a spatial data?
