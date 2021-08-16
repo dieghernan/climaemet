@@ -41,11 +41,11 @@ hlp_install("classInt")
 Geospatial data is any data that contain information about a specific location
 on the Earth's surface. Spatial data arise in a myriad of fields and
 applications, so there is also a myriad of spatial data types.
-[@cressie93 GEMA COMPROBAR REFERENCIAS
+@cressie93 GEMA COMPROBAR REFERENCIAS
 provides a simple and useful classification of spatial data: **geostatistical
 data** (air temperature values in a country), **lattice data** (unemployment
 rate by states) and **point patterns** (the location of fires in a region), see
-@montero_spatial, for more details].
+@montero_spatial, for more details.
 
 In this work,we focus on geostatistical data.
 
