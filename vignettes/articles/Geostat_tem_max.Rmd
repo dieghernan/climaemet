@@ -5,6 +5,9 @@ author:
   - Diego Hernangómez 
 bibliography: dealing.bib
 date: "`r Sys.Date()`"
+output: 
+  html_document:
+    number_sections: true
 editor_options: 
   markdown: 
     wrap: 80
@@ -34,13 +37,12 @@ devtools::install_cran(c(
 ))
 ```
 
-## Gema
+**Gema**
 
 -   [ ] Revisa referencias bibliográficas
--   [ ] Me cuesta encajar la sección de 2. Exploratory Spatial Data Analysis
-    que mencionabas en el correo. No está incluida de momento
+-   [ ] Me cuesta encajar la sección de Exploratory Spatial Data Analysis.
 
-## 0. What is spatial data?
+## What is spatial data?
 
 Geospatial data is any data that contain information about a specific location
 on the Earth's surface. Spatial data arise in a myriad of fields and
@@ -117,7 +119,7 @@ browseURL("https://opendata.aemet.es/centrodedescargas/obtencionAPIKey")
 aemet_api_key("<MY API KEY>")
 ```
 
-## 1. How is the structure of geostatistical data?
+## How is the structure of geostatistical data?
 
 Geostatistical data arise when the domain under study is a fixed set $D$ that is
 continuous. That is: (i) $Z(s)$ can be observed at whichever point of the domain
@@ -210,7 +212,7 @@ ggplot(clim_data_clean) +
   )
 ```
 
-## 2. Are independent the observations or they exhibit spatial dependence?
+## Are independent the observations or they exhibit spatial dependence?
 
 Everything is related to everything else. But near things are more related than
 distant things [@tobler69].
@@ -219,7 +221,7 @@ In our study, we can observe positive spatial dependence (see Figure 2),
 high values of temperature are all together in the south of Spain and low
 temperatures are also together in the north of Spain.
 
-## 3. Prepare the data as spatial object
+## Prepare the data as spatial object
 
 On this exercise, we choose to project our objects to ETRS89 / UTM zone 30N
 [EPSG:25830](https://epsg.io/25830), that provides projected x and y values on
@@ -270,7 +272,7 @@ test_day_sf2 <- st_as_sf(test_day_sp2)
 test_day_df2 <- st_drop_geometry(test_day_sf2)
 ```
 
-## 4. Exploratory Spatial Data Analysis
+## Exploratory Spatial Data Analysis
 
 Look the histogram, the dataset is gaussian!! Note that kriging is 
 [BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
@@ -344,7 +346,7 @@ interp_temp_rast <- raster(interp_temp) %>%
 plot(interp_temp_rast, axes = FALSE)
 ```
 
-## 5. Kriging Ordinay
+## Kriging Ordinay
 
 ### Prepare the geospatial object with geoR package
 
