@@ -35,7 +35,7 @@ devtools::install_cran(c(
 ## Gema
 
 -   [ ] Revisa referencias bibliográficas
--   [ ] Me cuesta encajar la sección de 2.  Exploratory Spatial Data Analysis
+-   [ ] Me cuesta encajar la sección de 2. Exploratory Spatial Data Analysis
     que mencionabas en el correo. No está incluida de momento
 
 ## 0. What is spatial data?
@@ -212,7 +212,7 @@ ggplot(clim_data_clean) +
 Everything is related to everything else. But near things are more related than
 distant things [@tobler69].
 
-In our study, we can observe positive spatial dependence (see \@ref(fig:choro)),
+In our study, we can observe positive spatial dependence (see Figure 2),
 high values of temperature are all together in the south of Spain and low
 temperatures are also together in the north of Spain.
 
@@ -256,8 +256,6 @@ zd <- zerodist(test_day_sp)
 
 # remove the duplicate rows:
 test_day_sp2 <- test_day_sp[-zd[, 2], ]
-
-library(classInt)
 
 # Spatial Exploratory Analysis (Esto aquí o antes de IDW)
 
@@ -394,7 +392,7 @@ kriging in a local neighbourhood, point kriging or kriging of block mean values
 and conditional (Gaussian or indicator) simulation equivalents for all kriging
 varieties.
 
-In this work we deal with rdinary kriging, the most widely used kriging method.
+In this work we deal with ordinary kriging, the most widely used kriging method.
 It serves to estimate a value at a point of a region for which a variogram is
 known, using data in the neighborhood of the estimation location.
 
