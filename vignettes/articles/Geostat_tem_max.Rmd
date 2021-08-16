@@ -29,7 +29,7 @@ hlp_install <- function(pkg) {
 hlp_install("devtools")
 
 devtools::install_cran(c(
-  "mapSpain", "raster", "sf", "gstat", "sp", 
+  "mapSpain", "raster", "sf", "gstat", "sp",
   "dplyr", "ggplot2", "geoR", "classInt"
 ))
 ```
