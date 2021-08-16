@@ -134,7 +134,7 @@ See how a tibble is displayed:
 # See a tibble in action
 
 aemet_last_obs("9434")
-#> # A tibble: 23 x 25
+#> # A tibble: 24 x 25
 #>    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax
 #>    <chr> <dbl> <dttm>              <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 #>  1 9434  -1.00 2021-08-15 11:00:00     0   249   9.5   6.7   312  41.7   303
@@ -147,7 +147,7 @@ aemet_last_obs("9434")
 #>  8 9434  -1.00 2021-08-15 18:00:00     0   249  13.7  10.2   311  41.7   305
 #>  9 9434  -1.00 2021-08-15 19:00:00     0   249  13.3   9.3   303  41.7   308
 #> 10 9434  -1.00 2021-08-15 20:00:00     0   249  14.2  11.3   296  41.7   303
-#> # ... with 13 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
+#> # ... with 14 more rows, and 15 more variables: ubi <chr>, pres <dbl>,
 #> #   hr <dbl>, stdvv <dbl>, ts <dbl>, pres_nmar <dbl>, tamin <dbl>, ta <dbl>,
 #> #   tamax <dbl>, tpr <dbl>, stddv <dbl>, inso <dbl>, tss5cm <dbl>,
 #> #   pacutp <dbl>, tss20cm <dbl>
@@ -359,6 +359,7 @@ citation("climaemet")
 #>   Pizarro, M., Hernangómez, D. and Fernández-Avilés, G. (2021).
 #>   climaemet (R Climate AEMET Tools).
 #>   https://CRAN.R-project.org/package=climaemet.
+#>   https://doi.org/10.5281/zenodo.5205573
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -366,6 +367,7 @@ citation("climaemet")
 #>     title = {climaemet (R Climate AEMET Tools)},
 #>     author = {Manuel Pizarro and Diego Hernangómez and Gema Fernández-Avilés},
 #>     year = {2021},
+#>     doi. = {10.5281/zenodo.5205573},
 #>     email = {m.pizarro@csic.es},
 #>     url = {https://CRAN.R-project.org/package=climaemet},
 #>   }
