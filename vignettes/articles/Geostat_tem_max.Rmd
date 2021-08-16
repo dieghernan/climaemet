@@ -1,6 +1,8 @@
 ---
 title: "Dealing with spatial data"
-author: "Gema Fernández-Avilés, Diego Hernangómez"
+author:
+  - Gema Fernández-Avilés, UCLM
+  - Diego Hernangómez 
 bibliography: dealing.bib
 date: "`r Sys.Date()`"
 editor_options: 
@@ -27,7 +29,7 @@ hlp_install <- function(pkg) {
 hlp_install("devtools")
 
 devtools::install_cran(c(
-  "mapSpain", "raster", "sf", "gstat",
+  "mapSpain", "raster", "sf", "gstat", "sp", 
   "dplyr", "ggplot2", "geoR", "classInt"
 ))
 ```
@@ -64,6 +66,7 @@ library(classInt) # Classification
 
 library(raster) # raster handling
 library(sf) # spatial shape handling
+library(sp) # spatial shape handling
 library(gstat) # for spatial interpolation
 library(geoR)
 ```
@@ -207,7 +210,7 @@ ggplot(clim_data_clean) +
   )
 ```
 
-## 3. Are independent the observations or they exhibit spatial dependence?
+## 2. Are independent the observations or they exhibit spatial dependence?
 
 Everything is related to everything else. But near things are more related than
 distant things [@tobler69].
@@ -216,7 +219,7 @@ In our study, we can observe positive spatial dependence (see Figure 2),
 high values of temperature are all together in the south of Spain and low
 temperatures are also together in the north of Spain.
 
-## 4. Prepare the data as spatial object
+## 3. Prepare the data as spatial object
 
 On this exercise, we choose to project our objects to ETRS89 / UTM zone 30N
 [EPSG:25830](https://epsg.io/25830), that provides projected x and y values on
@@ -267,9 +270,10 @@ test_day_sf2 <- st_as_sf(test_day_sp2)
 test_day_df2 <- st_drop_geometry(test_day_sf2)
 ```
 
-### Exploratory Spatial Data Analysis
+## 4. Exploratory Spatial Data Analysis
 
-Look the histogram, the dataset is gaussian!! Note that kriging is BLUP
+Look the histogram, the dataset is gaussian!! Note that kriging is 
+[BLUP](https://en.wikipedia.org/wiki/Best_linear_unbiased_prediction).
 
 ```{r}
 ggplot(test_day_df2, aes(x = tmed)) +
