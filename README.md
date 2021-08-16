@@ -367,7 +367,7 @@ citation("climaemet")
 #>     title = {climaemet (R Climate AEMET Tools)},
 #>     author = {Manuel Pizarro and Diego Hernangómez and Gema Fernández-Avilés},
 #>     year = {2021},
-#>     doi. = {10.5281/zenodo.5205573},
+#>     doi = {10.5281/zenodo.5205573},
 #>     email = {m.pizarro@csic.es},
 #>     url = {https://CRAN.R-project.org/package=climaemet},
 #>   }
