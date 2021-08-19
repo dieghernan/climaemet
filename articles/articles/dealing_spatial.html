@@ -103,7 +103,7 @@
                         <h4 class="author">Gema Fernández-Avilés, UCLM</h4>
                         <h4 class="author">Diego Hernangómez</h4>
             
-            <h4 class="date">2021-08-18</h4>
+            <h4 class="date">2021-08-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/master/vignettes/articles/dealing_spatial.Rmd"><code>vignettes/articles/dealing_spatial.Rmd</code></a></small>
       <div class="hidden name"><code>dealing_spatial.Rmd</code></div>
@@ -148,7 +148,7 @@
 <div id="where-can-we-find-geostatistical-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#where-can-we-find-geostatistical-data" class="anchor"></a>Where can we find geostatistical data?</h3>
-<p>In this paper, we are going to deal with geostatistical data, specifically we are going to model the level of air temperature in Spain on <strong>14 August 2021</strong>.</p>
+<p>In this paper, we are going to deal with geostatistical data, specifically we are going to model the level of air temperature in Spain on <strong>8 January 2021</strong>.</p>
 <p>We are going to download the data with <strong>climaemet</strong> package in R. <strong>climaemet</strong> allows to download the climatic data of the Spanish Meteorological Agency (AEMET) directly using their API. On this article we would use <strong>climaemet (&gt;=1.0.0)</strong> (version not released on CRAN yet at the time of writing this article), so it is needed to install the developing version.</p>
 <p>You can install the developing version of <strong>climaemet</strong> using the <a href="https://ropenspain.r-universe.dev/ui#builds">r-universe</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -191,8 +191,9 @@
 <span class="va">stations</span> <span class="op">%&gt;%</span>
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">nombre</span>, <span class="va">latitud</span>, <span class="va">longitud</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/raster/man/headtail.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Preview of AEMET stations"</span><span class="op">)</span></code></pre></div>
 <table class="table">
+<caption>Preview of AEMET stations</caption>
 <thead><tr class="header">
 <th align="left">nombre</th>
 <th align="right">latitud</th>
@@ -231,18 +232,18 @@
 </tr>
 </tbody>
 </table>
-<p>Now we can start extracting the data. We select here the daily values on <strong>14 August 2021</strong>:</p>
+<p>Now we can start extracting the data. We select here the daily values of <strong>8 January 2021</strong>:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Select data</span>
-<span class="va">date_select</span> <span class="op">&lt;-</span> <span class="st">"2021-08-14"</span>
+<span class="va">date_select</span> <span class="op">&lt;-</span> <span class="st">"2021-01-08"</span>
 
 <span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/aemet_daily_clim.html">aemet_daily_clim</a></span><span class="op">(</span>
   start <span class="op">=</span> <span class="va">date_select</span>,
   end <span class="op">=</span> <span class="va">date_select</span>,
   return_sf <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
-<p>We can examine the possible variables that can be analyzed. We are interested in <strong>maximum daily temperature</strong> named <code>tmax</code>, although the API provides also other interesting information:</p>
+<p>We can examine the possible variables that can be analyzed. We are interested in <strong>minimum daily temperature</strong> named <code>tmin</code>, although the API provides also other interesting information:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/names.html">names</a></span><span class="op">(</span><span class="va">clim_data</span><span class="op">)</span>
@@ -260,9 +261,9 @@
     <span class="st">"LAS PALMAS"</span>,
     <span class="st">"STA. CRUZ DE TENERIFE"</span>
   <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tmax</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tmin</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># Exclude NAs</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tmax</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Plot with outline of Spain</span>
 <span class="va">CCAA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -282,7 +283,7 @@ AEMET Stations (excl. Canary Islands)
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># This would be common to all the paper</span>
-<span class="va">br_paper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">15</span>, <span class="fl">45</span>, <span class="fl">5</span><span class="op">)</span>, <span class="cn">Inf</span><span class="op">)</span>
+<span class="va">br_paper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">5</span><span class="op">)</span>, <span class="cn">Inf</span><span class="op">)</span>
 <span class="va">pal_paper</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">15</span>, <span class="st">"PuOr"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">)</span> <span class="op">+</span>
@@ -290,12 +291,12 @@ AEMET Stations (excl. Canary Islands)
     data <span class="op">=</span> <span class="va">CCAA</span>,
     fill <span class="op">=</span> <span class="st">"grey95"</span>
   <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">tmax</span><span class="op">)</span>,
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">tmin</span><span class="op">)</span>,
     shape <span class="op">=</span> <span class="fl">21</span>,
     size <span class="op">=</span> <span class="fl">6</span>,
     alpha <span class="op">=</span> <span class="fl">.7</span>
   <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Max. temp"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Min. temp"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>
     colours <span class="op">=</span> <span class="va">pal_paper</span>,
     breaks <span class="op">=</span> <span class="va">br_paper</span>,
@@ -306,8 +307,8 @@ AEMET Stations (excl. Canary Islands)
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="dealing_spatial_files/figure-html/choro-1.png" alt="Max. temperature 14 Aug. 2021" width="100%"><p class="caption">
-Max. temperature 14 Aug. 2021
+<img src="dealing_spatial_files/figure-html/choro-1.png" alt="Min. temperature 8 Jan. 2021" width="100%"><p class="caption">
+Min. temperature 8 Jan. 2021
 </p>
 </div>
 </div>
@@ -318,45 +319,49 @@ Max. temperature 14 Aug. 2021
 <p>In our study, we can observe positive spatial dependence: high values of temperature are all together in the south of Spain and low temperatures are also together in the north of Spain.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">clim_data_clean</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/select.html">select</a></span><span class="op">(</span><span class="va">tmax</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="va">min</span>, <span class="va">max</span>, <span class="va">median</span>, <span class="va">sd</span>,
-      n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
-      q25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/quantile.html">quantile</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">.25</span><span class="op">)</span>,
-      q75 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/quantile.html">quantile</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">.75</span><span class="op">)</span>
-    <span class="op">)</span>
-  <span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">tmin</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/as.matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>
+    digits <span class="op">=</span> <span class="fl">3</span>,
+    caption <span class="op">=</span> <span class="st">"Summary of min. temp (tmin) variable"</span>
+  <span class="op">)</span></code></pre></div>
 <table class="table">
-<thead><tr class="header">
-<th align="right">min</th>
-<th align="right">max</th>
-<th align="right">median</th>
-<th align="right">sd</th>
-<th align="right">n</th>
-<th align="right">q25</th>
-<th align="right">q75</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="right">19.2</td>
-<td align="right">46</td>
-<td align="right">37.6</td>
-<td align="right">7.112821</td>
-<td align="right">195</td>
-<td align="right">30.85</td>
-<td align="right">41.55</td>
-</tr></tbody>
+<caption>Summary of min. temp (tmin) variable</caption>
+<tbody>
+<tr class="odd">
+<td align="left">Min.</td>
+<td align="right">-14.900</td>
+</tr>
+<tr class="even">
+<td align="left">1st Qu.</td>
+<td align="right">-4.550</td>
+</tr>
+<tr class="odd">
+<td align="left">Median</td>
+<td align="right">-0.500</td>
+</tr>
+<tr class="even">
+<td align="left">Mean</td>
+<td align="right">-0.606</td>
+</tr>
+<tr class="odd">
+<td align="left">3rd Qu.</td>
+<td align="right">3.500</td>
+</tr>
+<tr class="even">
+<td align="left">Max.</td>
+<td align="right">13.600</td>
+</tr>
+</tbody>
 </table>
-<p>On the next plot we divide the maximum temperature into quartiles to visualize the spatial distribution of values:</p>
+<p>On the next plot we divide the minimum temperature into quartiles to visualize the spatial distribution of values:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bubble</span> <span class="op">&lt;-</span> <span class="va">clim_data_clean</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">tmax</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Create quartiles</span>
-<span class="va">cuart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">bubble</span><span class="op">$</span><span class="va">tmax</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
-<span class="va">bubble</span><span class="op">$</span><span class="va">quart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">bubble</span><span class="op">$</span><span class="va">tmax</span>,
+<span class="va">cuart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">bubble</span><span class="op">$</span><span class="va">tmin</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
+<span class="va">bubble</span><span class="op">$</span><span class="va">quart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">bubble</span><span class="op">$</span><span class="va">tmin</span>,
   breaks <span class="op">=</span> <span class="va">cuart</span><span class="op">$</span><span class="va">brks</span>,
   labels <span class="op">=</span> <span class="cn">FALSE</span>
 <span class="op">)</span>
@@ -386,8 +391,8 @@ Max. temperature 14 Aug. 2021
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="dealing_spatial_files/figure-html/bubbleplot-1.png" alt="Max. temperature - Quartiles" width="100%"><p class="caption">
-Max. temperature - Quartiles
+<img src="dealing_spatial_files/figure-html/bubbleplot-1.png" alt="Min. temperature - Quartiles" width="100%"><p class="caption">
+Min. temperature - Quartiles
 </p>
 </div>
 </div>
@@ -408,9 +413,8 @@ Max. temperature - Quartiles
 <code class="sourceCode R">
 <span class="co"># Create grid 5*5 km (25 km2)</span>
 
-<span class="va">grd_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html">st_as_sfc</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html">st_bbox</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span>
-<span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">grd_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html">st_bbox</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html">st_as_sfc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_make_grid.html">st_make_grid</a></span><span class="op">(</span>
     cellsize <span class="op">=</span> <span class="fl">5000</span>,
     what <span class="op">=</span> <span class="st">"centers"</span>
@@ -441,22 +445,23 @@ Max. temperature - Quartiles
 <code class="sourceCode R">
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
   <span class="va">clim_data_clean_nodup</span>,
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tmax</span><span class="op">)</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tmin</span><span class="op">)</span>
 <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>
-    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">tmax</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span>,
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/cut.html">cut</a></span><span class="op">(</span><span class="va">tmin</span>, <span class="fl">15</span><span class="op">)</span><span class="op">)</span>,
+    col <span class="op">=</span> <span class="st">"grey40"</span>,
     binwidth <span class="op">=</span> <span class="fl">1</span>,
     show.legend <span class="op">=</span> <span class="cn">FALSE</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">pal_paper</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     y <span class="op">=</span> <span class="st">"n obs."</span>,
-    x <span class="op">=</span> <span class="st">"Max. temp (º)"</span>
+    x <span class="op">=</span> <span class="st">"Min. temp (º)"</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="dealing_spatial_files/figure-html/hist-1.png" alt="Max. temperature - Histogram" width="100%"><p class="caption">
-Max. temperature - Histogram
+<img src="dealing_spatial_files/figure-html/hist-1.png" alt="Min. temperature - Histogram" width="100%"><p class="caption">
+Min. temperature - Histogram
 </p>
 </div>
 <p>DIEGO: QUITARÍAMOS IDW O LO DEJAMOS PARA COMPARAR…?</p>
@@ -480,15 +485,21 @@ Max. temperature - Histogram
     lat <span class="op">=</span> <span class="va">Y</span>
   <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/raster/man/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">X</span>, <span class="op">-</span><span class="va">Y</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span><span class="op">(</span>tmax <span class="op">=</span> <span class="va">clim_data_clean_nodup</span><span class="op">$</span><span class="va">tmax</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span><span class="op">(</span>tmin <span class="op">=</span> <span class="va">clim_data_clean_nodup</span><span class="op">$</span><span class="va">tmin</span><span class="op">)</span>
 
 <span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/as.geodata.html">as.geodata</a></span><span class="op">(</span>
   obj <span class="op">=</span> <span class="va">mydata.geo</span>,
   coords.col <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,
   data.col <span class="op">=</span> <span class="fl">3</span>
-<span class="op">)</span></code></pre></div>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">mydata</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<img src="dealing_spatial_files/figure-html/krig_prepare-1.png" alt="Ordinary Kriging" width="100%"><p class="caption">
+Ordinary Kriging
+</p>
+</div>
 <p>The semivariogram function require a more depth study. Now, we show two different functions to fit the empirical semivariogram to a theoretical semivariogram.</p>
-<p>GEMA, CAMBIÉ El DIA, PUEDES REVISAR LOS PARAMETROS? NO ME SALE…</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="va">vario.b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/variog.html">variog</a></span><span class="op">(</span><span class="va">mydata</span>, coords <span class="op">=</span> <span class="va">mydata</span><span class="op">$</span><span class="va">coords</span>, data <span class="op">=</span> <span class="va">mydata</span><span class="op">$</span><span class="va">data</span><span class="op">)</span>
@@ -501,15 +512,15 @@ Max. temperature - Histogram
 
 <span class="co"># eyefit(vario.b)</span>
 <span class="co">#  cov.model sigmasq       phi tausq kappa kappa2 practicalRange</span>
-<span class="co"># spherical   30 826374.98 22.43  &lt;NA&gt;   &lt;NA&gt;     826374.98</span>
+<span class="co"># spherical   29.26 766374.98  0.98  &lt;NA&gt;   &lt;NA&gt;      766374.98</span>
 
 <span class="co"># Fit the semivariogram by eye in gstat()</span>
-<span class="va">vgm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html">variogram</a></span><span class="op">(</span><span class="va">tmax</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span><span class="op">)</span>
+<span class="va">vgm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html">variogram</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">vgm</span><span class="op">)</span></code></pre></div>
 <p><img src="dealing_spatial_files/figure-html/variog-2.png" width="100%"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">fit.var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/fit.variogram.html">fit.variogram</a></span><span class="op">(</span><span class="va">vgm</span>, model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/vgm.html">vgm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"Sph"</span>, <span class="fl">826374.98</span>, <span class="fl">30</span><span class="op">)</span><span class="op">)</span>
+<span class="va">fit.var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/fit.variogram.html">fit.variogram</a></span><span class="op">(</span><span class="va">vgm</span>, model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/vgm.html">vgm</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"Sph"</span>, <span class="fl">766374.98</span>, <span class="fl">29.26</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Plot empirical (dots) and theoretical semivariograms (line)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">vgm</span>, <span class="va">fit.var</span>, col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
@@ -522,7 +533,7 @@ Max. temperature - Histogram
 <p>There are different kinds of kriging depend on the characteristics of the spatial process: simple, ordinary or universal kriging (external drift kriging), kriging in a local neighborhood, point kriging or kriging of block mean values and conditional (Gaussian or indicator) simulation equivalents for all kriging varieties.</p>
 <p>In this work we deal with ordinary kriging, the most widely used kriging method. It serves to estimate a value at a point of a region for which a variogram is known, using data in the neighborhood of the estimation location.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">kriged</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.html">krige</a></span><span class="op">(</span><span class="va">tmax</span> <span class="op">~</span> <span class="fl">1</span>,
+<code class="sourceCode R"><span class="va">kriged</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.html">krige</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>,
   <span class="va">clim_data_clean_nodup_sp</span>,
   <span class="va">grd</span>,
   model <span class="op">=</span> <span class="va">fit.var</span>
@@ -556,7 +567,7 @@ Max. temperature - Histogram
     <span class="op">}</span>,
     guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>
       reverse <span class="op">=</span> <span class="cn">TRUE</span>,
-      title <span class="op">=</span> <span class="st">"Max. temp\n(kriged)"</span>
+      title <span class="op">=</span> <span class="st">"Min. temp\n(kriged)"</span>
     <span class="op">)</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -591,18 +602,17 @@ Ordinary Kriging - Results
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>
     data <span class="op">=</span> <span class="va">clim_data_clean_nodup</span>,
     col <span class="op">=</span> <span class="st">"black"</span>,
-    shape <span class="op">=</span> <span class="fl">1</span>
+    shape <span class="op">=</span> <span class="fl">4</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>
     <span class="co"># Special palette</span>
     colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-      <span class="st">"green4"</span>, <span class="st">"white"</span>,
-      <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">10</span>, <span class="st">"PuRd"</span>,
-        alpha <span class="op">=</span> <span class="fl">.7</span>,
+      <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">2</span>, <span class="st">"Greens"</span>, rev <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+      <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fl">25</span>, <span class="st">"PuRd"</span>,
         rev <span class="op">=</span> <span class="cn">TRUE</span>
       <span class="op">)</span>
     <span class="op">)</span>,
-    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">6</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">30</span>, <span class="cn">Inf</span><span class="op">)</span>,
+    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">16</span>, <span class="fl">24</span>, <span class="fl">32</span>, <span class="cn">Inf</span><span class="op">)</span>,
     guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>
       reverse <span class="op">=</span> <span class="cn">TRUE</span>,
       title <span class="op">=</span> <span class="st">"Variance"</span>
@@ -627,7 +637,7 @@ Ordinary Kriging - Variance
 <p>On this section we would compare kriging vs. the Inverse Distance Weighted (<strong>IDW</strong>) method, that is one of several approaches to perform spatial interpolation. We recommend <a href="https://rspatial.org/raster/analysis/4-interpolation.html">this article</a> on how to perform these analysis on <strong>R</strong>.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.html">idw</a></span><span class="op">(</span><span class="va">tmax</span> <span class="op">~</span> <span class="fl">1</span>,
+<span class="va">idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.html">idw</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>,
   <span class="va">clim_data_clean_nodup_sp</span>,
   newdata <span class="op">=</span> <span class="va">grd</span>,
   idp <span class="op">=</span> <span class="fl">2.0</span>
@@ -667,15 +677,15 @@ Ordinary Kriging - Variance
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>
     colours <span class="op">=</span> <span class="va">pal_paper</span>,
-    breaks <span class="op">=</span> <span class="va">br_paper</span>,
+    n.breaks <span class="op">=</span> <span class="fl">10</span>,
     labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
       <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"º"</span><span class="op">)</span>
     <span class="op">}</span>,
     guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span>
-      title <span class="op">=</span> <span class="st">"Max. temp"</span>,
+      title <span class="op">=</span> <span class="st">"Min. temp"</span>,
       direction <span class="op">=</span> <span class="st">"horizontal"</span>,
       keyheight <span class="op">=</span> <span class="fl">0.5</span>,
-      keywidth <span class="op">=</span> <span class="fl">2.5</span>,
+      keywidth <span class="op">=</span> <span class="fl">2</span>,
       title.position <span class="op">=</span> <span class="st">"top"</span>,
       title.hjust <span class="op">=</span> <span class="fl">0.5</span>,
       label.hjust <span class="op">=</span> <span class="fl">.5</span>,
