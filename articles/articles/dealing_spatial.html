@@ -273,12 +273,22 @@
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">CCAA</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">clim_data_clean</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/selecttemp-1.png" alt="AEMET Stations (excl. Canary Islands)" width="100%"><p class="caption">
-AEMET Stations (excl. Canary Islands)
-</p>
-</div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"AEMET Stations in Spain"</span>,
+    subtitle <span class="op">=</span> <span class="st">"excluding Canary Islands"</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">12</span>,
+      face <span class="op">=</span> <span class="st">"bold"</span>
+    <span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">8</span>,
+      face <span class="op">=</span> <span class="st">"italic"</span>
+    <span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<p><img src="dealing_spatial_files/figure-html/selecttemp-1.png" width="100%"></p>
 <p>Let’s plot now the values as a choropleth map:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -305,12 +315,22 @@ AEMET Stations (excl. Canary Islands)
     <span class="op">}</span>,
     guide <span class="op">=</span> <span class="st">"legend"</span>
   <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/choro-1.png" alt="Min. temperature 8 Jan. 2021" width="100%"><p class="caption">
-Min. temperature 8 Jan. 2021
-</p>
-</div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Minimum temperature"</span>,
+    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date_select</span><span class="op">)</span>, <span class="st">"%d %b %Y"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">12</span>,
+      face <span class="op">=</span> <span class="st">"bold"</span>
+    <span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">8</span>,
+      face <span class="op">=</span> <span class="st">"italic"</span>
+    <span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<p><img src="dealing_spatial_files/figure-html/choro-1.png" width="100%"></p>
 </div>
 <div id="are-independent-the-observations-or-they-exhibit-spatial-dependence" class="section level2">
 <h2 class="hasAnchor">
@@ -319,40 +339,36 @@ Min. temperature 8 Jan. 2021
 <p>In our study, we can observe positive spatial dependence: high values of temperature are all together in the south of Spain and low temperatures are also together in the north of Spain.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">tmin</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/as.matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>
-    digits <span class="op">=</span> <span class="fl">3</span>,
-    caption <span class="op">=</span> <span class="st">"Summary of min. temp (tmin) variable"</span>
-  <span class="op">)</span></code></pre></div>
+<span class="va">clim_data_clean</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/select.html">select</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="va">min</span>, <span class="va">max</span>, <span class="va">median</span>, <span class="va">sd</span>,
+      n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
+      q25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/quantile.html">quantile</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">.25</span><span class="op">)</span>,
+      q75 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/quantile.html">quantile</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">.75</span><span class="op">)</span>
+    <span class="op">)</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
-<caption>Summary of min. temp (tmin) variable</caption>
-<tbody>
-<tr class="odd">
-<td align="left">Min.</td>
-<td align="right">-14.900</td>
-</tr>
-<tr class="even">
-<td align="left">1st Qu.</td>
-<td align="right">-4.550</td>
-</tr>
-<tr class="odd">
-<td align="left">Median</td>
-<td align="right">-0.500</td>
-</tr>
-<tr class="even">
-<td align="left">Mean</td>
-<td align="right">-0.606</td>
-</tr>
-<tr class="odd">
-<td align="left">3rd Qu.</td>
-<td align="right">3.500</td>
-</tr>
-<tr class="even">
-<td align="left">Max.</td>
-<td align="right">13.600</td>
-</tr>
-</tbody>
+<thead><tr class="header">
+<th align="right">min</th>
+<th align="right">max</th>
+<th align="right">median</th>
+<th align="right">sd</th>
+<th align="right">n</th>
+<th align="right">q25</th>
+<th align="right">q75</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-14.9</td>
+<td align="right">13.6</td>
+<td align="right">-0.5</td>
+<td align="right">5.574232</td>
+<td align="right">215</td>
+<td align="right">-4.55</td>
+<td align="right">3.5</td>
+</tr></tbody>
 </table>
 <p>On the next plot we divide the minimum temperature into quartiles to visualize the spatial distribution of values:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -389,12 +405,22 @@ Min. temperature 8 Jan. 2021
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
     size <span class="op">=</span> <span class="st">""</span>
   <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/bubbleplot-1.png" alt="Min. temperature - Quartiles" width="100%"><p class="caption">
-Min. temperature - Quartiles
-</p>
-</div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Minimum temperature - Quartiles"</span>,
+    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date_select</span><span class="op">)</span>, <span class="st">"%d %b %Y"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">12</span>,
+      face <span class="op">=</span> <span class="st">"bold"</span>
+    <span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">8</span>,
+      face <span class="op">=</span> <span class="st">"italic"</span>
+    <span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<p><img src="dealing_spatial_files/figure-html/bubbleplot-1.png" width="100%"></p>
 </div>
 <div id="prepare-the-data-as-spatial-object" class="section level2">
 <h2 class="hasAnchor">
@@ -458,12 +484,22 @@ Min. temperature - Quartiles
     y <span class="op">=</span> <span class="st">"n obs."</span>,
     x <span class="op">=</span> <span class="st">"Min. temp (º)"</span>
   <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/hist-1.png" alt="Min. temperature - Histogram" width="100%"><p class="caption">
-Min. temperature - Histogram
-</p>
-</div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Histogram - Minimum temperature"</span>,
+    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date_select</span><span class="op">)</span>, <span class="st">"%d %b %Y"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">12</span>,
+      face <span class="op">=</span> <span class="st">"bold"</span>
+    <span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">8</span>,
+      face <span class="op">=</span> <span class="st">"italic"</span>
+    <span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<p><img src="dealing_spatial_files/figure-html/hist-1.png" width="100%"></p>
 <p>DIEGO: QUITARÍAMOS IDW O LO DEJAMOS PARA COMPARAR…?</p>
 <p>LO HE METIDO MAS ADELANTE</p>
 </div>
@@ -494,11 +530,7 @@ Min. temperature - Histogram
 <span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/plot.html">plot</a></span><span class="op">(</span><span class="va">mydata</span><span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/krig_prepare-1.png" alt="Ordinary Kriging" width="100%"><p class="caption">
-Ordinary Kriging
-</p>
-</div>
+<p><img src="dealing_spatial_files/figure-html/krig_prepare-1.png" width="100%"></p>
 <p>The semivariogram function require a more depth study. Now, we show two different functions to fit the empirical semivariogram to a theoretical semivariogram.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -571,17 +603,25 @@ Ordinary Kriging
     <span class="op">)</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Kriging - Minimum temperature"</span>,
+    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date_select</span><span class="op">)</span>, <span class="st">"%d %b %Y"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
     panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
     panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
     panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
-    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>
+    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">12</span>,
+      face <span class="op">=</span> <span class="st">"bold"</span>
+    <span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">8</span>,
+      face <span class="op">=</span> <span class="st">"italic"</span>
+    <span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/krig_plot1-1.png" alt="Ordinary Kriging - Results" width="100%"><p class="caption">
-Ordinary Kriging - Results
-</p>
-</div>
+<p><img src="dealing_spatial_files/figure-html/krig_plot1-1.png" width="100%"></p>
 <p>By last, we plot the variance of the estimation:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -619,17 +659,25 @@ Ordinary Kriging - Results
     <span class="op">)</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Kriging variance - Minimum temperature"</span>,
+    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date_select</span><span class="op">)</span>, <span class="st">"%d %b %Y"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
     panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
     panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
     panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
-    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>
+    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">12</span>,
+      face <span class="op">=</span> <span class="st">"bold"</span>
+    <span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">8</span>,
+      face <span class="op">=</span> <span class="st">"italic"</span>
+    <span class="op">)</span>
   <span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/krig_plot2-1.png" alt="Ordinary Kriging - Variance" width="100%"><p class="caption">
-Ordinary Kriging - Variance
-</p>
-</div>
+<p><img src="dealing_spatial_files/figure-html/krig_plot2-1.png" width="100%"></p>
 </div>
 <div id="kriging-versus-idw-gema" class="section level2">
 <h2 class="hasAnchor">
@@ -696,7 +744,23 @@ Ordinary Kriging - Variance
     <span class="op">)</span>
   <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>
+    title <span class="op">=</span> <span class="st">"Kriging vs IDW"</span>,
+    subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date_select</span><span class="op">)</span>, <span class="st">"%d %b %Y"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
+    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+    panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+    axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
+    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">12</span>,
+      face <span class="op">=</span> <span class="st">"bold"</span>
+    <span class="op">)</span>,
+    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
+      size <span class="op">=</span> <span class="fl">8</span>,
+      face <span class="op">=</span> <span class="st">"italic"</span>
+    <span class="op">)</span>,
     legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>
       size <span class="op">=</span> <span class="fl">10</span>
     <span class="op">)</span>,
@@ -705,11 +769,7 @@ Ordinary Kriging - Variance
     <span class="op">)</span>,
     legend.position <span class="op">=</span> <span class="st">"bottom"</span>
   <span class="op">)</span></code></pre></div>
-<div class="figure">
-<img src="dealing_spatial_files/figure-html/idw-1.png" alt="Comparison of kriging vs. IDW" width="100%"><p class="caption">
-Comparison of kriging vs. IDW
-</p>
-</div>
+<p><img src="dealing_spatial_files/figure-html/idw-1.png" width="100%"></p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2 class="hasAnchor">
