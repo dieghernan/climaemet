@@ -74,6 +74,9 @@
       <a href="articles/articles/Spatial-Interpolation-with-climaemet.html">Spatial Interpolation with climaemet</a>
     </li>
     <li>
+      <a href="articles/articles/dealing_spatial.html">Dealing with spatial data</a>
+    </li>
+    <li>
       <a href="articles/articles/x01_aemet_stations.html">AEMET Stations</a>
     </li>
   </ul>
@@ -106,12 +109,8 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<div id="description" class="section level2">
-<h2 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h2>
 <p>The goal of <strong>climaemet</strong> is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their <a href="https://opendata.aemet.es/">API</a> and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).</p>
 <p>Browse manual and vignettes at <a href="https://ropenspain.github.io/climaemet/" class="uri">https://ropenspain.github.io/climaemet/</a>.</p>
-</div>
 <div id="aemet-open-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#aemet-open-data" class="anchor"></a>AEMET Open Data</h2>
@@ -141,8 +140,8 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"climaemet"</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, you can install the developing version of <strong>climaemet</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
-<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"ropenspain/climaemet"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">remotes</span><span class="op">)</span>
+<span class="fu">install_github</span><span class="op">(</span><span class="st">"ropenspain/climaemet"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="api-key" class="section level2">
 <h2 class="hasAnchor">
@@ -155,7 +154,7 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span><span class="op">(</span><span class="st">"https://opendata.aemet.es/centrodedescargas/obtencionAPIKey"</span><span class="op">)</span>
 
 <span class="co">## Use this function to register your API Key temporarly or permanently</span>
-<span class="fu"><a href="reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"&lt;MY API KEY&gt;"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"MY API KEY"</span><span class="op">)</span></code></pre></div>
 <div id="changes-on-v100" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changes-on-v100" class="anchor"></a>Changes on v1.0.0!</h3>
@@ -168,8 +167,7 @@
 <p>From <code>v1.0.0</code> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/">tibble format</a>. Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).</p>
 <p>You may see the following message on load:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Welcome to climaemet (1.0.0)</span>
 <span class="co">#&gt; Note that since climaemet (&gt;=1.0.0) the results are provided on tibble format. Run `climaemet_news()` to see the changelog.</span>
@@ -182,30 +180,29 @@
 <code class="sourceCode R"><span class="co"># See a tibble in action</span>
 
 <span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 24 x 25</span>
+<span class="co">#&gt; # A tibble: 24 × 25</span>
 <span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 9434  -1.00 2021-08-10 18:00:00     0   249   9.6   6.3   149  41.7   138</span>
-<span class="co">#&gt;  2 9434  -1.00 2021-08-10 19:00:00     0   249   9.7   4.3   115  41.7   145</span>
-<span class="co">#&gt;  3 9434  -1.00 2021-08-10 20:00:00     0   249   7     3.8   117  41.7   125</span>
-<span class="co">#&gt;  4 9434  -1.00 2021-08-10 21:00:00     0   249   5.9   3.6   114  41.7   125</span>
-<span class="co">#&gt;  5 9434  -1.00 2021-08-10 22:00:00     0   249   5.9   2.5   118  41.7   118</span>
-<span class="co">#&gt;  6 9434  -1.00 2021-08-10 23:00:00     0   249   3.1   1.4   111  41.7   140</span>
-<span class="co">#&gt;  7 9434  -1.00 2021-08-11 00:00:00     0   249   4.3   2.6   330  41.7   328</span>
-<span class="co">#&gt;  8 9434  -1.00 2021-08-11 01:00:00     0   249   7.2   4.2   304  41.7   315</span>
-<span class="co">#&gt;  9 9434  -1.00 2021-08-11 02:00:00     0   249   7     4.6   311  41.7   313</span>
-<span class="co">#&gt; 10 9434  -1.00 2021-08-11 03:00:00     0   249   7.8   5.9   297  41.7   285</span>
-<span class="co">#&gt; # ... with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;  1 9434  -1.00 2021-09-12 18:00:00     0   249   7.6   2.3   109  41.7   348</span>
+<span class="co">#&gt;  2 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105</span>
+<span class="co">#&gt;  3 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98</span>
+<span class="co">#&gt;  4 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123</span>
+<span class="co">#&gt;  5 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120</span>
+<span class="co">#&gt;  6 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130</span>
+<span class="co">#&gt;  7 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113</span>
+<span class="co">#&gt;  8 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98</span>
+<span class="co">#&gt;  9 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133</span>
+<span class="co">#&gt; 10 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125</span>
+<span class="co">#&gt; # … with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></code></pre></div>
 <div id="examples" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h3>
 <p>The package provides several functions to access the data of the API. Here you can find some examples:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">## Get AEMET stations</span>
+<code class="sourceCode R"><span class="co">## Get AEMET stations</span>
 <span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_stations.html">aemet_stations</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Need to have the API Key registered</span>
 
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">stations</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -277,8 +274,7 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">station</span> <span class="op">&lt;-</span> <span class="st">"9434"</span> <span class="co"># Zaragoza Aeropuerto</span>
+<code class="sourceCode R"><span class="va">station</span> <span class="op">&lt;-</span> <span class="st">"9434"</span> <span class="co"># Zaragoza Aeropuerto</span>
 
 <span class="co">## Get last observation values for a station</span>
 <span class="va">data_observation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="va">station</span><span class="op">)</span>
@@ -343,170 +339,169 @@
 <tr class="odd">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
-<td align="left">2021-08-10 18:00:00</td>
+<td align="left">2021-09-12 18:00:00</td>
 <td align="right">0</td>
 <td align="right">249</td>
-<td align="right">9.6</td>
-<td align="right">6.3</td>
-<td align="right">149</td>
+<td align="right">7.6</td>
+<td align="right">2.3</td>
+<td align="right">109</td>
 <td align="right">41.66056</td>
-<td align="right">138</td>
+<td align="right">348</td>
 <td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">983.4</td>
-<td align="right">28</td>
-<td align="right">1.3</td>
-<td align="right">35.4</td>
-<td align="right">1011.0</td>
-<td align="right">35.0</td>
-<td align="right">35.0</td>
-<td align="right">35.8</td>
-<td align="right">13.8</td>
-<td align="right">12</td>
-<td align="right">60.0</td>
-<td align="right">38.1</td>
+<td align="right">983.1</td>
+<td align="right">35</td>
+<td align="right">0.2</td>
+<td align="right">28.5</td>
+<td align="right">1011.2</td>
+<td align="right">29.6</td>
+<td align="right">29.6</td>
+<td align="right">31.8</td>
+<td align="right">12.5</td>
+<td align="right">7</td>
+<td align="right">22.7</td>
+<td align="right">31.9</td>
 <td align="right">0</td>
-<td align="right">34.0</td>
+<td align="right">29.7</td>
 </tr>
 <tr class="even">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
-<td align="left">2021-08-10 19:00:00</td>
+<td align="left">2021-09-12 19:00:00</td>
 <td align="right">0</td>
 <td align="right">249</td>
-<td align="right">9.7</td>
-<td align="right">4.3</td>
-<td align="right">115</td>
-<td align="right">41.66056</td>
+<td align="right">2.5</td>
+<td align="right">1.4</td>
 <td align="right">145</td>
+<td align="right">41.66056</td>
+<td align="right">105</td>
 <td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">984.0</td>
-<td align="right">32</td>
-<td align="right">1.0</td>
-<td align="right">32.2</td>
-<td align="right">1011.8</td>
-<td align="right">32.5</td>
-<td align="right">32.5</td>
-<td align="right">35.0</td>
-<td align="right">13.7</td>
-<td align="right">11</td>
-<td align="right">27.9</td>
-<td align="right">36.9</td>
+<td align="right">983.4</td>
+<td align="right">40</td>
+<td align="right">0.3</td>
+<td align="right">25.3</td>
+<td align="right">1011.7</td>
+<td align="right">27.8</td>
+<td align="right">27.8</td>
+<td align="right">29.6</td>
+<td align="right">13.0</td>
+<td align="right">17</td>
+<td align="right">0.0</td>
+<td align="right">30.7</td>
 <td align="right">0</td>
-<td align="right">34.3</td>
+<td align="right">29.9</td>
 </tr>
 <tr class="odd">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
-<td align="left">2021-08-10 20:00:00</td>
+<td align="left">2021-09-12 20:00:00</td>
 <td align="right">0</td>
 <td align="right">249</td>
-<td align="right">7.0</td>
-<td align="right">3.8</td>
-<td align="right">117</td>
-<td align="right">41.66056</td>
-<td align="right">125</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">984.9</td>
-<td align="right">35</td>
-<td align="right">0.5</td>
-<td align="right">29.8</td>
-<td align="right">1013.0</td>
-<td align="right">30.3</td>
-<td align="right">30.3</td>
-<td align="right">32.5</td>
-<td align="right">13.2</td>
-<td align="right">9</td>
-<td align="right">0.0</td>
-<td align="right">35.8</td>
-<td align="right">0</td>
-<td align="right">34.4</td>
-</tr>
-<tr class="even">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
-<td align="left">2021-08-10 21:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
-<td align="right">5.9</td>
 <td align="right">3.6</td>
-<td align="right">114</td>
+<td align="right">2.4</td>
+<td align="right">93</td>
 <td align="right">41.66056</td>
-<td align="right">125</td>
+<td align="right">98</td>
 <td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">985.5</td>
-<td align="right">40</td>
-<td align="right">0.7</td>
-<td align="right">28.4</td>
-<td align="right">1013.7</td>
-<td align="right">28.8</td>
-<td align="right">28.8</td>
-<td align="right">30.3</td>
+<td align="right">984.2</td>
+<td align="right">47</td>
+<td align="right">0.2</td>
+<td align="right">24.9</td>
+<td align="right">1012.6</td>
+<td align="right">26.1</td>
+<td align="right">26.1</td>
+<td align="right">27.8</td>
 <td align="right">13.9</td>
 <td align="right">10</td>
 <td align="right">0.0</td>
-<td align="right">34.7</td>
+<td align="right">29.7</td>
 <td align="right">0</td>
-<td align="right">34.4</td>
-</tr>
-<tr class="odd">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
-<td align="left">2021-08-10 22:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
-<td align="right">5.9</td>
-<td align="right">2.5</td>
-<td align="right">118</td>
-<td align="right">41.66056</td>
-<td align="right">118</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">985.6</td>
-<td align="right">47</td>
-<td align="right">0.4</td>
-<td align="right">26.5</td>
-<td align="right">1014.0</td>
-<td align="right">27.2</td>
-<td align="right">27.2</td>
-<td align="right">28.8</td>
-<td align="right">14.9</td>
-<td align="right">9</td>
-<td align="right">0.0</td>
-<td align="right">33.9</td>
-<td align="right">0</td>
-<td align="right">34.3</td>
+<td align="right">29.9</td>
 </tr>
 <tr class="even">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
-<td align="left">2021-08-10 23:00:00</td>
+<td align="left">2021-09-12 21:00:00</td>
 <td align="right">0</td>
 <td align="right">249</td>
 <td align="right">3.1</td>
-<td align="right">1.4</td>
-<td align="right">111</td>
+<td align="right">2.3</td>
+<td align="right">106</td>
 <td align="right">41.66056</td>
-<td align="right">140</td>
+<td align="right">123</td>
 <td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">986.9</td>
-<td align="right">46</td>
-<td align="right">0.2</td>
-<td align="right">25.0</td>
-<td align="right">1015.4</td>
-<td align="right">26.2</td>
-<td align="right">26.2</td>
-<td align="right">27.2</td>
-<td align="right">13.7</td>
-<td align="right">23</td>
+<td align="right">984.5</td>
+<td align="right">56</td>
+<td align="right">0.3</td>
+<td align="right">23.6</td>
+<td align="right">1013.1</td>
+<td align="right">24.7</td>
+<td align="right">24.7</td>
+<td align="right">26.1</td>
+<td align="right">15.3</td>
+<td align="right">7</td>
 <td align="right">0.0</td>
-<td align="right">33.1</td>
+<td align="right">29.0</td>
 <td align="right">0</td>
-<td align="right">34.2</td>
+<td align="right">29.7</td>
+</tr>
+<tr class="odd">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2021-09-12 22:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">5.0</td>
+<td align="right">3.1</td>
+<td align="right">119</td>
+<td align="right">41.66056</td>
+<td align="right">120</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">984.7</td>
+<td align="right">59</td>
+<td align="right">0.4</td>
+<td align="right">23.4</td>
+<td align="right">1013.3</td>
+<td align="right">24.0</td>
+<td align="right">24.0</td>
+<td align="right">24.7</td>
+<td align="right">15.5</td>
+<td align="right">6</td>
+<td align="right">0.0</td>
+<td align="right">28.3</td>
+<td align="right">0</td>
+<td align="right">29.5</td>
+</tr>
+<tr class="even">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2021-09-12 23:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">5.9</td>
+<td align="right">3.9</td>
+<td align="right">118</td>
+<td align="right">41.66056</td>
+<td align="right">130</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">984.8</td>
+<td align="right">71</td>
+<td align="right">0.6</td>
+<td align="right">23.0</td>
+<td align="right">1013.5</td>
+<td align="right">23.4</td>
+<td align="right">23.4</td>
+<td align="right">24.0</td>
+<td align="right">17.9</td>
+<td align="right">8</td>
+<td align="right">0.0</td>
+<td align="right">27.8</td>
+<td align="right">0</td>
+<td align="right">29.3</td>
 </tr>
 </tbody>
 </table>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co">## Get daily/annual climatology values for a station</span>
+<code class="sourceCode R"><span class="co">## Get daily/annual climatology values for a station</span>
 <span class="va">data_daily</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="reference/aemet_daily_clim.html">aemet_daily_clim</a></span><span class="op">(</span><span class="va">station</span>, start <span class="op">=</span> <span class="st">"2020-01-01"</span>, end <span class="op">=</span> <span class="st">"2020-12-31"</span><span class="op">)</span>
 
@@ -692,9 +687,7 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-
-<span class="co">## Get monthly/annual climatology values for a station</span>
+<code class="sourceCode R"><span class="co">## Get monthly/annual climatology values for a station</span>
 <span class="va">data_monthly</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_monthly.html">aemet_monthly_clim</a></span><span class="op">(</span><span class="va">station</span>, year <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_monthly</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -1070,9 +1063,7 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-
-<span class="co">## Get recorded extreme values of temperature for a station</span>
+<code class="sourceCode R"><span class="co">## Get recorded extreme values of temperature for a station</span>
 <span class="va">data_extremes</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_extremes_clim.html">aemet_extremes_clim</a></span><span class="op">(</span><span class="va">station</span>, parameter <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data_extremes</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -1289,8 +1280,7 @@
 </table>
 <p>We can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions returns <code>ggplot2</code> plots:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Plot a climate stripes graph for a period of years for a station</span>
+<code class="sourceCode R"><span class="co"># Plot a climate stripes graph for a period of years for a station</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
@@ -1304,8 +1294,7 @@
 <p><img src="reference/figures/README-climatogram-1.png" width="100%"></p>
 <p>Additionally, we may be interested in drawing the wind speed and direction over a period of time for the data downloaded from a weather station.:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Plot a windrose showing the wind speed and direction for a station over a days period.</span>
+<code class="sourceCode R"><span class="co"># Plot a windrose showing the wind speed and direction for a station over a days period.</span>
 <span class="fu"><a href="reference/windrose_days.html">windrose_days</a></span><span class="op">(</span>
   <span class="st">"9434"</span>,
   start <span class="op">=</span> <span class="st">"2010-01-01"</span>,
@@ -1322,8 +1311,7 @@
 <a href="#-and-spatial" class="anchor"></a>… and spatial!</h2>
 <p>Another major change in <code>v1.0.0</code> is the ability of return information on spatial <code>sf</code> format, using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, that correspond to the <strong>World Geodetic System (WGS)</strong> and return coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># You would need to install `sf` if not installed yet</span>
+<code class="sourceCode R"><span class="co"># You would need to install `sf` if not installed yet</span>
 <span class="co"># run install.packages("sf") for installation</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -1379,6 +1367,7 @@
 <span class="co">#&gt;   Pizarro, M., Hernangómez, D. and Fernández-Avilés, G. (2021).</span>
 <span class="co">#&gt;   climaemet (R Climate AEMET Tools).</span>
 <span class="co">#&gt;   https://CRAN.R-project.org/package=climaemet.</span>
+<span class="co">#&gt;   https://doi.org/10.5281/zenodo.5205573</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; A BibTeX entry for LaTeX users is</span>
 <span class="co">#&gt; </span>
@@ -1386,6 +1375,7 @@
 <span class="co">#&gt;     title = {climaemet (R Climate AEMET Tools)},</span>
 <span class="co">#&gt;     author = {Manuel Pizarro and Diego Hernangómez and Gema Fernández-Avilés},</span>
 <span class="co">#&gt;     year = {2021},</span>
+<span class="co">#&gt;     doi = {10.5281/zenodo.5205573},</span>
 <span class="co">#&gt;     email = {m.pizarro@csic.es},</span>
 <span class="co">#&gt;     url = {https://CRAN.R-project.org/package=climaemet},</span>
 <span class="co">#&gt;   }</span></code></pre></div>
@@ -1436,8 +1426,10 @@
 <li>
 <a href="https://github.com/mpizarrotig">Manuel Pizarro</a> <br><small class="roles"> Author, copyright holder </small> <a href="https://orcid.org/0000-0002-6981-0154" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
-<a href="https://dieghernan.github.io/">Diego Hernangómez</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8457-4658" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li><a href="authors.html">All authors...</a></li>
+<a href="https://dieghernan.github.io/">Diego Hernangómez</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-8457-4658" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> <br><small>(rOpenSpain)</small>
+</li>
+<li>
+<a href="https://blog.uclm.es/gemafaviles/">Gema Fernández-Avilés</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-5934-1916" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -1445,6 +1437,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://ropenspain.es/"><img src="https://ropenspain.github.io/rostemplate/reference/figures/ropenspain-badge.svg" alt="rOS-badge"></a></li>
+<li><a href="https://doi.org/10.5281/zenodo.5205573"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.5205573-blue" alt="DOI"></a></li>
 <li><a href="https://CRAN.R-project.org/package=climaemet"><img src="https://www.r-pkg.org/badges/version/climaemet?" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/package=climaemet"><img src="https://www.r-pkg.org/badges/ago/climaemet" alt="CRAN_time_from_release"></a></li>
 <li><a href="https://cran.r-project.org/package=climaemet"><img src="https://www.r-pkg.org/badges/last-release/climaemet" alt="CRAN_latest_release_date"></a></li>
@@ -1471,7 +1464,7 @@
 </script><footer id="footer"><div class="container">
 		<div class="col-md-3 col-sm-6 col-md-offset-1">
 			<h4 data-toc-skip>About climaemet</h4>
-			Developed by <a href="https://github.com/mpizarrotig">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/">Diego Hernangómez</a>, part of the <span class="ROS-light">rOpenSpain</span> project.
+			Developed by <a href="https://github.com/mpizarrotig">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/">Gema Fernández-Avilés</a>, part of the <span class="ROS-light">rOpenSpain</span> project.
 			<hr class="hidden-md hidden-lg hidden-sm">
 </div>
 		<div class="col-md-3 col-sm-6 col-md-offset-4">

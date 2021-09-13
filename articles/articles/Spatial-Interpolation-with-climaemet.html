@@ -70,6 +70,9 @@
       <a href="../../articles/articles/Spatial-Interpolation-with-climaemet.html">Spatial Interpolation with climaemet</a>
     </li>
     <li>
+      <a href="../../articles/articles/dealing_spatial.html">Dealing with spatial data</a>
+    </li>
+    <li>
       <a href="../../articles/articles/x01_aemet_stations.html">AEMET Stations</a>
     </li>
   </ul>
@@ -97,7 +100,8 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Spatial Interpolation with climaemet</h1>
-                        <h4 class="author">Diego Hernangómez, Manuel Pizarro</h4>
+                        <h4 class="author">Diego Hernangómez</h4>
+                        <h4 class="author">Manuel Pizarro</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/master/vignettes/articles/Spatial-Interpolation-with-climaemet.Rmd"><code>vignettes/articles/Spatial-Interpolation-with-climaemet.Rmd</code></a></small>
@@ -113,8 +117,7 @@
 <a href="#initial-config" class="anchor"></a>Initial config</h2>
 <p>For this analysis, we would need the following libraries:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/">mapSpain</a></span><span class="op">)</span> <span class="co"># Base maps of Spain</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster">raster</a></span><span class="op">)</span> <span class="co"># raster handling</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span> <span class="co"># spatial shape handling</span>
@@ -128,8 +131,7 @@
 <a href="#retrieving-data" class="anchor"></a>Retrieving data</h2>
 <p>We choose here the daily climatic data from Winter 2020-2021 in Spain. Note that on the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena">Storm Filomena</a> brought unusual heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. We should be able to spot that.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/aemet_daily_clim.html">aemet_daily_clim</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/aemet_daily_clim.html">aemet_daily_clim</a></span><span class="op">(</span>
   start <span class="op">=</span> <span class="st">"2020-12-21"</span>,
   end <span class="op">=</span> <span class="st">"2021-03-20"</span>,
   return_sf <span class="op">=</span> <span class="cn">TRUE</span>
@@ -145,14 +147,12 @@
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">tmed</span><span class="op">)</span>
 <span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="co">#&gt; -15.200   6.100   9.500   8.877  12.200  25.000</span>
-
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="Spatial-Interpolation-with-climaemet_files/figure-html/climatic_data-1.png" width="700"></p>
 <p>We load also a basic shapefile of Spain using <strong>mapSpain</strong>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">CCAA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">CCAA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># Exclude Canary Islands from analysis</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ine.ccaa.name</span> <span class="op">!=</span> <span class="st">"Canarias"</span><span class="op">)</span>
 
@@ -192,7 +192,6 @@
 
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">CCAA</span><span class="op">)</span><span class="op">$</span><span class="va">proj4string</span>
 <span class="co">#&gt; [1] "+proj=longlat +datum=WGS84 +no_defs"</span>
-
 <span class="co"># vs the utm projection</span>
 
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span><span class="op">$</span><span class="va">proj4string</span>
@@ -200,8 +199,7 @@
 <p>Now, we create a regular grid using <strong>sf</strong>. This grid is composed to equally spaced points over the whole extent (bounding box) of Spain.</p>
 <p>We use here a density of 5000 (m), so the grid density is 5 x 5 kms (25 km2):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Create grid 5*5 km (25 km2)</span>
+<code class="sourceCode R"><span class="co"># Create grid 5*5 km (25 km2)</span>
 
 <span class="va">grd_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html">st_as_sfc</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html">st_bbox</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_make_grid.html">st_make_grid</a></span><span class="op">(</span>cellsize <span class="op">=</span> <span class="fl">5000</span>, what <span class="op">=</span> <span class="st">"centers"</span><span class="op">)</span>
@@ -210,7 +208,6 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">grd_sf</span><span class="op">)</span>
 <span class="co">#&gt; [1] 44426</span>
-
 <span class="co"># Convert to sp object - interpolation should be made with sp/raster</span>
 <span class="va">grd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="va">grd_sf</span>, <span class="st">"Spatial"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="st">"SpatialPixels"</span><span class="op">)</span></code></pre></div>
 </div>
@@ -219,8 +216,7 @@
 <a href="#interpolating-the-data" class="anchor"></a>Interpolating the data</h3>
 <p>Now we just need to populate the (empty) grid with the predicted values based on the observations:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Test with a single day</span>
+<code class="sourceCode R"><span class="co"># Test with a single day</span>
 
 <span class="va">test_day</span> <span class="op">&lt;-</span> <span class="va">clim_data_utm</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">fecha</span> <span class="op">==</span> <span class="st">"2021-01-08"</span><span class="op">)</span>
 
@@ -235,8 +231,6 @@
   idp <span class="op">=</span> <span class="fl">2.0</span>
 <span class="op">)</span>
 <span class="co">#&gt; [inverse distance weighted interpolation]</span>
-
-
 <span class="co"># To raster and mask the grid to the shape of Spain</span>
 <span class="va">interp_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/raster.html">raster</a></span><span class="op">(</span><span class="va">interp_temp</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/raster/man/mask.html">mask</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span>
@@ -245,8 +239,7 @@
 <p><img src="Spatial-Interpolation-with-climaemet_files/figure-html/interpolate-1.png" width="700"></p>
 <p>Let’s create a nice ggplot2 plot!</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Making a nice plot on ggplot2</span>
+<code class="sourceCode R"><span class="co"># Making a nice plot on ggplot2</span>
 <span class="va">temp_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">interp_temp</span>, xy <span class="op">=</span> <span class="cn">TRUE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/raster/man/names.html">names</a></span><span class="op">(</span><span class="va">temp_values</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"temp"</span><span class="op">)</span>
 
@@ -276,10 +269,9 @@
 <div id="animation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#animation" class="anchor"></a>Animation</h2>
-<p>On this section, we would loop over the dates to create a final animation to observe the evolution of temperature trough the winter of 2020/21.</p>
+<p>On this section, we would loop over the dates to create a final animation to observe the evolution of temperature through the winter of 2020/21.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Extending and animating</span>
+<code class="sourceCode R"><span class="co"># Extending and animating</span>
 <span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/raster/man/unique.html">unique</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span>
 
 
@@ -309,10 +301,9 @@
 
   <span class="va">interp_res</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">interp_res</span>, <span class="va">interp_day</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p>Now we loop trough the interpolated results again to create the animation:</p>
+<p>Now we loop through the interpolated results again to create the animation:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># Extending and animating</span>
+<code class="sourceCode R"><span class="co"># Extending and animating</span>
 
 <span class="co"># File array</span>
 <span class="va">files</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"frame_"</span>, <span class="va">dates</span>, <span class="st">".png"</span><span class="op">)</span>
@@ -364,8 +355,7 @@
   delay <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span>
 <span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># From cache</span>
+<code class="sourceCode R"><span class="co"># From cache</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"winter_2021.gif"</span><span class="op">)</span></code></pre></div>
 <p><img src="winter_2021.gif"><!-- --></p>
 </div>
@@ -374,8 +364,7 @@
 <a href="#geogrid" class="anchor"></a>Geogrid</h2>
 <p>Let’s plot an histogram for each Autonomous Community using the <code>geofacet</code> package:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hafen/geofacet">geofacet</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hafen/geofacet">geofacet</a></span><span class="op">)</span>
 
 <span class="va">clim_data_geofacet</span> <span class="op">&lt;-</span> <span class="va">clim_data</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -460,56 +449,57 @@
 <div id="session-info" class="section level2">
 <h2 class="hasAnchor">
 <a href="#session-info" class="anchor"></a>Session Info</h2>
-<details><p><summary></summary></p>
-<p><strong>Details</strong></p>
-<p></p>
+<details><p><summary><strong>Details</strong> </summary></p>
 <pre><code>#&gt; R version 4.1.1 (2021-08-10)
-#&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
-#&gt; Running under: macOS Catalina 10.15.7
+#&gt; Platform: x86_64-pc-linux-gnu (64-bit)
+#&gt; Running under: Ubuntu 20.04.3 LTS
 #&gt; 
 #&gt; Matrix products: default
-#&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
-#&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+#&gt; LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 #&gt; 
 #&gt; locale:
-#&gt; [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+#&gt;  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+#&gt;  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+#&gt;  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+#&gt; [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
 #&gt; 
 #&gt; attached base packages:
 #&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
 #&gt; 
 #&gt; other attached packages:
 #&gt;  [1] geofacet_0.2.0  gifski_1.4.3-1  ggplot2_3.3.5   dplyr_1.0.7    
-#&gt;  [5] gstat_2.0-7     sf_1.0-2        raster_3.4-10   sp_1.4-5       
-#&gt;  [9] mapSpain_0.2.3  climaemet_1.0.0
+#&gt;  [5] gstat_2.0-7     sf_1.0-2        raster_3.4-13   sp_1.4-5       
+#&gt;  [9] mapSpain_0.3.1  climaemet_1.0.0
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] httr_1.4.2          rnaturalearth_0.1.0 jsonlite_1.7.2     
-#&gt;  [4] countrycode_1.2.0   highr_0.9           yaml_2.2.1         
-#&gt;  [7] ggrepel_0.9.1       pillar_1.6.2        lattice_0.20-44    
+#&gt;  [1] rnaturalearth_0.1.0 httr_1.4.2          jsonlite_1.7.2     
+#&gt;  [4] countrycode_1.3.0   highr_0.9           ggrepel_0.9.1      
+#&gt;  [7] yaml_2.2.1          pillar_1.6.2        lattice_0.20-44    
 #&gt; [10] glue_1.4.2          digest_0.6.27       colorspace_2.0-2   
 #&gt; [13] htmltools_0.5.2     pkgconfig_2.0.3     s2_1.0.6           
 #&gt; [16] purrr_0.3.4         scales_1.1.1        intervals_0.15.2   
 #&gt; [19] jpeg_0.1-9          tzdb_0.1.2          tibble_3.1.4       
-#&gt; [22] proxy_0.4-26        farver_2.1.0        generics_0.1.0     
+#&gt; [22] proxy_0.4-26        generics_0.1.0      farver_2.1.0       
 #&gt; [25] ellipsis_0.3.2      cachem_1.0.6        withr_2.4.2        
 #&gt; [28] magrittr_2.0.1      crayon_1.4.1        memoise_2.0.0      
 #&gt; [31] evaluate_0.14       fs_1.5.0            fansi_0.5.0        
 #&gt; [34] xts_0.12.1          class_7.3-19        FNN_1.1.3          
-#&gt; [37] textshaping_0.3.5   tools_4.1.1         imguR_1.0.3        
+#&gt; [37] textshaping_0.3.5   imguR_1.0.3         tools_4.1.1        
 #&gt; [40] hms_1.1.0           lifecycle_1.0.0     stringr_1.4.0      
 #&gt; [43] munsell_0.5.0       geogrid_0.1.1       compiler_4.1.1     
-#&gt; [46] pkgdown_1.6.1       e1071_1.7-8         spacetime_1.2-4    
+#&gt; [46] pkgdown_1.6.1       e1071_1.7-8         spacetime_1.2-5    
 #&gt; [49] systemfonts_1.0.2   rlang_0.4.11        classInt_0.4-3     
-#&gt; [52] units_0.7-2         grid_4.1.1          labeling_0.4.2     
-#&gt; [55] rmarkdown_2.10      wk_0.5.0            gtable_0.3.0       
-#&gt; [58] codetools_0.2-18    DBI_1.1.1           curl_4.3.2         
-#&gt; [61] R6_2.5.1            gridExtra_2.3       zoo_1.8-9          
-#&gt; [64] lubridate_1.7.10    knitr_1.33          fastmap_1.1.0      
-#&gt; [67] rgeos_0.5-5         utf8_1.2.2          rprojroot_2.0.2    
-#&gt; [70] ragg_1.1.3          KernSmooth_2.23-20  readr_2.0.1        
-#&gt; [73] desc_1.3.0          stringi_1.7.4       Rcpp_1.0.7         
-#&gt; [76] vctrs_0.3.8         png_0.1-7           tidyselect_1.1.1   
-#&gt; [79] xfun_0.25</code></pre>
+#&gt; [52] units_0.7-2         grid_4.1.1          rappdirs_0.3.3     
+#&gt; [55] labeling_0.4.2      rmarkdown_2.10      wk_0.5.0           
+#&gt; [58] gtable_0.3.0        codetools_0.2-18    DBI_1.1.1          
+#&gt; [61] curl_4.3.2          R6_2.5.1            gridExtra_2.3      
+#&gt; [64] zoo_1.8-9           lubridate_1.7.10    knitr_1.34         
+#&gt; [67] fastmap_1.1.0       rgeos_0.5-7         utf8_1.2.2         
+#&gt; [70] rprojroot_2.0.2     ragg_1.1.3          KernSmooth_2.23-20 
+#&gt; [73] readr_2.0.1         desc_1.3.0          stringi_1.7.4      
+#&gt; [76] Rcpp_1.0.7          png_0.1-7           vctrs_0.3.8        
+#&gt; [79] tidyselect_1.1.1    xfun_0.25</code></pre>
 </details>
 </div>
   </div>
@@ -528,7 +518,7 @@
       <footer id="footer"><div class="container">
 		<div class="col-md-3 col-sm-6 col-md-offset-1">
 			<h4 data-toc-skip>About climaemet</h4>
-			Developed by <a href="https://github.com/mpizarrotig">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/">Diego Hernangómez</a>, part of the <span class="ROS-light">rOpenSpain</span> project.
+			Developed by <a href="https://github.com/mpizarrotig">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/">Gema Fernández-Avilés</a>, part of the <span class="ROS-light">rOpenSpain</span> project.
 			<hr class="hidden-md hidden-lg hidden-sm">
 </div>
 		<div class="col-md-3 col-sm-6 col-md-offset-4">

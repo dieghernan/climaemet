@@ -70,6 +70,9 @@
       <a href="../articles/articles/Spatial-Interpolation-with-climaemet.html">Spatial Interpolation with climaemet</a>
     </li>
     <li>
+      <a href="../articles/articles/dealing_spatial.html">Dealing with spatial data</a>
+    </li>
+    <li>
       <a href="../articles/articles/x01_aemet_stations.html">AEMET Stations</a>
     </li>
   </ul>
@@ -97,8 +100,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Get started with climaemet 1.0.0</h1>
+                        <h4 class="author">Diego Hernangómez</h4>
             
-            <h4 class="date">2021-08-11</h4>
+            <h4 class="date">2021-09-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/master/vignettes/climaemet.Rmd"><code>vignettes/climaemet.Rmd</code></a></small>
       <div class="hidden name"><code>climaemet.Rmd</code></div>
@@ -111,8 +115,7 @@
 <p>From version <strong>1.0.0</strong> onward, we have introduced some improvements and (breaking) changes on the package, in order to provide a smoother interaction with the AEMET API service.</p>
 <p>You can easily spot which version of <strong>climaemet</strong> is running in your computer. On load, you could see the following message:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
 <span class="co">#&gt;</span>
 <span class="co">#&gt; Welcome to climaemet (1.0.0)</span>
 <span class="co">#&gt; Note that since climaemet (&gt;=1.0.0) the results are provided on tibble format. Run #&gt; `climaemet_news()` to see the changelog.</span>
@@ -150,7 +153,7 @@
 </h4>
 <p>This is the recommended option. Just type:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"&lt;YOUR API KEY&gt;"</span>, install <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"YOUR_API_KEY"</span>, install <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Using <code>install = TRUE</code> ensures that the API key is stored on your local computer and it would be reloaded every time you load the library. From now on you can forget about API keys!</p>
 </div>
 <div id="b--use-an-environment-variable" class="section level4">
@@ -158,7 +161,7 @@
 <a href="#b--use-an-environment-variable" class="anchor"></a>b. Use an environment variable</h4>
 <p>This is a temporary alternative. You can set your API key as an environment variable</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>AEMET_API_KEY <span class="op">=</span> <span class="st">"&lt;YOUR API KEY&gt;"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html">Sys.setenv</a></span><span class="op">(</span>AEMET_API_KEY <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span><span class="op">)</span></code></pre></div>
 <p>Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.</p>
 </div>
 <div id="c--modify-your--renviron-file" class="section level4">
@@ -168,7 +171,7 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Now you can add the following line to you <code>.Renviron</code> file:</p>
-<pre><code>AEMET_API_KEY = &lt;YOUR API KEY&gt;</code></pre>
+<pre><code>AEMET_API_KEY = YOUR_API_KEY</code></pre>
 </div>
 </div>
 </div>
@@ -184,23 +187,23 @@
 <code class="sourceCode R"><span class="co"># See a tibble in action</span>
 
 <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 24 x 25</span>
+<span class="co">#&gt; # A tibble: 24 × 25</span>
 <span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 9434  -1.00 2021-08-10 18:00:00     0   249   9.6   6.3   149  41.7   138</span>
-<span class="co">#&gt;  2 9434  -1.00 2021-08-10 19:00:00     0   249   9.7   4.3   115  41.7   145</span>
-<span class="co">#&gt;  3 9434  -1.00 2021-08-10 20:00:00     0   249   7     3.8   117  41.7   125</span>
-<span class="co">#&gt;  4 9434  -1.00 2021-08-10 21:00:00     0   249   5.9   3.6   114  41.7   125</span>
-<span class="co">#&gt;  5 9434  -1.00 2021-08-10 22:00:00     0   249   5.9   2.5   118  41.7   118</span>
-<span class="co">#&gt;  6 9434  -1.00 2021-08-10 23:00:00     0   249   3.1   1.4   111  41.7   140</span>
-<span class="co">#&gt;  7 9434  -1.00 2021-08-11 00:00:00     0   249   4.3   2.6   330  41.7   328</span>
-<span class="co">#&gt;  8 9434  -1.00 2021-08-11 01:00:00     0   249   7.2   4.2   304  41.7   315</span>
-<span class="co">#&gt;  9 9434  -1.00 2021-08-11 02:00:00     0   249   7     4.6   311  41.7   313</span>
-<span class="co">#&gt; 10 9434  -1.00 2021-08-11 03:00:00     0   249   7.8   5.9   297  41.7   285</span>
-<span class="co">#&gt; # ... with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;  1 9434  -1.00 2021-09-12 18:00:00     0   249   7.6   2.3   109  41.7   348</span>
+<span class="co">#&gt;  2 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105</span>
+<span class="co">#&gt;  3 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98</span>
+<span class="co">#&gt;  4 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123</span>
+<span class="co">#&gt;  5 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120</span>
+<span class="co">#&gt;  6 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130</span>
+<span class="co">#&gt;  7 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113</span>
+<span class="co">#&gt;  8 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98</span>
+<span class="co">#&gt;  9 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133</span>
+<span class="co">#&gt; 10 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125</span>
+<span class="co">#&gt; # … with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
 </div>
 <div id="spatial-objects-sf" class="section level3">
@@ -209,8 +212,7 @@
 </h3>
 <p>Another major change in <strong>v1.0.0</strong> is the ability of return information on spatial <code>sf</code> format, using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, that correspond to the <strong>World Geodetic System (WGS)</strong> and return coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># You would need to install `sf` if not installed yet</span>
+<code class="sourceCode R"><span class="co"># You would need to install `sf` if not installed yet</span>
 <span class="co"># run install.packages("sf") for installation</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -223,7 +225,6 @@
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-
 <span class="va">all_stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span>return_sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co"># Last hour</span>
 <span class="va">all_last</span> <span class="op">&lt;-</span>
@@ -288,7 +289,7 @@
       <footer id="footer"><div class="container">
 		<div class="col-md-3 col-sm-6 col-md-offset-1">
 			<h4 data-toc-skip>About climaemet</h4>
-			Developed by <a href="https://github.com/mpizarrotig">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/">Diego Hernangómez</a>, part of the <span class="ROS-light">rOpenSpain</span> project.
+			Developed by <a href="https://github.com/mpizarrotig">Manuel Pizarro</a>, <a href="https://dieghernan.github.io/">Diego Hernangómez</a>, <a href="https://blog.uclm.es/gemafaviles/">Gema Fernández-Avilés</a>, part of the <span class="ROS-light">rOpenSpain</span> project.
 			<hr class="hidden-md hidden-lg hidden-sm">
 </div>
 		<div class="col-md-3 col-sm-6 col-md-offset-4">
