@@ -140,8 +140,8 @@
 <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"climaemet"</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, you can install the developing version of <strong>climaemet</strong> with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">remotes</span><span class="op">)</span>
-<span class="fu">install_github</span><span class="op">(</span><span class="st">"ropenspain/climaemet"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
+<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"ropenspain/climaemet"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="api-key" class="section level2">
 <h2 class="hasAnchor">
@@ -180,20 +180,20 @@
 <code class="sourceCode R"><span class="co"># See a tibble in action</span>
 
 <span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 24 × 25</span>
+<span class="co">#&gt; # A tibble: 23 × 25</span>
 <span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 9434  -1.00 2021-09-12 18:00:00     0   249   7.6   2.3   109  41.7   348</span>
-<span class="co">#&gt;  2 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105</span>
-<span class="co">#&gt;  3 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98</span>
-<span class="co">#&gt;  4 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123</span>
-<span class="co">#&gt;  5 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120</span>
-<span class="co">#&gt;  6 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130</span>
-<span class="co">#&gt;  7 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113</span>
-<span class="co">#&gt;  8 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98</span>
-<span class="co">#&gt;  9 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133</span>
-<span class="co">#&gt; 10 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125</span>
-<span class="co">#&gt; # … with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span>
+<span class="co">#&gt;  1 9434  -1.00 2021-09-12 19:00:00     0   249   2.5   1.4   145  41.7   105</span>
+<span class="co">#&gt;  2 9434  -1.00 2021-09-12 20:00:00     0   249   3.6   2.4    93  41.7    98</span>
+<span class="co">#&gt;  3 9434  -1.00 2021-09-12 21:00:00     0   249   3.1   2.3   106  41.7   123</span>
+<span class="co">#&gt;  4 9434  -1.00 2021-09-12 22:00:00     0   249   5     3.1   119  41.7   120</span>
+<span class="co">#&gt;  5 9434  -1.00 2021-09-12 23:00:00     0   249   5.9   3.9   118  41.7   130</span>
+<span class="co">#&gt;  6 9434  -1.00 2021-09-13 00:00:00     0   249   5.2   3.3   102  41.7   113</span>
+<span class="co">#&gt;  7 9434  -1.00 2021-09-13 01:00:00     0   249   5.1   2.5   104  41.7    98</span>
+<span class="co">#&gt;  8 9434  -1.00 2021-09-13 02:00:00     0   249   5.6   3.2   118  41.7   133</span>
+<span class="co">#&gt;  9 9434  -1.00 2021-09-13 03:00:00     0   249   5.5   3.6   121  41.7   125</span>
+<span class="co">#&gt; 10 9434  -1.00 2021-09-13 04:00:00     0   249   4.6   2     101  41.7   118</span>
+<span class="co">#&gt; # … with 13 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></code></pre></div>
@@ -339,33 +339,6 @@
 <tr class="odd">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
-<td align="left">2021-09-12 18:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
-<td align="right">7.6</td>
-<td align="right">2.3</td>
-<td align="right">109</td>
-<td align="right">41.66056</td>
-<td align="right">348</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">983.1</td>
-<td align="right">35</td>
-<td align="right">0.2</td>
-<td align="right">28.5</td>
-<td align="right">1011.2</td>
-<td align="right">29.6</td>
-<td align="right">29.6</td>
-<td align="right">31.8</td>
-<td align="right">12.5</td>
-<td align="right">7</td>
-<td align="right">22.7</td>
-<td align="right">31.9</td>
-<td align="right">0</td>
-<td align="right">29.7</td>
-</tr>
-<tr class="even">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
 <td align="left">2021-09-12 19:00:00</td>
 <td align="right">0</td>
 <td align="right">249</td>
@@ -385,12 +358,12 @@
 <td align="right">29.6</td>
 <td align="right">13.0</td>
 <td align="right">17</td>
-<td align="right">0.0</td>
+<td align="right">0</td>
 <td align="right">30.7</td>
 <td align="right">0</td>
 <td align="right">29.9</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
 <td align="left">2021-09-12 20:00:00</td>
@@ -412,12 +385,12 @@
 <td align="right">27.8</td>
 <td align="right">13.9</td>
 <td align="right">10</td>
-<td align="right">0.0</td>
+<td align="right">0</td>
 <td align="right">29.7</td>
 <td align="right">0</td>
 <td align="right">29.9</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
 <td align="left">2021-09-12 21:00:00</td>
@@ -439,12 +412,12 @@
 <td align="right">26.1</td>
 <td align="right">15.3</td>
 <td align="right">7</td>
-<td align="right">0.0</td>
+<td align="right">0</td>
 <td align="right">29.0</td>
 <td align="right">0</td>
 <td align="right">29.7</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
 <td align="left">2021-09-12 22:00:00</td>
@@ -466,12 +439,12 @@
 <td align="right">24.7</td>
 <td align="right">15.5</td>
 <td align="right">6</td>
-<td align="right">0.0</td>
+<td align="right">0</td>
 <td align="right">28.3</td>
 <td align="right">0</td>
 <td align="right">29.5</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
 <td align="left">2021-09-12 23:00:00</td>
@@ -493,10 +466,37 @@
 <td align="right">24.0</td>
 <td align="right">17.9</td>
 <td align="right">8</td>
-<td align="right">0.0</td>
+<td align="right">0</td>
 <td align="right">27.8</td>
 <td align="right">0</td>
 <td align="right">29.3</td>
+</tr>
+<tr class="even">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2021-09-13 00:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">5.2</td>
+<td align="right">3.3</td>
+<td align="right">102</td>
+<td align="right">41.66056</td>
+<td align="right">113</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">984.9</td>
+<td align="right">76</td>
+<td align="right">0.6</td>
+<td align="right">22.2</td>
+<td align="right">1013.6</td>
+<td align="right">22.7</td>
+<td align="right">22.7</td>
+<td align="right">23.4</td>
+<td align="right">18.2</td>
+<td align="right">9</td>
+<td align="right">0</td>
+<td align="right">27.3</td>
+<td align="right">0</td>
+<td align="right">29.1</td>
 </tr>
 </tbody>
 </table>
