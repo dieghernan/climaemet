@@ -103,7 +103,7 @@
                         <h4 class="author">Gema Fernández-Avilés</h4>
                         <h4 class="author">Diego Hernangómez</h4>
             
-            <h4 class="date">2021-10-27</h4>
+            <h4 class="date">2021-11-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/master/vignettes/articles/dealing_spatial.Rmd"><code>vignettes/articles/dealing_spatial.Rmd</code></a></small>
       <div class="hidden name"><code>dealing_spatial.Rmd</code></div>
@@ -209,9 +209,9 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../../reference/aemet_stations.html">aemet_stations</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co"># Have a look on the data</span>
-<span class="va">stations</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">nombre</span>, latitude <span class="op">=</span> <span class="va">latitud</span>, longitude <span class="op">=</span> <span class="va">longitud</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/headtail.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">stations</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">nombre</span>, latitude <span class="op">=</span> <span class="va">latitud</span>, longitude <span class="op">=</span> <span class="va">longitud</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/headtail.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="st">"Preview of AEMET stations"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <caption>Preview of AEMET stations</caption>
@@ -272,19 +272,19 @@
 <span class="co">#&gt; [21] "geometry"</span></code></pre></div>
 <p>In this step, we select the variable of interest for each station. For simplicity, we would remove the Canary Islands in this exercise:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">clim_data_clean</span> <span class="op">&lt;-</span> <span class="va">clim_data</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">clim_data_clean</span> <span class="op">&lt;-</span> <span class="va">clim_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="co"># Exclude Islands from analysis</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">provincia</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">provincia</span> <span class="op"><a href="https://rdrr.io/pkg/raster/man/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
     <span class="st">"LAS PALMAS"</span>,
     <span class="st">"STA. CRUZ DE TENERIFE"</span>
-  <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tmin</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">fecha</span>, <span class="va">tmin</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="co"># Exclude NAs</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># Plot with outline of Spain</span>
-<span class="va">ESP</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">ESP</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="co"># Exclude Canary Islands from analysis</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ine.ccaa.name</span> <span class="op">!=</span> <span class="st">"Canarias"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ine.ccaa.name</span> <span class="op">!=</span> <span class="st">"Canarias"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="co"># Group the whole country</span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_combine.html">st_union</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -354,16 +354,16 @@
 <p>The First Law of Geography states that <em>Everything is related to everything else. But near things are more related than distant things</em> <span class="citation">(Tobler, 1969)</span>. This law is the basis of the fundamental concepts of <strong>spatial dependence</strong> and <strong>spatial autocorrelation</strong>.</p>
 <p>In our study, we can observe <strong>positive spatial dependence</strong>: high temperature values are all found together in the south of Spain and low temperatures are found together in the north of Spain.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">clim_data_clean</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/select.html">select</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">clim_data_clean</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/select.html">select</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_all</a></span><span class="op">(</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/funs.html">funs</a></span><span class="op">(</span><span class="va">min</span>, <span class="va">max</span>, <span class="va">median</span>, <span class="va">sd</span>,
       n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
       q25 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/quantile.html">quantile</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">.25</span><span class="op">)</span>,
       q75 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/quantile.html">quantile</a></span><span class="op">(</span><span class="va">.</span>, <span class="fl">.75</span><span class="op">)</span>
     <span class="op">)</span>
-  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -387,7 +387,7 @@
 </table>
 <p>In the next plot, we divide the minimum temperature into quartiles to visualize the spatial distribution of values.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bubble</span> <span class="op">&lt;-</span> <span class="va">clim_data_clean</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">bubble</span> <span class="op">&lt;-</span> <span class="va">clim_data_clean</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">tmin</span><span class="op">)</span><span class="op">)</span>
 <span class="co"># Create quartiles</span>
 <span class="va">cuart</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html">classIntervals</a></span><span class="op">(</span><span class="va">bubble</span><span class="op">$</span><span class="va">tmin</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>
@@ -449,14 +449,14 @@
 <p>This grid is composed of equally spaced points over the whole (bounding box) of Spain. Most of the squares do not have any stations, so no observation observations are. However, we use the values of the cells that contain stations to interpolate the data.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Create grid 5*5 km (25 km2)</span>
-<span class="va">grd_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html">st_bbox</a></span><span class="op">(</span><span class="va">ESP_utm</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html">st_as_sfc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">grd_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html">st_bbox</a></span><span class="op">(</span><span class="va">ESP_utm</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html">st_as_sfc</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_make_grid.html">st_make_grid</a></span><span class="op">(</span>
     cellsize <span class="op">=</span> <span class="fl">5000</span>,
     what <span class="op">=</span> <span class="st">"centers"</span>
   <span class="op">)</span>
 <span class="co"># Convert to sp object - interpolation should be made with sp/raster</span>
-<span class="va">grd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="va">grd_sf</span>, <span class="st">"Spatial"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">grd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="va">grd_sf</span>, <span class="st">"Spatial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://r-spatial.github.io/sf/reference/coerce-methods.html">as</a></span><span class="op">(</span><span class="st">"SpatialPixels"</span><span class="op">)</span></code></pre></div>
 <p>There are some additional steps that we must perform in order to prepare our data for spatial interpolation.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -479,9 +479,9 @@
 <p>In order to answer this question, we summarize our spatial object and we observe a summary of: (i) the number of data points, (ii) the coordinates, (iii) the distance and (iv) the data.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.leg.ufpr.br/geoR">geoR</a></span><span class="op">)</span>
-<span class="va">clim_data_clean_nodup.geo</span> <span class="op">&lt;-</span> <span class="va">clim_data_clean_nodup</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">clim_data_clean_nodup.geo</span> <span class="op">&lt;-</span> <span class="va">clim_data_clean_nodup</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/raster/man/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span><span class="op">(</span>tmin <span class="op">=</span> <span class="va">clim_data_clean_nodup</span><span class="op">$</span><span class="va">tmin</span><span class="op">)</span>
 <span class="va">clim_data_clean_nodup.geoR</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/as.geodata.html">as.geodata</a></span><span class="op">(</span>
   obj <span class="op">=</span> <span class="va">clim_data_clean_nodup.geo</span>,
@@ -755,10 +755,10 @@
 <span class="co">#&gt; [inverse distance weighted interpolation]</span>
 <span class="va">idw_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/raster/man/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">idw</span>, xy <span class="op">=</span> <span class="cn">TRUE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co"># Prepare for facetting</span>
-<span class="va">idw_facet</span> <span class="op">&lt;-</span> <span class="va">idw_df</span> <span class="op">%&gt;%</span>
+<span class="va">idw_facet</span> <span class="op">&lt;-</span> <span class="va">idw_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"IDW"</span><span class="op">)</span>
-<span class="va">all_methods</span> <span class="op">&lt;-</span> <span class="va">kriged_df</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"Kriging"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">all_methods</span> <span class="op">&lt;-</span> <span class="va">kriged_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"Kriging"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">idw_facet</span><span class="op">)</span>
 <span class="co"># Reorder for facets</span>
 <span class="va">all_methods</span><span class="op">$</span><span class="va">method</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">all_methods</span><span class="op">$</span><span class="va">method</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Kriging"</span>, <span class="st">"IDW"</span><span class="op">)</span><span class="op">)</span>

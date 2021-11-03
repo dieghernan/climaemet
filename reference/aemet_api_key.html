@@ -167,10 +167,10 @@ permanently.
     <p>This function will store your AEMET API key on your local machine so it can
 be called securely without being stored in your code. After you have
 installed your key, it can be called any time by typing
-<code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv("AEMET_API_KEY")</a></code> and can be
+<code>Sys.getenv("AEMET_API_KEY")</code> and can be
 used in package functions by simply typing <code>AEMET_API_KEY</code>.</p>
 <p>Alternatively, you can install the API Key manually:</p><ul>
-<li><p>Run <code><a href='https://rdrr.io/r/base/Sys.setenv.html'>Sys.setenv(AEMET_API_KEY = "Your_Key")</a></code>. You would need to run this
+<li><p>Run <code>Sys.setenv(AEMET_API_KEY = "Your_Key")</code>. You would need to run this
 command on each session (Similar to <code>install = FALSE</code>).</p></li>
 <li><p>Write this line on your .Renviron file: <code>AEMET_API_KEY = "Your_Key"</code> (
 same behavior than <code>install = TRUE</code>). This would store your API key
@@ -208,30 +208,30 @@ use in future sessions.  Defaults to <code>FALSE.</code></p></td>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>To locate your API Key on your local machine, run
-<code><a href='https://rappdirs.r-lib.org/reference/user_cache_dir.html'>rappdirs::user_cache_dir("climaemet", "R")</a></code>.</p>
+<code>rappdirs::user_cache_dir("climaemet", "R")</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other aemet_auth: 
 <code><a href='aemet_detect_api_key.html'>aemet_detect_api_key</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Don't run these examples!</span>
-
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'>aemet_api_key</span><span class='op'>(</span><span class='st'>"111111abc"</span>, install <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-  <span class='co'># You can check it with:</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"AEMET_API_KEY"</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='co'># If you need to overwrite an existing key:</span>
-  <span class='fu'>aemet_api_key</span><span class='op'>(</span><span class='st'>"222222abc"</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, install <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-  <span class='co'># You can check it with:</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"AEMET_API_KEY"</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Don't run these examples!</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'>aemet_api_key</span><span class='op'>(</span><span class='st'>"111111abc"</span>, install <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># You can check it with:</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"AEMET_API_KEY"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='co'># If you need to overwrite an existing key:</span></span>
+<span class='r-in'>  <span class='fu'>aemet_api_key</span><span class='op'>(</span><span class='st'>"222222abc"</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, install <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># You can check it with:</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"AEMET_API_KEY"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
