@@ -131,7 +131,7 @@
 <strong>Point patterns.</strong> For example, deaths COVID, per day, in Spain.</li>
 </ol>
 <p><img src="point.gif" width="50%" style="display: block; margin: auto;"></p>
-<p>See <span class="citation">Montero, Fernández-Avilés, &amp; Mateu (2015)</span>, for more details. In this work, we focus on geostatistical data.</p>
+<p>See <span class="citation">Montero, Fernández-Avilés, and Mateu (2015)</span> for more details. In this work, we focus on geostatistical data.</p>
 <div id="what-do-we-need-to-carry-out-a-geostatistical-data-analysis-in-r" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-do-we-need-to-carry-out-a-geostatistical-data-analysis-in-r" class="anchor"></a>What do we need to carry out a geostatistical data analysis in R?</h2>
@@ -181,7 +181,7 @@
 <h2 class="hasAnchor">
 <a href="#where-can-we-find-geostatistical-data" class="anchor"></a>Where can we find geostatistical data?</h2>
 <p>In this paper, we are going to deal with geostatistical data; specifically we are going to model the air temperature in Spain on <a href="https://en.wikipedia.org/wiki/Storm_Filomena"><strong>8 January 2021</strong></a>.</p>
-<p>We download the data with <strong>climaemet (&gt;= 1.0.0)</strong> package <span class="citation">(Pizarro, Hernangómez, &amp; Fernández-Avilés, 2021)</span> in R. <strong>climaemet</strong> allows us to download the climatic data from the Spanish Meteorological Agency (AEMET) directly using their API. <strong>climaemet</strong> is available on <a href="https://CRAN.R-project.org/package=climaemet"><strong>CRAN</strong></a><strong>:</strong></p>
+<p>We download the data with <strong>climaemet (&gt;= 1.0.0)</strong> package <span class="citation">(Pizarro, Hernangómez, and Fernández-Avilés 2021)</span> in R. <strong>climaemet</strong> allows us to download the climatic data from the Spanish Meteorological Agency (AEMET) directly using their API. <strong>climaemet</strong> is available on <a href="https://CRAN.R-project.org/package=climaemet"><strong>CRAN</strong></a><strong>:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="co"># Install climaemet</span>
@@ -351,7 +351,7 @@
 <div id="are-the-observations-independent-or-do-they-exhibit-spatial-dependence" class="section level1">
 <h1 class="hasAnchor">
 <a href="#are-the-observations-independent-or-do-they-exhibit-spatial-dependence" class="anchor"></a>Are the observations independent or do they exhibit spatial dependence?</h1>
-<p>The First Law of Geography states that <em>Everything is related to everything else. But near things are more related than distant things</em> <span class="citation">(Tobler, 1969)</span>. This law is the basis of the fundamental concepts of <strong>spatial dependence</strong> and <strong>spatial autocorrelation</strong>.</p>
+<p>The First Law of Geography states that <em>Everything is related to everything else. But near things are more related than distant things</em> <span class="citation">(Tobler 1969)</span>. This law is the basis of the fundamental concepts of <strong>spatial dependence</strong> and <strong>spatial autocorrelation</strong>.</p>
 <p>In our study, we can observe <strong>positive spatial dependence</strong>: high temperature values are all found together in the south of Spain and low temperatures are found together in the north of Spain.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">clim_data_clean</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -544,9 +544,9 @@
 <div id="the-semivariogram" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-semivariogram" class="anchor"></a>The semivariogram</h2>
-<p>The <strong>semivariogram</strong> function is the keystone of geostatistical prediction. So, following <span class="citation">Montero et al. (2015)</span> we formulate this question: <strong>How do we express in a function the structure of the spatial dependence or correlation present in the realization observed?</strong> The answer to this question, known in the geostatistics literature as the structural analysis of the spatial dependence, or, simply, <em>the structural analysis</em>, is a key issue in the subsequent process of optimal prediction (kriging), as the success of the kriging methods depends on the functions yielding information about the spatial dependence detected.</p>
+<p>The <strong>semivariogram</strong> function is the keystone of geostatistical prediction. So, following <span class="citation">Montero, Fernández-Avilés, and Mateu (2015)</span> we formulate this question: <strong>How do we express in a function the structure of the spatial dependence or correlation present in the realization observed?</strong> The answer to this question, known in the geostatistics literature as the structural analysis of the spatial dependence, or, simply, <em>the structural analysis</em>, is a key issue in the subsequent process of optimal prediction (kriging), as the success of the kriging methods depends on the functions yielding information about the spatial dependence detected.</p>
 <p>The functions referred to above are covariance functions and semivariograms, but <strong>they must meet a series of requisites.</strong> As we only have the observed realization, in practice, the covariance functions and semivariograms derived from it may not satisfy these requisites. For this reason, <strong>one of the theoretical models (also called the valid models) that do comply must be fitted to it.</strong></p>
-<p>There are some packages in R to carry out a geostatistical analysis but there are “the big two”: <code>geoR</code> <span class="citation">(Jr &amp; Diggle, 2001)</span> and <code>gstat</code> <span class="citation">(Gräler, Pebesma, &amp; Heuvelink, 2016)</span>.</p>
+<p>There are some packages in R to carry out a geostatistical analysis but there are “the big two”: <code>geoR</code> <span class="citation">(Ribeiro, Jr. and Diggle 2001)</span> and <code>gstat</code> <span class="citation">(Gräler, Pebesma, and Heuvelink 2016)</span>.</p>
 <p>The <strong>semivariogram</strong> is, generally, a non-decreasing monotone function, so that the variability of the first increments of the random functions increases with distance.</p>
 <p>We are going to generate the (omnidirectional) empirical semivariogram of our data, which, in a second step, has to be fitted to a theoretical one.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
@@ -582,7 +582,7 @@
 <li><p><em>Range</em>: is the distance at which the sill is reached, which defines the threshold of spatial dependence.</p></li>
 <li><p><em>Nugget</em>: The value at which the semivariogram intercepts the y-value. Theoretically, at zero separation distance, the semivariogram value is 0. The nugget effect can be attributed to measurement errors or spatial sources of variation at distances smaller than the sampling interval or both.</p></li>
 </ul>
-<p>For a detailed study of the semivariogram function see (<span class="citation">Montero et al. (2015)</span>).</p>
+<p>For a detailed study of the semivariogram function see <span class="citation">Montero, Fernández-Avilés, and Mateu (2015)</span>.</p>
 <p>Now, we plot the empirical semivariogram of our data (again) with <code><a href="https://rdrr.io/pkg/gstat/man/variogram.html">gstat::variogram</a></code> and we check the semivariogram in four directions (0º, 45º, 90º, 135º).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Directional empirical semivariogramin gstat()</span>
@@ -611,7 +611,7 @@
 <h1 class="hasAnchor">
 <a href="#carrying-out-ordinary-kriging" class="anchor"></a>Carrying out Ordinary Kriging</h1>
 <p>Once a theoretical semivariogram has been chosen, we are ready for spatial prediction. The method geostatistics uses for spatial prediction is termed kriging in honor of the South African mining engineer, Daniel Gerhardus Krige.</p>
-<p>According to <span class="citation">Montero et al. (2015)</span>, <strong>kriging</strong> aims to predict the value of a random function, <span class="math inline">\(Z(s)\)</span>, at one or more non-observed points (or blocks) from a collection of data observed at <span class="math inline">\(n\)</span> points (or blocks in the case of block prediction) of a domain <span class="math inline">\(D\)</span>, and provides the best linear unbiased predictor (BLUP) of the regionalized variable under study at such non-observed points or blocks</p>
+<p>According to <span class="citation">Montero, Fernández-Avilés, and Mateu (2015)</span>, <strong>kriging</strong> aims to predict the value of a random function, <span class="math inline">\(Z(s)\)</span>, at one or more non-observed points (or blocks) from a collection of data observed at <span class="math inline">\(n\)</span> points (or blocks in the case of block prediction) of a domain <span class="math inline">\(D\)</span>, and provides the best linear unbiased predictor (BLUP) of the regionalized variable under study at such non-observed points or blocks</p>
 <p>There are different kinds of kriging depend on the characteristics of the spatial process: simple, ordinary or universal kriging (external drift kriging), kriging in a local neighborhood, point kriging or kriging of block mean values and conditional (Gaussian or indicator) simulation equivalents for all kriging varieties.</p>
 <p>In this work we deal with ordinary kriging, the most widely-used kriging method. According to <span class="citation">Wackernagel (1995)</span> it serves to estimate a value at a point of a region for which a variogram is known, using data in the neighborhood of the estimation location.</p>
 <p>In this study, we perform ordinary kriging (OK).</p>
@@ -914,26 +914,26 @@
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
 <div id="refs" class="references">
-<div id="ref-cressie93">
-<p>Cressie, N. A. C. (1993). <em>Statistics for spatial data</em>. John Wiley &amp; Sons, Ltd. <a href="https://doi.org/10.1002/9781119115151">https://doi.org/10.1002/9781119115151</a></p>
+<div id="ref-cressie1993">
+<p>Cressie, Noel A. C. 1993. <em>Statistics for Spatial Data</em>. Rev. ed. Wiley Series in Probability and Mathematical Statistics. New York: Wiley.</p>
 </div>
-<div id="ref-gstat">
-<p>Gräler, B., Pebesma, E., &amp; Heuvelink, G. (2016). Spatio-temporal interpolation using gstat. <em>The R Journal</em>, <em>8</em>(1), 204–218. Retrieved from <a href="https://journal.r-project.org/archive/2016/RJ-2016-014/index.html">https://journal.r-project.org/archive/2016/RJ-2016-014/index.html</a></p>
+<div id="ref-gräler2016">
+<p>Gräler, Benedikt, Edzer Pebesma, and Gerard Heuvelink. 2016. “Spatio-Temporal Interpolation Using gstat.” <em>The R Journal</em> 8 (1): 204. <a href="https://doi.org/10.32614/RJ-2016-014">https://doi.org/10.32614/RJ-2016-014</a>.</p>
 </div>
-<div id="ref-geor">
-<p>Jr, P. J. R., &amp; Diggle, P. J. (2001). geoR: A package for geostatistical analysis. <em>R-NEWS</em>, <em>1</em>(2), 14–18. Retrieved from <a href="http://CRAN.R-project.org/doc/Rnews/">http://CRAN.R-project.org/doc/Rnews/</a></p>
+<div id="ref-montero2015">
+<p>Montero, José-María, Gema Fernández-Avilés, and Jorge Mateu. 2015. <em>Spatial and Spatio-Temporal Geostatistical Modeling and Kriging: Montero/Spatial and Spatio-Temporal Geostatistical Modeling and Kriging</em>. Wiley Series in Probability and Statistics. Chichester, UK: John Wiley &amp; Sons, Ltd. <a href="https://doi.org/10.1002/9781118762387">https://doi.org/10.1002/9781118762387</a>.</p>
 </div>
-<div id="ref-montero_spatial">
-<p>Montero, J., Fernández-Avilés, G., &amp; Mateu, J. (2015). <em>Spatial and spatio-temporal geostatistical modeling and kriging</em>. John Wiley &amp; Sons, Ltd. <a href="https://doi.org/10.1002/9781118762387">https://doi.org/10.1002/9781118762387</a></p>
+<div id="ref-pizarro2021">
+<p>Pizarro, Manuel, Diego Hernangómez, and Gema Fernández-Avilés. 2021. <em>climaemet: Climate Aemet Tools</em>. Zenodo. <a href="https://doi.org/10.5281/zenodo.5205573">https://doi.org/10.5281/zenodo.5205573</a>.</p>
 </div>
-<div id="ref-climaemet">
-<p>Pizarro, M., Hernangómez, D., &amp; Fernández-Avilés, G. (2021). <em>Climaemet: Climate aemet tools</em>. <a href="https://doi.org/10.5281/zenodo.5205573">https://doi.org/10.5281/zenodo.5205573</a></p>
+<div id="ref-ribeirojr2001">
+<p>Ribeiro, Jr., Paulo J., and Peter J. Diggle. 2001. “geoR: A Package for Geostatistical Analysis.” <em>R-NEWS</em> 1 (2). <a href="https://cran.r-project.org/doc/Rnews/Rnews_2001-2.pdf">https://cran.r-project.org/doc/Rnews/Rnews_2001-2.pdf</a>.</p>
 </div>
-<div id="ref-tobler69">
-<p>Tobler, W. R. (1969). Geographical filters and their inverses. <em>Geographical Analysis</em>, <em>1</em>(3), 234–253. <a href="https://doi.org/10.1111/j.1538-4632.1969.tb00621.x">https://doi.org/10.1111/j.1538-4632.1969.tb00621.x</a></p>
+<div id="ref-tobler1969">
+<p>Tobler, Waldo R. 1969. “Geographical Filters and Their Inverses*.” <em>Geographical Analysis</em> 1 (3): 234–53. <a href="https://doi.org/10.1111/j.1538-4632.1969.tb00621.x">https://doi.org/10.1111/j.1538-4632.1969.tb00621.x</a>.</p>
 </div>
-<div id="ref-Wackernagel_1995">
-<p>Wackernagel, H. (1995). <em>Multivariate geostatistics</em>. Springer. <a href="https://doi.org/10.1007/978-3-662-03098-1_11">https://doi.org/10.1007/978-3-662-03098-1_11</a></p>
+<div id="ref-wackernagel1995">
+<p>Wackernagel, Hans. 1995. “Ordinary Kriging.” In, 74–81. Berlin, Heidelberg: Springer Berlin Heidelberg. <a href="https://doi.org/10.1007/978-3-662-03098-1_11">https://doi.org/10.1007/978-3-662-03098-1_11</a>.</p>
 </div>
 </div>
 </div>
