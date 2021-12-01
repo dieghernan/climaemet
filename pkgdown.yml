@@ -1,13 +1,13 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
+pkgdown: 2.0.0
 pkgdown_sha: ~
 articles:
-  articles/Spatial-Interpolation-with-climaemet: Spatial-Interpolation-with-climaemet.html
-  articles/dealing_spatial: dealing_spatial.html
-  articles/x01_aemet_stations: x01_aemet_stations.html
+  Spatial-Interpolation-with-climaemet: Spatial-Interpolation-with-climaemet.html
+  dealing_spatial: dealing_spatial.html
+  x01_aemet_stations: x01_aemet_stations.html
   climaemet: climaemet.html
-last_built: 2021-11-24T12:39Z
+last_built: 2021-12-01T12:43Z
 urls:
-  reference: https://ropenspain.github.io/climaemet//reference
-  article: https://ropenspain.github.io/climaemet//articles
+  reference: https://ropenspain.github.io/climaemet/reference
+  article: https://ropenspain.github.io/climaemet/articles
 
