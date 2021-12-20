@@ -161,12 +161,13 @@
 </h2>
 <p>From <code>v1.0.0</code> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link">tibble format</a>. Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
+<code class="sourceCode R">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span>
 
 <span class="co"># See a tibble in action</span>
 
 <span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 23 x 25</span>
+<span class="co">#&gt; # A tibble: 24 × 25</span>
 <span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 9434  -1.00 2021-12-19 16:00:00     0   249   3.4   0.6    77  41.7   135</span>
@@ -179,16 +180,17 @@
 <span class="co">#&gt;  8 9434  -1.00 2021-12-19 23:00:00     0   249   2.1   1      78  41.7   118</span>
 <span class="co">#&gt;  9 9434  -1.00 2021-12-20 00:00:00     0   249   2.1   0.9   115  41.7   153</span>
 <span class="co">#&gt; 10 9434  -1.00 2021-12-20 01:00:00     0   249   1.7   1     209  41.7   340</span>
-<span class="co">#&gt; # ... with 13 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt; # … with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></code></pre></div>
 <div class="section level3">
 <h3 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h3>
 <p>The package provides several functions to access the data of the API. Here you can find some examples:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## Get AEMET stations</span>
+<code class="sourceCode R">
+<span class="co">## Get AEMET stations</span>
 <span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_stations.html">aemet_stations</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Need to have the API Key registered</span>
 
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">stations</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -260,7 +262,8 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">station</span> <span class="op">&lt;-</span> <span class="st">"9434"</span> <span class="co"># Zaragoza Aeropuerto</span>
+<code class="sourceCode R">
+<span class="va">station</span> <span class="op">&lt;-</span> <span class="st">"9434"</span> <span class="co"># Zaragoza Aeropuerto</span>
 
 <span class="co">## Get last observation values for a station</span>
 <span class="va">data_observation</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="va">station</span><span class="op">)</span>
@@ -269,29 +272,29 @@
 <table class="table">
 <colgroup>
 <col width="3%">
+<col width="6%">
+<col width="12%">
+<col width="2%">
+<col width="2%">
+<col width="2%">
+<col width="2%">
+<col width="1%">
 <col width="5%">
-<col width="10%">
 <col width="2%">
+<col width="12%">
+<col width="3%">
+<col width="1%">
+<col width="3%">
 <col width="2%">
+<col width="6%">
+<col width="3%">
 <col width="2%">
+<col width="3%">
 <col width="2%">
+<col width="3%">
 <col width="2%">
 <col width="4%">
-<col width="2%">
-<col width="10%">
-<col width="3%">
-<col width="2%">
-<col width="3%">
-<col width="2%">
-<col width="5%">
-<col width="3%">
-<col width="2%">
-<col width="3%">
-<col width="2%">
-<col width="3%">
-<col width="2%">
-<col width="3%">
-<col width="3%">
+<col width="4%">
 <col width="4%">
 </colgroup>
 <thead><tr class="header">
@@ -487,7 +490,8 @@
 </tbody>
 </table>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## Get daily/annual climatology values for a station</span>
+<code class="sourceCode R">
+<span class="co">## Get daily/annual climatology values for a station</span>
 <span class="va">data_daily</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span><span class="va">station</span>, start <span class="op">=</span> <span class="st">"2020-01-01"</span>, end <span class="op">=</span> <span class="st">"2020-12-31"</span><span class="op">)</span>
 
@@ -496,24 +500,24 @@
 <colgroup>
 <col width="6%">
 <col width="6%">
-<col width="11%">
+<col width="13%">
 <col width="5%">
 <col width="4%">
-<col width="3%">
-<col width="3%">
-<col width="3%">
-<col width="5%">
+<col width="2%">
+<col width="2%">
 <col width="3%">
 <col width="5%">
 <col width="2%">
 <col width="5%">
+<col width="1%">
+<col width="5%">
 <col width="3%">
 <col width="5%">
-<col width="2%">
+<col width="1%">
 <col width="4%">
-<col width="6%">
+<col width="7%">
 <col width="4%">
-<col width="6%">
+<col width="7%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">fecha</th>
@@ -674,16 +678,17 @@
 </table>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
+
 <span class="co">## Get monthly/annual climatology values for a station</span>
 <span class="va">data_monthly</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_monthly.html">aemet_monthly_clim</a></span><span class="op">(</span><span class="va">station</span>, year <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data_monthly</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<table style="width:100%;" class="table">
+<table class="table">
 <colgroup>
 <col width="2%">
 <col width="3%">
 <col width="2%">
 <col width="2%">
-<col width="1%">
+<col width="0%">
 <col width="2%">
 <col width="2%">
 <col width="1%">
@@ -704,7 +709,7 @@
 <col width="2%">
 <col width="2%">
 <col width="2%">
-<col width="2%">
+<col width="3%">
 <col width="1%">
 <col width="2%">
 <col width="2%">
@@ -1051,28 +1056,29 @@
 </table>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
+
 <span class="co">## Get recorded extreme values of temperature for a station</span>
 <span class="va">data_extremes</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_extremes_clim.html">aemet_extremes_clim</a></span><span class="op">(</span><span class="va">station</span>, parameter <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span>
 <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data_extremes</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<table style="width:100%;" class="table">
+<table class="table">
 <colgroup>
 <col width="4%">
-<col width="8%">
+<col width="9%">
 <col width="4%">
+<col width="2%">
+<col width="2%">
+<col width="2%">
 <col width="3%">
+<col width="2%">
+<col width="2%">
+<col width="2%">
 <col width="3%">
-<col width="3%">
-<col width="3%">
-<col width="3%">
-<col width="3%">
-<col width="3%">
-<col width="3%">
-<col width="3%">
+<col width="2%">
+<col width="4%">
+<col width="5%">
 <col width="4%">
 <col width="4%">
-<col width="4%">
-<col width="4%">
-<col width="4%">
+<col width="5%">
 <col width="4%">
 <col width="4%">
 <col width="4%">
@@ -1268,7 +1274,8 @@
 </table>
 <p>We can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions returns <code>ggplot2</code> plots:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Plot a climate stripes graph for a period of years for a station</span>
+<code class="sourceCode R">
+<span class="co"># Plot a climate stripes graph for a period of years for a station</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 
@@ -1282,7 +1289,8 @@
 <p><img src="reference/figures/README-climatogram-1.png" width="100%"></p>
 <p>Additionally, we may be interested in drawing the wind speed and direction over a period of time for the data downloaded from a weather station.:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Plot a windrose showing the wind speed and direction for a station over a days period.</span>
+<code class="sourceCode R">
+<span class="co"># Plot a windrose showing the wind speed and direction for a station over a days period.</span>
 <span class="fu"><a href="reference/windrose_days.html">windrose_days</a></span><span class="op">(</span>
   <span class="st">"9434"</span>,
   start <span class="op">=</span> <span class="st">"2010-01-01"</span>,
@@ -1299,7 +1307,8 @@
 </h2>
 <p>Another major change in <code>v1.0.0</code> is the ability of return information on spatial <code>sf</code> format, using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, that correspond to the <strong>World Geodetic System (WGS)</strong> and return coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># You would need to install `sf` if not installed yet</span>
+<code class="sourceCode R">
+<span class="co"># You would need to install `sf` if not installed yet</span>
 <span class="co"># run install.packages("sf") for installation</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>

@@ -164,22 +164,23 @@
 <code class="sourceCode R"><span class="co"># See a tibble in action</span>
 
 <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 23 x 25</span>
-<span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr</span>
-<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 9434  -1.00 2021-12-19 16:00:00     0   249   3.4   0.6    77  41.7   135 ZARAG~  995.    93</span>
-<span class="co">#&gt;  2 9434  -1.00 2021-12-19 17:00:00     0   249   2.7   0.6    78  41.7   110 ZARAG~  995.    95</span>
-<span class="co">#&gt;  3 9434  -1.00 2021-12-19 18:00:00     0   249   2.4   0.8    11  41.7    95 ZARAG~  995.    96</span>
-<span class="co">#&gt;  4 9434  -1.00 2021-12-19 19:00:00     0   249   1.8   0.1    96  41.7    53 ZARAG~  995.    97</span>
-<span class="co">#&gt;  5 9434  -1.00 2021-12-19 20:00:00     0   249   2.4   1      37  41.7    53 ZARAG~  995.    97</span>
-<span class="co">#&gt;  6 9434  -1.00 2021-12-19 21:00:00     0   249   2.5   1.2    40  41.7    38 ZARAG~  995.    97</span>
-<span class="co">#&gt;  7 9434  -1.00 2021-12-19 22:00:00     0   249   2.2   0.7   348  41.7    33 ZARAG~  995.    98</span>
-<span class="co">#&gt;  8 9434  -1.00 2021-12-19 23:00:00     0   249   2.1   1      78  41.7   118 ZARAG~  995     98</span>
-<span class="co">#&gt;  9 9434  -1.00 2021-12-20 00:00:00     0   249   2.1   0.9   115  41.7   153 ZARAG~  995.    98</span>
-<span class="co">#&gt; 10 9434  -1.00 2021-12-20 01:00:00     0   249   1.7   1     209  41.7   340 ZARAG~  994.    98</span>
-<span class="co">#&gt; # ... with 13 more rows, and 12 more variables: stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 24 × 25</span>
+<span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 9434  -1.00 2021-12-19 16:00:00     0   249   3.4   0.6    77  41.7   135</span>
+<span class="co">#&gt;  2 9434  -1.00 2021-12-19 17:00:00     0   249   2.7   0.6    78  41.7   110</span>
+<span class="co">#&gt;  3 9434  -1.00 2021-12-19 18:00:00     0   249   2.4   0.8    11  41.7    95</span>
+<span class="co">#&gt;  4 9434  -1.00 2021-12-19 19:00:00     0   249   1.8   0.1    96  41.7    53</span>
+<span class="co">#&gt;  5 9434  -1.00 2021-12-19 20:00:00     0   249   2.4   1      37  41.7    53</span>
+<span class="co">#&gt;  6 9434  -1.00 2021-12-19 21:00:00     0   249   2.5   1.2    40  41.7    38</span>
+<span class="co">#&gt;  7 9434  -1.00 2021-12-19 22:00:00     0   249   2.2   0.7   348  41.7    33</span>
+<span class="co">#&gt;  8 9434  -1.00 2021-12-19 23:00:00     0   249   2.1   1      78  41.7   118</span>
+<span class="co">#&gt;  9 9434  -1.00 2021-12-20 00:00:00     0   249   2.1   0.9   115  41.7   153</span>
+<span class="co">#&gt; 10 9434  -1.00 2021-12-20 01:00:00     0   249   1.7   1     209  41.7   340</span>
+<span class="co">#&gt; # … with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
 </div>
 <div class="section level3">
@@ -193,6 +194,14 @@
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 
 <span class="va">all_stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span>return_sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co"># Last hour</span>
