@@ -103,33 +103,33 @@ have the <code>sf</code> package installed.</p></dd>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span>
 <span class="r-in"><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu">aemet_last_obs</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"9434"</span>, <span class="st">"3195"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 46</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 26</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ idema     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "9434", "9434", "9434", "9434", "9434", "9434", "9434", "943…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ lon       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -1.004167, -1.004167, -1.004167, -1.004167, -1.004167, -1.00…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ fint      <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2021-12-28 13:00:00, 2021-12-28 14:00:00, 2021-12-28 15:00:…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ fint      <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2022-01-03 15:00:00, 2022-01-03 16:00:00, 2022-01-03 17:00:…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ prec      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ alt       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 249, 249, 249, 249, 249, 249, 249, 249, 249, 249, 249, 249, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ vmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18.1, 16.8, 13.5, 11.1, 9.4, 10.7, 11.5, 10.7, 10.1, 9.9, 9.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ vv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.6, 9.6, 8.9, 6.2, 6.2, 6.6, 7.7, 7.4, 4.0, 5.3, 4.3, 4.1,…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ dv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 276, 269, 272, 280, 277, 274, 269, 288, 308, 294, 292, 303, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ vmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 2.7, 2.7, 2.4, 2.3, 1.9, 3.2, 3.4, 5.6, 3.8, 4.7, 4.4, 4.7, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ vv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.8, 1.8, 1.2, 1.0, 0.8, 1.4, 1.5, 2.2, 2.4, 2.6, 2.1, 2.9, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 93, 95, 71, 90, 209, 86, 93, 125, 127, 118, 151, 140, 123, 1…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ lat       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 41.66056, 41.66056, 41.66056, 41.66056, 41.66056, 41.66056, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ dmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 275, 280, 268, 275, 275, 278, 283, 275, 293, 275, 283, 313, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 33, 95, 130, 60, 63, 120, 125, 105, 120, 158, 93, 125, 135, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ubi       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ZARAGOZA  AEROPUERTO", "ZARAGOZA  AEROPUERTO", "ZARAGOZA  A…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 987.9, 987.8, 988.4, 989.3, 989.7, 989.8, 990.2, 991.1, 991.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ hr        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 55, 53, 54, 57, 61, 62, 63, 64, 68, 67, 69, 69, 67, 80, 79, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ stdvv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.7, 1.4, 1.2, 0.7, 0.7, 0.9, 1.1, 0.9, 0.6, 1.1, 0.6, 0.9, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ ts        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18.8, 19.2, 17.4, 16.0, 14.1, 14.0, 14.7, 13.0, 11.8, 11.5, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres_nmar <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1017.4, 1017.2, 1017.8, 1018.8, 1019.4, 1019.6, 1020.0, 1020…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 17.1, 17.7, 18.1, 17.4, 15.9, 15.5, 15.2, 14.6, 13.9, 13.7, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ ta        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 17.7, 18.4, 18.1, 17.4, 15.9, 15.5, 15.5, 15.2, 13.9, 13.8, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 17.9, 18.4, 18.4, 18.1, 17.4, 16.0, 15.6, 15.6, 15.2, 14.0, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tpr       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8.5, 8.7, 8.7, 8.8, 8.4, 8.3, 8.5, 8.4, 8.1, 7.8, 7.6, 7.4, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ stddv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6, 8, 6, 6, 7, 7, 8, 8, 9, 9, 7, 13, 9, 4, 5, 4, 14, 6, 11, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ inso      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 60.0, 60.0, 60.0, 60.0, 22.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss5cm    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.3, 12.9, 12.9, 12.8, 12.3, 11.9, 11.6, 11.3, 11.0, 10.6, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 992.6, 992.0, 991.8, 991.6, 991.5, 991.2, 990.6, 990.3, 989.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ hr        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 68, 72, 80, 86, 89, 92, 93, 93, 94, 93, 94, 94, 93, 94, 94, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ stdvv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.3, 0.3, 0.2, 0.1, 0.3, 0.3, 0.5, 0.2, 0.4, 1.0, 0.6, 0.8, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ts        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 12.3, 7.7, 5.4, 4.9, 5.1, 5.3, 5.2, 5.2, 5.4, 5.1, 5.5…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres_nmar <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1022.7, 1022.2, 1022.2, 1022.2, 1022.2, 1022.0, 1021.4, 1021…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.0, 12.4, 10.0, 8.3, 7.3, 7.0, 6.5, 6.0, 5.9, 6.0, 5.6, 5.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ta        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.9, 12.4, 10.0, 8.3, 7.3, 7.0, 6.5, 6.1, 6.0, 6.2, 5.7, 6.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.9, 13.0, 12.4, 10.0, 8.3, 7.3, 7.0, 6.5, 6.1, 6.2, 6.2, 6…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tpr       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 7.1, 7.4, 6.7, 6.1, 5.6, 5.8, 5.5, 5.0, 5.1, 5.1, 4.8, 5.1, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ stddv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13, 11, 14, 12, 15, 13, 12, 10, 10, 14, 19, 12, 16, 11, 10, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ inso      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 60.0, 60.0, 28.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss5cm    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 10.6, 10.3, 9.8, 9.0, 8.4, 7.9, 7.6, 7.3, 7.1, 6.9, 6.7, 6.6…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ pacutp    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss20cm   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 10.4, 10.6, 10.8, 11.0, 11.2, 11.3, 11.3, 11.3, 11.2, 11.2, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss20cm   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 8.3, 8.6, 8.9, 9.0, 9.0, 9.0, 8.9, 8.8, 8.7, 8.6, 8.4, 8.3, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ rviento   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
 </code></pre></div>
     </div>
