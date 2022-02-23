@@ -41,7 +41,7 @@
     
     <img src="../logo.png" alt="climaemet-logo" id="ROS-navbar-logo"><a class="navbar-brand me-2" href="../index.html">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,7 +94,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Get started with climaemet 1.0.0</h1>
                         <h4 data-toc-skip class="author">Diego Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2022-02-18</h4>
+            <h4 data-toc-skip class="date">2022-02-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/climaemet.Rmd" class="external-link"><code>vignettes/climaemet.Rmd</code></a></small>
       <div class="d-none name"><code>climaemet.Rmd</code></div>
@@ -152,23 +152,21 @@
 <code class="sourceCode R"><span class="co"># See a tibble in action</span>
 
 <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 23 × 25</span>
-<span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span>
-<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 9434  -1.00 2022-02-17 11:00:00     0   249  15.2  10.7   311  41.7   313</span>
-<span class="co">#&gt;  2 9434  -1.00 2022-02-17 12:00:00     0   249  15.7  11.5   309  41.7   318</span>
-<span class="co">#&gt;  3 9434  -1.00 2022-02-17 13:00:00     0   249  15.1   9.7   313  41.7   310</span>
-<span class="co">#&gt;  4 9434  -1.00 2022-02-17 14:00:00     0   249  13.4   8.6   307  41.7   313</span>
-<span class="co">#&gt;  5 9434  -1.00 2022-02-17 15:00:00     0   249  14.8  10.1   313  41.7   305</span>
-<span class="co">#&gt;  6 9434  -1.00 2022-02-17 16:00:00     0   249  13.7   9.1   314  41.7   308</span>
-<span class="co">#&gt;  7 9434  -1.00 2022-02-17 17:00:00     0   249  11.3   7.2   301  41.7   315</span>
-<span class="co">#&gt;  8 9434  -1.00 2022-02-17 18:00:00     0   249   8.8   5.9   284  41.7   303</span>
-<span class="co">#&gt;  9 9434  -1.00 2022-02-17 19:00:00     0   249   7.6   3.1   248  41.7   303</span>
-<span class="co">#&gt; 10 9434  -1.00 2022-02-17 20:00:00     0   249   4.7   3.6   248  41.7   263</span>
-<span class="co">#&gt; # … with 13 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 24 x 25</span>
+<span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi        pres    hr stdvv    ts</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 9434  -1.00 2022-02-22 15:00:00     0   249  14     9.8   316  41.7   310 ZARAGOZA~  996.    20   1.8  21.6</span>
+<span class="co">#&gt;  2 9434  -1.00 2022-02-22 16:00:00     0   249  14.9  11.2   313  41.7   305 ZARAGOZA~  996.    20   1.4  20.7</span>
+<span class="co">#&gt;  3 9434  -1.00 2022-02-22 17:00:00     0   249  13.9   6.7   316  41.7   310 ZARAGOZA~  996.    17   1.4  17.6</span>
+<span class="co">#&gt;  4 9434  -1.00 2022-02-22 18:00:00     0   249   8.8   5.6   300  41.7   300 ZARAGOZA~  996.    18   0.9  14.7</span>
+<span class="co">#&gt;  5 9434  -1.00 2022-02-22 19:00:00     0   249   9.2   5.2   305  41.7   305 ZARAGOZA~  996.    21   0.5  13.3</span>
+<span class="co">#&gt;  6 9434  -1.00 2022-02-22 20:00:00     0   249   8.6   6.3   280  41.7   275 ZARAGOZA~  997.    33   0.6  12  </span>
+<span class="co">#&gt;  7 9434  -1.00 2022-02-22 21:00:00     0   249  10.4   8.4   297  41.7   303 ZARAGOZA~  997.    39   0.9  12  </span>
+<span class="co">#&gt;  8 9434  -1.00 2022-02-22 22:00:00     0   249  10.4   5.9   293  41.7   290 ZARAGOZA~  997     31   0.7  10.3</span>
+<span class="co">#&gt;  9 9434  -1.00 2022-02-22 23:00:00     0   249   9     2.3   324  41.7   275 ZARAGOZA~  997.    25   0.8   9.1</span>
+<span class="co">#&gt; 10 9434  -1.00 2022-02-23 00:00:00     0   249   5     3.6   306  41.7   308 ZARAGOZA~  997.    26   0.5   7.7</span>
+<span class="co">#&gt; # ... with 14 more rows, and 10 more variables: pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
 </div>
 <div class="section level3">
