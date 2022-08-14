@@ -42,7 +42,7 @@
     <div>
       <img src="../logo.png" alt="climaemet-logo" id="ROS-navbar-logo"><a class="navbar-brand me-2" href="../index.html">climaemet</a>
 
-      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1</small>
+      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
     </div>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,6 @@
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a>
     <a class="dropdown-item" href="../articles/x00_aemet_stations.html">AEMET Stations</a>
-    <a class="dropdown-item" href="../articles/x01_dealing_spatial.html">Dealing with spatial data</a>
   </div>
 </li>
 <li class="nav-item">
@@ -95,7 +94,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Get started with climaemet 1.0.0</h1>
                         <h4 data-toc-skip class="author">Diego Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2022-07-11</h4>
+            <h4 data-toc-skip class="date">2022-08-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/climaemet.Rmd" class="external-link"><code>vignettes/climaemet.Rmd</code></a></small>
       <div class="d-none name"><code>climaemet.Rmd</code></div>
@@ -154,22 +153,21 @@
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 24 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2022-07-10 08:00:00     0   249   7.4   4.2   304  41.7   310</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2022-07-10 09:00:00     0   249   6.7   4.8   304  41.7   303</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2022-07-10 10:00:00     0   249   6.3   3.9   307  41.7   310</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2022-07-10 11:00:00     0   249   6.8   3.3   314  41.7   313</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2022-07-10 12:00:00     0   249   5.3   2.7   322  41.7   305</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2022-07-10 13:00:00     0   249   5.1   2.3   352  41.7   325</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2022-07-10 14:00:00     0   249   4.7   1.8    18  41.7   340</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2022-07-10 15:00:00     0   249   3.9   1.7    16  41.7   333</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2022-07-10 16:00:00     0   249   3.5   1.6    27  41.7    23</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2022-07-10 17:00:00     0   249   2.9   1.2   110  41.7   113</span></span>
-<span><span class="co">#&gt; # … with 14 more rows, and 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi           pres    hr stdvv    ts</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2022-08-12 15:00:00     0   249   5.7   2.7    79  41.7   100 ZARAGOZA  A…  981.    14   0.9  45.4</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2022-08-12 16:00:00     0   249   5.7   3.2   118  41.7    53 ZARAGOZA  A…  980.    17   1.1  45.1</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2022-08-12 17:00:00     0   249   6.4   3.6   111  41.7   120 ZARAGOZA  A…  980.    18   0.6  42.3</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2022-08-12 18:00:00     0   249   5.9   3      94  41.7   105 ZARAGOZA  A…  980.    22   0.6  39.6</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2022-08-12 19:00:00     0   249   6.9   4.2   139  41.7   150 ZARAGOZA  A…  980.    19   0.8  37.5</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2022-08-12 20:00:00     0   249   5.7   2.8   195  41.7   153 ZARAGOZA  A…  980.    19   0.8  35.9</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2022-08-12 21:00:00     0   249   5.2   2.1   165  41.7   115 ZARAGOZA  A…  981.    21   0.4  34.4</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2022-08-12 22:00:00     0   249   5.2   2.3   206  41.7   235 ZARAGOZA  A…  981     20   1.1  34.4</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2022-08-12 23:00:00     0   249   4.9   2     296  41.7   128 ZARAGOZA  A…  981.    21   0.7  33.4</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2022-08-13 00:00:00     0   249   5.2   2.4   305  41.7   270 ZARAGOZA  A…  981.    30   0.5  30.8</span></span>
+<span><span class="co">#&gt; # … with 14 more rows, and 10 more variables: pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
 </div>
 <div class="section level3">
