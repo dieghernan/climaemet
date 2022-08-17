@@ -110,33 +110,33 @@ have the <code>sf</code> package installed.</p></dd>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/" class="external-link">tibble</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu">aemet_last_obs</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"9434"</span>, <span class="st">"3195"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 48</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 26</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ idema     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "9434", "9434", "9434", "9434", "9434", "9434", "9434", "943…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ lon       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -1.004167, -1.004167, -1.004167, -1.004167, -1.004167, -1.00…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ fint      <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2022-08-13 09:00:00, 2022-08-13 10:00:00, 2022-08-13 11:00:…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ fint      <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2022-08-16 13:00:00, 2022-08-16 14:00:00, 2022-08-16 15:00:…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ prec      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ alt       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 249, 249, 249, 249, 249, 249, 249, 249, 249, 249, 249, 249, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ vmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 3.9, 3.2, 8.9, 15.6, 16.6, 14.2, 13.1, 11.9, 11.6, 9.7, 4.5,…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ vv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.5, 1.5, 6.0, 10.5, 7.6, 8.2, 7.8, 5.5, 7.3, 4.1, 2.9, 1.2,…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ dv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 10, 94, 257, 269, 265, 253, 259, 262, 253, 275, 318, 148, 19…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ vmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 4.2, 4.9, 8.9, 7.2, 12.3, 10.5, 10.9, 7.2, 9.0, 12.0, 12.9, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ vv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1.6, 1.5, 4.1, 4.4, 7.2, 7.2, 5.4, 5.2, 6.9, 9.2, 9.3, 6.7, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dv        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 18, 42, 276, 262, 263, 271, 166, 314, 308, 302, 297, 296, 29…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ lat       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 41.66056, 41.66056, 41.66056, 41.66056, 41.66056, 41.66056, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ dmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 290, 75, 263, 270, 238, 245, 260, 268, 253, 238, 278, 253, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dmax      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 350, 45, 273, 285, 250, 265, 150, 323, 310, 315, 295, 300, 3…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ubi       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ZARAGOZA  AEROPUERTO", "ZARAGOZA  AEROPUERTO", "ZARAGOZA  A…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 983.0, 983.0, 982.3, 982.4, 982.9, 982.4, 982.3, 982.3, 982.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ hr        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 54, 44, 20, 18, 20, 18, 18, 19, 21, 21, 21, 25, 22, 27, 27, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ stdvv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.5, 0.6, 1.0, 2.0, 1.3, 2.3, 1.6, 1.0, 1.4, 0.5, 0.5, 0.4, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ ts        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 32.3, 35.4, 41.5, 39.2, 37.3, 37.5, 37.2, 36.6, 35.0, 33.9, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres_nmar <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1011.3, 1010.9, 1009.7, 1009.8, 1010.5, 1010.0, 1009.9, 1009…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.3, 28.0, 31.8, 37.7, 36.0, 35.8, 35.9, 35.5, 34.8, 33.7, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ ta        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 28.0, 31.8, 37.8, 37.7, 36.1, 36.2, 36.0, 35.6, 34.8, 33.7, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 28.0, 31.9, 37.8, 38.3, 37.7, 36.3, 36.3, 36.1, 35.6, 34.8, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tpr       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 17.9, 18.0, 11.0, 9.3, 9.6, 8.1, 8.0, 8.4, 9.3, 8.4, 7.8, 9.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ stddv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27, 33, 13, 8, 11, 13, 11, 12, 8, 7, 13, 67, 13, 24, 8, 6, 8…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ inso      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 27.1, 49.5, 52.5, 5.8, 0.0, 0.0, 1.7, 0.0, 0.0, 0.0, 6.0, 0.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss5cm    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 34.6, 36.2, 37.3, 38.2, 38.0, 37.9, 37.9, 37.8, 37.6, 37.2, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 977.4, 976.3, 975.5, 974.9, 975.0, 975.4, 976.7, 977.8, 978.…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ hr        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 20, 18, 15, 11, 11, 12, 31, 26, 34, 52, 56, 61, 60, 59, 64, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ stdvv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0.6, 0.8, 1.3, 1.0, 1.4, 1.2, 1.3, 0.7, 0.8, 1.2, 0.9, 0.7, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ts        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 38.6, 39.3, 39.9, 39.7, 37.9, 36.0, 30.4, 30.1, 27.9, 25.1, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ pres_nmar <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1005.2, 1003.9, 1003.0, 1002.3, 1002.5, 1003.0, 1004.6, 1005…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 30.9, 32.3, 34.0, 34.6, 35.4, 34.7, 30.3, 29.7, 27.5, 24.3, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ ta        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 32.4, 34.1, 34.9, 36.0, 35.4, 34.7, 30.3, 29.7, 27.5, 24.3, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tamax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 32.4, 34.1, 35.3, 36.1, 36.3, 35.5, 34.7, 30.3, 29.8, 27.5, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tpr       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6.5, 6.4, 4.5, 0.9, 0.4, 1.1, 11.3, 8.1, 10.3, 13.9, 13.3, 1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ stddv     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 42, 73, 19, 26, 12, 10, 35, 9, 5, 6, 6, 6, 6, 6, 9, 7, 6, 9,…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ inso      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 49.5, 60.0, 58.7, 43.5, 51.0, 48.8, 17.0, 0.0, 0.0, 0.0, 0.0…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss5cm    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 38.0, 39.7, 41.0, 40.9, 40.5, 39.6, 38.5, 37.3, 36.1, 35.1, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ pacutp    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss20cm   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 35.6, 35.4, 35.3, 35.4, 35.5, 35.7, 35.8, 35.9, 36.0, 36.0, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tss20cm   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 33.1, 33.4, 33.7, 34.2, 34.6, 35.0, 35.3, 35.5, 35.6, 35.6, …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ rviento   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
 </code></pre></div>
     </div>
