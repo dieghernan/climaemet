@@ -5,7 +5,7 @@ articles:
   interpolation: interpolation.html
   x00_aemet_stations: x00_aemet_stations.html
   climaemet: climaemet.html
-last_built: 2022-08-24T13:13Z
+last_built: 2022-08-31T12:56Z
 urls:
   reference: https://ropenspain.github.io/climaemet/reference
   article: https://ropenspain.github.io/climaemet/articles
