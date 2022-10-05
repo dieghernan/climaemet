@@ -6,7 +6,7 @@ articles:
   x00_aemet_stations: x00_aemet_stations.html
   x01_dealing_spatial: x01_dealing_spatial.html
   climaemet: climaemet.html
-last_built: 2022-09-28T12:58Z
+last_built: 2022-10-05T13:07Z
 urls:
   reference: https://ropenspain.github.io/climaemet/reference
   article: https://ropenspain.github.io/climaemet/articles
