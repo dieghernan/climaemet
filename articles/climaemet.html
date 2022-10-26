@@ -93,7 +93,8 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get started with climaemet 1.0.0</h1>
-                        <h4 data-toc-skip class="author">Diego Hernangómez</h4>
+                        <h4 data-toc-skip class="author">Diego
+Hernangómez</h4>
             
             <h4 data-toc-skip class="date">2022-09-07</h4>
       
@@ -103,39 +104,52 @@
 
     
     
-<p>Since the last release, this package has been integrated into <a href="https://ropenspain.es/" class="external-link">rOpenSpain</a>, a community of <strong>R</strong> enthusiasts whose ultimate goal is to create high-quality <strong>R</strong> packages for data mining public Spanish open sources.</p>
-<p>From version <strong>1.0.0</strong> onward, we have introduced some improvements and (breaking) changes on the package, in order to provide a smoother interaction with the AEMET API service.</p>
+<p>Since the last release, this package has been integrated into <a href="https://ropenspain.es/" class="external-link">rOpenSpain</a>, a community of
+<strong>R</strong> enthusiasts whose ultimate goal is to create
+high-quality <strong>R</strong> packages for data mining public Spanish
+open sources.</p>
+<p>From version <strong>1.0.0</strong> onward, we have introduced some
+improvements and (breaking) changes on the package, in order to provide
+a smoother interaction with the AEMET API service.</p>
 <div class="section level2">
 <h2 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a>
 </h2>
 <div class="section level3">
 <h3 id="get-your-api-key">Get your API Key<a class="anchor" aria-label="anchor" href="#get-your-api-key"></a>
 </h3>
-<p>To be able to download data from AEMET you will need a free API key which you can get at <a href="https://opendata.aemet.es/centrodedescargas/obtencionAPIKey" class="external-link uri">https://opendata.aemet.es/centrodedescargas/obtencionAPIKey</a></p>
-<p>Once that you have your API Key, you can use any of the following methods:</p>
+<p>To be able to download data from AEMET you will need a free API key
+which you can get at <a href="https://opendata.aemet.es/centrodedescargas/obtencionAPIKey" class="external-link uri">https://opendata.aemet.es/centrodedescargas/obtencionAPIKey</a></p>
+<p>Once that you have your API Key, you can use any of the following
+methods:</p>
 <div class="section level4">
 <h4 id="a--set-api-key-with-aemet_api_key">a. Set API Key with <code>aemet_api_key()</code><a class="anchor" aria-label="anchor" href="#a--set-api-key-with-aemet_api_key"></a>
 </h4>
 <p>This is the recommended option. Just type:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/aemet_api_key.html">aemet_api_key</a></span><span class="op">(</span><span class="st">"YOUR_API_KEY"</span>, install <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>Using <code>install = TRUE</code> ensures that the API key is stored on your local computer and it would be reloaded every time you load the library. From now on you can forget about API keys!</p>
+<p>Using <code>install = TRUE</code> ensures that the API key is stored
+on your local computer and it would be reloaded every time you load the
+library. From now on you can forget about API keys!</p>
 </div>
 <div class="section level4">
 <h4 id="b--use-an-environment-variable">b. Use an environment variable<a class="anchor" aria-label="anchor" href="#b--use-an-environment-variable"></a>
 </h4>
-<p>This is a temporary alternative. You can set your API key as an environment variable</p>
+<p>This is a temporary alternative. You can set your API key as an
+environment variable</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>AEMET_API_KEY <span class="op">=</span> <span class="st">"YOUR_API_KEY"</span><span class="op">)</span></span></code></pre></div>
-<p>Note that this is only valid for the current session. You would need to re-run this command each time you restart your session.</p>
+<p>Note that this is only valid for the current session. You would need
+to re-run this command each time you restart your session.</p>
 </div>
 <div class="section level4">
 <h4 id="c--modify-your--renviron-file">c. Modify your <code>.Renviron</code> file<a class="anchor" aria-label="anchor" href="#c--modify-your--renviron-file"></a>
 </h4>
-<p>This stores your API key permanently on your machine. You can start editing your <code>.Renviron</code> running this command:</p>
+<p>This stores your API key permanently on your machine. You can start
+editing your <code>.Renviron</code> running this command:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>Now you can add the following line to you <code>.Renviron</code> file:</p>
+<p>Now you can add the following line to you <code>.Renviron</code>
+file:</p>
 <pre><code><span><span class="va">AEMET_API_KEY</span> <span class="op">=</span> <span class="va">YOUR_API_KEY</span></span></code></pre>
 </div>
 </div>
@@ -147,7 +161,11 @@
 <h3 id="tidyverse-format">
 <code>tidyverse</code> format<a class="anchor" aria-label="anchor" href="#tidyverse-format"></a>
 </h3>
-<p>From <strong>v1.0.0</strong> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link">tibble format</a>. Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).</p>
+<p>From <strong>v1.0.0</strong> onward, <strong>climaemet</strong>
+provides its results in <a href="https://tibble.tidyverse.org/" class="external-link">tibble
+format</a>. Also, the functions try to guess the correct format of the
+fields (i.e. something as a Date/Hour now is an hour, numbers are parsed
+as double, etc.).</p>
 <p>See how a tibble is displayed:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
@@ -168,12 +186,18 @@
 <span><span class="co">#&gt; 10 9434  -1.00 2022-09-06 22:00:00     0   249   5.4   2.5   298  41.7   315 ZARA…  986.    31   1.2  25.6</span></span>
 <span><span class="co">#&gt; # … with 14 more rows, and 10 more variables: pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
-<p>Note that when possible, data representing dates and numbers are converted to the right format.</p>
+<p>Note that when possible, data representing dates and numbers are
+converted to the right format.</p>
 </div>
 <div class="section level3">
 <h3 id="spatial-objects-sf">Spatial objects: <code>sf</code><a class="anchor" aria-label="anchor" href="#spatial-objects-sf"></a>
 </h3>
-<p>Another major change in <strong>v1.0.0</strong> is the ability of return information on spatial <code>sf</code> format, using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, that correspond to the <strong>World Geodetic System (WGS)</strong> and return coordinates in latitude/longitude (unprojected coordinates):</p>
+<p>Another major change in <strong>v1.0.0</strong> is the ability of
+return information on spatial <code>sf</code> format, using
+<code>return_sf = TRUE</code>. The coordinate reference system (CRS)
+used is <strong>EPSG 4326</strong>, that correspond to the <strong>World
+Geodetic System (WGS)</strong> and return coordinates in
+latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># You would need to install `sf` if not installed yet</span></span>
@@ -225,9 +249,17 @@
 <ul>
 <li>All the functions are now vectorized.</li>
 <li>New function <code><a href="../reference/get_data_aemet.html">get_metadata_aemet()</a></code>.</li>
-<li>New function <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>. This function is now the default for <code>climatogram_*</code> functions (experimental). Old behavior can be reproduced with options <code>ggplot2 = FALSE</code>.</li>
-<li>Plot functions gains new parameters (<code>verbose</code> and <code>...</code>). Now it is possible to pass colors to the plotting functions.</li>
-<li>New example datasets: <code><a href="../reference/climaemet_9434_climatogram.html">climaemet::climaemet_9434_climatogram</a></code>, <code><a href="../reference/climaemet_9434_temp.html">climaemet::climaemet_9434_temp</a></code>, <code><a href="../reference/climaemet_9434_wind.html">climaemet::climaemet_9434_wind</a></code>.</li>
+<li>New function <code><a href="../reference/ggclimat_walter_lieth.html">ggclimat_walter_lieth()</a></code>. This function is
+now the default for <code>climatogram_*</code> functions (experimental).
+Old behavior can be reproduced with options
+<code>ggplot2 = FALSE</code>.</li>
+<li>Plot functions gains new parameters (<code>verbose</code> and
+<code>...</code>). Now it is possible to pass colors to the plotting
+functions.</li>
+<li>New example datasets:
+<code><a href="../reference/climaemet_9434_climatogram.html">climaemet::climaemet_9434_climatogram</a></code>,
+<code><a href="../reference/climaemet_9434_temp.html">climaemet::climaemet_9434_temp</a></code>,
+<code><a href="../reference/climaemet_9434_wind.html">climaemet::climaemet_9434_wind</a></code>.</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

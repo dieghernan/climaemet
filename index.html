@@ -101,7 +101,9 @@
 </h1>
 </div>
 <!-- badges: start -->
-<!-- badges: end --><p>The goal of <strong>climaemet</strong> is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their <a href="https://opendata.aemet.es/" class="external-link">API</a> and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).</p>
+
+<!-- badges: end -->
+<p>The goal of <strong>climaemet</strong> is to serve as an interface to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their <a href="https://opendata.aemet.es/" class="external-link">API</a> and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, “warming stripes” graphics, climatograms, etc.).</p>
 <p>Browse manual and vignettes at <a href="https://ropenspain.github.io/climaemet/" class="uri">https://ropenspain.github.io/climaemet/</a>.</p>
 <div class="section level2">
 <h2 id="aemet-open-data">AEMET Open Data<a class="anchor" aria-label="anchor" href="#aemet-open-data"></a>
@@ -113,7 +115,9 @@
 </h2>
 <p>Information prepared by the Spanish Meteorological Agency (© AEMET). You can read about it <a href="http://www.aemet.es/en/nota_legal" class="external-link">here</a>.</p>
 <p>A summary for the usage of the data could be interpreted as:</p>
-<blockquote><p>People can use freely this data. You should mention AEMET as the collector of the original data in every situation except if you are using this data privately and individually. AEMET makes no warranty as to the accuracy or completeness of the data. All data are provided on an “as is” basis. AEMET is not responsible for any damage or loss derived from the interpretation or use of this data.</p></blockquote>
+<blockquote>
+<p>People can use freely this data. You should mention AEMET as the collector of the original data in every situation except if you are using this data privately and individually. AEMET makes no warranty as to the accuracy or completeness of the data. All data are provided on an “as is” basis. AEMET is not responsible for any damage or loss derived from the interpretation or use of this data.</p>
+</blockquote>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -189,7 +193,16 @@
 <span><span class="va">stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aemet_stations.html">aemet_stations</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># Need to have the API Key registered</span></span>
 <span></span>
 <span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">stations</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<table class="table">
+<table style="width:100%;" class="table">
+<colgroup>
+<col width="14%">
+<col width="11%">
+<col width="26%">
+<col width="13%">
+<col width="10%">
+<col width="11%">
+<col width="11%">
+</colgroup>
 <thead><tr class="header">
 <th align="left">indicativo</th>
 <th align="left">indsinop</th>
@@ -1292,7 +1305,7 @@
 </div>
 </div>
 <div class="section level2">
-<h2 id="-and-spatial">… and spatial!<a class="anchor" aria-label="anchor" href="#-and-spatial"></a>
+<h2 id="id_-and-spatial">… and spatial!<a class="anchor" aria-label="anchor" href="#id_-and-spatial"></a>
 </h2>
 <p>Another major change in <code>v1.0.0</code> is the ability of return information on spatial <code>sf</code> format, using <code>return_sf = TRUE</code>. The coordinate reference system (CRS) used is <strong>EPSG 4326</strong>, that correspond to the <strong>World Geodetic System (WGS)</strong> and return coordinates in latitude/longitude (unprojected coordinates):</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">

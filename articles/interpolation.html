@@ -93,8 +93,10 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Spatial Interpolation with climaemet</h1>
-                        <h4 data-toc-skip class="author">Diego Hernangómez</h4>
-                        <h4 data-toc-skip class="author">Manuel Pizarro</h4>
+                        <h4 data-toc-skip class="author">Diego
+Hernangómez</h4>
+                        <h4 data-toc-skip class="author">Manuel
+Pizarro</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/articles/interpolation.Rmd" class="external-link"><code>vignettes/articles/interpolation.Rmd</code></a></small>
@@ -103,7 +105,14 @@
 
     
     
-<p><strong>climaemet</strong> can retrieve data from the stations included on <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open Data</a>. However, in terms of spatial analysis and visualization, it can be useful to extend the data from points (stations) to the whole extent of Spain. On this article we would explain a method to interpolate the climatic data trough <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">Spatial Interpolation</a>, that is the process of using points with known values to estimate values at other unknown points.</p>
+<p><strong>climaemet</strong> can retrieve data from the stations
+included on <a href="https://opendata.aemet.es/centrodedescargas/inicio" class="external-link">AEMET Open
+Data</a>. However, in terms of spatial analysis and visualization, it
+can be useful to extend the data from points (stations) to the whole
+extent of Spain. On this article we would explain a method to
+interpolate the climatic data trough <a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html" class="external-link">Spatial
+Interpolation</a>, that is the process of using points with known values
+to estimate values at other unknown points.</p>
 <div class="section level2">
 <h2 id="initial-config">Initial config<a class="anchor" aria-label="anchor" href="#initial-config"></a>
 </h2>
@@ -122,7 +131,10 @@
 <div class="section level2">
 <h2 id="retrieving-data">Retrieving data<a class="anchor" aria-label="anchor" href="#retrieving-data"></a>
 </h2>
-<p>We choose here the daily climatic data from Winter 2020-2021 in Spain. Note that on the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a> brought unusual heavy snowfall to parts of Spain, with Madrid recording its heaviest snowfall since 1971. We should be able to spot that.</p>
+<p>We choose here the daily climatic data from Winter 2020-2021 in
+Spain. Note that on the first half of January, <a href="https://en.wikipedia.org/wiki/Storm_Filomena" class="external-link">Storm Filomena</a>
+brought unusual heavy snowfall to parts of Spain, with Madrid recording
+its heaviest snowfall since 1971. We should be able to spot that.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
@@ -145,7 +157,8 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="interpolation_files/figure-html/climatic_data-1.png" width="100%"></p>
-<p>We load also a basic shapefile of Spain using <strong>mapSpain</strong>:</p>
+<p>We load also a basic shapefile of Spain using
+<strong>mapSpain</strong>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">CCAA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html" class="external-link">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -156,30 +169,60 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">clim_data_clean</span><span class="op">)</span></span></code></pre></div>
 <p><img src="interpolation_files/figure-html/geo_data-1.png" width="100%"></p>
-<p>As it can be seed, the climatic data we have available so far is restricted to the stations (points), but we want to extend these values to the whole territory.</p>
+<p>As it can be seed, the climatic data we have available so far is
+restricted to the stations (points), but we want to extend these values
+to the whole territory.</p>
 </div>
 <div class="section level2">
 <h2 id="filling-the-gaps-interpolation">Filling the gaps: Interpolation<a class="anchor" aria-label="anchor" href="#filling-the-gaps-interpolation"></a>
 </h2>
-<p>As we need to predict values at locations where no measurements have been made, we would need to interpolate the data. On this example we would apply the <a href="https://rspatial.org/raster/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">Inverse Distance Weighted method</a>, that is one of several approaches to perform spatial interpolation. We recommend <a href="https://rspatial.org/raster/analysis/4-interpolation.html" class="external-link">this article</a> on how to perform these analysis on <strong>R</strong>.</p>
+<p>As we need to predict values at locations where no measurements have
+been made, we would need to interpolate the data. On this example we
+would apply the <a href="https://rspatial.org/raster/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">Inverse
+Distance Weighted method</a>, that is one of several approaches to
+perform spatial interpolation. We recommend <a href="https://rspatial.org/raster/analysis/4-interpolation.html" class="external-link">this
+article</a> on how to perform these analysis on <strong>R</strong>.</p>
 <p>The process would be as follow:</p>
 <ul>
-<li>Create an spatial object (grid) where the predicted values would be applied.</li>
+<li>Create an spatial object (grid) where the predicted values would be
+applied.</li>
 <li>Perform an spatial interpolation.</li>
 <li>Visualize the results.</li>
 </ul>
 <div class="section level3">
 <h3 id="creating-a-grid">Creating a grid<a class="anchor" aria-label="anchor" href="#creating-a-grid"></a>
 </h3>
-<p>For this analysis, we need a destination object with the locations to be predicted. A common technique is to create a spatial grid (a “raster”) covering the targeted locations.</p>
-<p>On this example, we would use <strong>sf</strong> to create a regular grid that would be converted into a <strong>raster</strong>.</p>
-<p><strong>An important thing to consider in any spatial analysis or visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate reference system (CRS)</a>. We won’t cover this in detail on this article, but we should mention a few key considerations:</p>
+<p>For this analysis, we need a destination object with the locations to
+be predicted. A common technique is to create a spatial grid (a
+“raster”) covering the targeted locations.</p>
+<p>On this example, we would use <strong>sf</strong> to create a regular
+grid that would be converted into a <strong>raster</strong>.</p>
+<p><strong>An important thing to consider in any spatial analysis or
+visualization</strong> is the <a href="https://en.wikipedia.org/wiki/Spatial_reference_system" class="external-link">coordinate
+reference system (CRS)</a>. We won’t cover this in detail on this
+article, but we should mention a few key considerations:</p>
 <ul>
-<li>When using several spatial objects, we should ensure that <strong>all of them present the same CRS</strong>. This can be achieved projecting the objects (i.e. transforming their coordinates) to the same CRS.</li>
-<li>Longitude/latitude coordinates are unprojected coordinates. When we project an object (i.e. Mercator projection) we actually change the values of every point (x,y) coordinates (i.e. a projection is a transformation of the coordinates.)</li>
-<li>For measuring distance in meters, etc. we should choose the right projection. Distances on unprojected coordinates are meaningless. Think that 1 degree of longitude on the equator means 111 kms but on the North Pole means roughly 0.11 m. The degrees just split a circumference on equally spaced buckets, but the Earth is an spheroid and the circumferences at different latitudes doesn’t have the same length (opposed to a cylinder, where circumferences are the same at any latitude or y-axis.)</li>
+<li>When using several spatial objects, we should ensure that
+<strong>all of them present the same CRS</strong>. This can be achieved
+projecting the objects (i.e. transforming their coordinates) to the same
+CRS.</li>
+<li>Longitude/latitude coordinates are unprojected coordinates. When we
+project an object (i.e. Mercator projection) we actually change the
+values of every point (x,y) coordinates (i.e. a projection is a
+transformation of the coordinates.)</li>
+<li>For measuring distance in meters, etc. we should choose the right
+projection. Distances on unprojected coordinates are meaningless. Think
+that 1 degree of longitude on the equator means 111 kms but on the North
+Pole means roughly 0.11 m. The degrees just split a circumference on
+equally spaced buckets, but the Earth is an spheroid and the
+circumferences at different latitudes doesn’t have the same length
+(opposed to a cylinder, where circumferences are the same at any
+latitude or y-axis.)</li>
 </ul>
-<p>On this exercise, we choose to project our objects to <strong>ETRS89 / UTM zone 30N</strong> <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>, that provides x and y values on meters and maximizes the accuracy for Spain.</p>
+<p>On this exercise, we choose to project our objects to <strong>ETRS89
+/ UTM zone 30N</strong> <a href="https://epsg.io/25830" class="external-link">EPSG:25830</a>,
+that provides x and y values on meters and maximizes the accuracy for
+Spain.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">clim_data_utm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">clim_data_clean</span>, <span class="fl">25830</span><span class="op">)</span></span>
 <span><span class="va">CCAA_utm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html" class="external-link">st_transform</a></span><span class="op">(</span><span class="va">CCAA</span>, <span class="fl">25830</span><span class="op">)</span></span>
@@ -193,8 +236,11 @@
 <span></span>
 <span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span><span class="op">$</span><span class="va">proj4string</span></span>
 <span><span class="co">#&gt; [1] "+proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs"</span></span></code></pre></div>
-<p>Now, we create a regular grid using <strong>sf</strong>. This grid is composed to equally spaced points over the whole extent (bounding box) of Spain.</p>
-<p>We use here a density of 5000 (m), so the grid density is 5 x 5 kms (25 km2):</p>
+<p>Now, we create a regular grid using <strong>sf</strong>. This grid is
+composed to equally spaced points over the whole extent (bounding box)
+of Spain.</p>
+<p>We use here a density of 5000 (m), so the grid density is 5 x 5 kms
+(25 km2):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Create grid 5*5 km (25 km2)</span></span>
@@ -210,7 +256,8 @@
 <div class="section level3">
 <h3 id="interpolating-the-data">Interpolating the data<a class="anchor" aria-label="anchor" href="#interpolating-the-data"></a>
 </h3>
-<p>Now we just need to populate the (empty) grid with the predicted values based on the observations:</p>
+<p>Now we just need to populate the (empty) grid with the predicted
+values based on the observations:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Test with a single day</span></span>
@@ -270,7 +317,9 @@
 <div class="section level2">
 <h2 id="animation">Animation<a class="anchor" aria-label="anchor" href="#animation"></a>
 </h2>
-<p>On this section, we would loop over the dates to create a final animation to observe the evolution of temperature through the winter of 2020/21.</p>
+<p>On this section, we would loop over the dates to create a final
+animation to observe the evolution of temperature through the winter of
+2020/21.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Extending and animating</span></span>
@@ -350,7 +399,8 @@
 <div class="section level2">
 <h2 id="geogrid">Geogrid<a class="anchor" aria-label="anchor" href="#geogrid"></a>
 </h2>
-<p>Let’s plot an histogram for each Autonomous Community using the <code>geofacet</code> package:</p>
+<p>Let’s plot an histogram for each Autonomous Community using the
+<code>geofacet</code> package:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hafen/geofacet" class="external-link">geofacet</a></span><span class="op">)</span></span>
@@ -435,7 +485,8 @@
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-roye2020" class="csl-entry">
-Royé, Dominic. 2020. <span>“Climate Animation of Maximum Temperatures.”</span> <a href="https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/" class="external-link">https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/</a>.
+Royé, Dominic. 2020. <span>“Climate Animation of Maximum
+Temperatures.”</span> <a href="https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/" class="external-link">https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/</a>.
 </div>
 </div>
 </div>
