@@ -98,7 +98,7 @@ Fernández-Avilés</h4>
                         <h4 data-toc-skip class="author">Diego
 Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2022-12-07</h4>
+            <h4 data-toc-skip class="date">2022-12-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
@@ -942,9 +942,9 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; extent      : -13501.2, 1117513, 3903695, 4858794  (xmin, xmax, ymin, ymax)</span></span>
 <span><span class="co">#&gt; crs         : +proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs </span></span>
 <span><span class="co">#&gt; variables   : 6</span></span>
-<span><span class="co">#&gt; names       :         var1.pred,          var1.var, observed,          residual,            zscore, fold </span></span>
-<span><span class="co">#&gt; min values  : -11.3093417593026, 0.188050141723954,    -14.9, -7.96227245410672, -5.06410729000769,    1 </span></span>
-<span><span class="co">#&gt; max values  :  11.8623927739559,  18.8319619293063,     13.6,  6.93440403096904,  4.51854664114804,  211</span></span></code></pre></div>
+<span><span class="co">#&gt; names       :         var1.pred,         var1.var, observed,          residual,            zscore, fold </span></span>
+<span><span class="co">#&gt; min values  : -11.3093417593026, 0.18805014172394,    -14.9, -7.96227245410684, -5.06410729000771,    1 </span></span>
+<span><span class="co">#&gt; max values  :  11.8623927739557, 18.8319619293063,     13.6,  6.93440403096896,  4.51854664114804,  211</span></span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cross-validation: IDW</span></span>
 <span><span class="va">xv.idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.cv.html" class="external-link">krige.cv</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span><span class="op">)</span></span>
