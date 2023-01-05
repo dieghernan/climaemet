@@ -63,7 +63,7 @@
     <a class="dropdown-item" href="../articles/interpolation.html">Spatial Interpolation with climaemet</a>
     <a class="dropdown-item" href="../articles/x00_aemet_stations.html">AEMET Stations</a>
     <a class="dropdown-item" href="../articles/x01_dealing_spatial.html">Dealing with spatial data</a>
-    <a class="dropdown-item" href="../articles/extending.html">Extending climaemet</a>
+    <a class="dropdown-item" href="../articles/extending-climaemet.html">Extending climaemet</a>
   </div>
 </li>
 <li class="nav-item">
@@ -96,19 +96,19 @@
       <img src="../logo.png" class="logo" alt=""><h1>Extending climaemet</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
-      <div class="d-none name"><code>extending.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/extending-climaemet.Rmd" class="external-link"><code>vignettes/extending-climaemet.Rmd</code></a></small>
+      <div class="d-none name"><code>extending-climaemet.Rmd</code></div>
     </div>
 
     
     
 <p><strong>climaemet</strong> provides several functions for accessing a
 selection of endpoints of the <a href="https://opendata.aemet.es/dist/index.html?" class="external-link">AEMET API tool</a>.
-However, this package does not cover in full of the capabilities of the
+However, this package does not cover in full all the capabilities of the
 API.</p>
 <p>For that reason, we provide the <code><a href="../reference/get_data_aemet.html">get_data_aemet()</a></code>
-function, that allows to access any API endpoint. The drawback is that
-the user would need to handle the results by him/herself.</p>
+function, that allows to access any API endpoint freely. The drawback is
+that the user would need to handle the results by him/herself.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
@@ -165,35 +165,39 @@ reproducción citando a AEMET como autora de la misma.</td>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Returning raw results. MIME type: text/plain</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">pred_today</span><span class="op">)</span></span></code></pre></div>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA</p>
-<p>PREDICCIÓN GENERAL PARA ESPAÑA</p>
-<p>DÍA 05 DE ENERO DE 2023 A LAS 10:33 HORA OFICIAL</p>
-<p>PREDICCIÓN VÁLIDA PARA EL JUEVES 5</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS</p>
-<p>Nieblas localmente persistentes en el sur de Castilla-La Mancha y</p>
-<p>Extremadura, y además engelantes en la meseta norte.</p>
-<p>B.- PREDICCIÓN</p>
-<p>Predominio de un tiempo anticiclónico, seco y soleado en la mayor</p>
-<p>parte del país. No obstante, habrá intervalos nubosos en la</p>
-<p>mitad oeste de Galicia, y con posibilidad de alguna lluvia débil</p>
-<p>en el área del Estrecho. También habrá algunos intervalos</p>
-<p>nubosos al principio en el resto de Galicia, Cantábrico y</p>
-<p>litorales del sureste peninsular. En Canarias, poco nuboso con</p>
-<p>algunos intervalos nubosos, sin descartar algún chubasco débil</p>
-<p>en las islas de mayor relieve.</p>
-<p>Nieblas localmente persistentes en la meseta norte, sur de</p>
-<p>Castilla-La Mancha y Extremadura, y que en la meseta norte podrán</p>
-<p>ser además engelantes. Tampoco es descartable algunos bancos de</p>
-<p>niebla matinales más aislados en Galicia y cuenca del Ebro.</p>
-<p>Temperaturas con pocos cambios. Habrá heladas débiles en ambas</p>
-<p>mesetas, así como en la cordillera Cantábrica, sistema Ibérico</p>
-<p>y algo más intensas en Pirineos.</p>
-<p>Viento de componente este en Canarias y en litorales del sur</p>
-<p>peninsular, con intervalos de Levante fuerte de madrugada en el</p>
-<p>Estrecho. Viento del suroeste en la costa de Galicia, y del</p>
-<p>noroeste en el Ampurdán y Baleares. Flojo variable en el resto de</p>
-<p>la Península.</p>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Produce a result</span></span>
+<span></span>
+<span><span class="va">clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"\r"</span>, <span class="st">"\n"</span>, <span class="va">pred_today</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"\n\n\n"</span>, <span class="st">"\n"</span>, <span class="va">clean</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"---\n\n"</span>, <span class="va">clean</span>, <span class="st">"\n---"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<hr>
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 05
+DE ENERO DE 2023 A LAS 10:33 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+JUEVES 5</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Nieblas localmente persistentes en el
+sur de Castilla-La Mancha y Extremadura, y además engelantes en la
+meseta norte.</p>
+<p>B.- PREDICCIÓN Predominio de un tiempo anticiclónico, seco y soleado
+en la mayor parte del país. No obstante, habrá intervalos nubosos en la
+mitad oeste de Galicia, y con posibilidad de alguna lluvia débil en el
+área del Estrecho. También habrá algunos intervalos nubosos al principio
+en el resto de Galicia, Cantábrico y litorales del sureste peninsular.
+En Canarias, poco nuboso con algunos intervalos nubosos, sin descartar
+algún chubasco débil en las islas de mayor relieve.</p>
+<p>Nieblas localmente persistentes en la meseta norte, sur de
+Castilla-La Mancha y Extremadura, y que en la meseta norte podrán ser
+además engelantes. Tampoco es descartable algunos bancos de niebla
+matinales más aislados en Galicia y cuenca del Ebro.</p>
+<p>Temperaturas con pocos cambios. Habrá heladas débiles en ambas
+mesetas, así como en la cordillera Cantábrica, sistema Ibérico y algo
+más intensas en Pirineos.</p>
+<p>Viento de componente este en Canarias y en litorales del sur
+peninsular, con intervalos de Levante fuerte de madrugada en el
+Estrecho. Viento del suroeste en la costa de Galicia, y del noroeste en
+el Ampurdán y Baleares. Flojo variable en el resto de la Península.</p>
+<hr>
 </div>
 <div class="section level2">
 <h2 id="example-maps">Example: Maps<a class="anchor" aria-label="anchor" href="#example-maps"></a>
@@ -242,21 +246,12 @@ reproducción citando a AEMET como autora de la misma.</td>
 <span></span>
 <span></span>
 <span><span class="co"># Write as gif and include it</span></span>
-<span><span class="va">tmpgif</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".gif"</span><span class="op">)</span></span>
+<span><span class="va">giffile</span> <span class="op">&lt;-</span> <span class="st">"example-gif.gif"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">the_map</span>, <span class="va">giffile</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">the_map</span>, <span class="va">tmpgif</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># Handle with a suitable package, e.g. gganimate</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gganimate.com" class="external-link">gganimate</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">thegif</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmpgif</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">knit_print.gif_image</a></span><span class="op">(</span><span class="va">thegif</span>,</span>
-<span>  options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>fig.path <span class="op">=</span> <span class="st">"gif-"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<p><img src="gif--1.gif" alt="plot of chunk maps" width="100%"></p>
+<span><span class="co"># Display on the vignette</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html" class="external-link">include_graphics</a></span><span class="op">(</span><span class="va">giffile</span><span class="op">)</span></span></code></pre></div>
+<p><img src="example-gif.gif" alt="plot of chunk maps" width="100%"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
