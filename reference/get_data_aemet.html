@@ -89,7 +89,8 @@ information between the client and server.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A tibble or an empty tibble if no valid results from the API.</p>
+<p>A tibble (if possible) or the results of the query as provided by
+<code><a href="https://httr.r-lib.org/reference/content.html" class="external-link">httr::content()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -136,6 +137,63 @@ information between the client and server.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 3 more variables: campos$descripcion &lt;chr&gt;, $tipo_datos &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   $requerido &lt;lgl&gt;, and abbreviated variable names ¹​periodicidad,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​descripcion, ³​copyright, ⁴​notaLegal, ⁵​campos$id</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># We can get data from any API endpoint</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Plain text</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">plain</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/prediccion/nacional/hoy"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning raw results. MIME type: text/plain</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 05 DE ENERO DE 2023 A LAS 10:33 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL JUEVES 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nieblas localmente persistentes en el sur de Castilla-La Mancha y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Extremadura, y además engelantes en la meseta norte.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Predominio de un tiempo anticiclónico, seco y soleado en la mayor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> parte del país. No obstante, habrá intervalos nubosos en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mitad oeste de Galicia, y con posibilidad de alguna lluvia débil</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en el área del Estrecho. También habrá algunos intervalos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nubosos al principio en el resto de Galicia, Cantábrico y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> litorales del sureste peninsular. En Canarias, poco nuboso con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> algunos intervalos nubosos, sin descartar algún chubasco débil</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en las islas de mayor relieve.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nieblas localmente persistentes en la meseta norte, sur de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Castilla-La Mancha y Extremadura, y que en la meseta norte podrán</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ser además engelantes. Tampoco es descartable algunos bancos de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> niebla matinales más aislados en Galicia y cuenca del Ebro.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas con pocos cambios. Habrá heladas débiles en ambas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mesetas, así como en la cordillera Cantábrica, sistema Ibérico</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y algo más intensas en Pirineos.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Viento de componente este en Canarias y en litorales del sur</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular, con intervalos de Levante fuerte de madrugada en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estrecho. Viento del suroeste en la costa de Galicia, y del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> noroeste en el Ampurdán y Baleares. Flojo variable en el resto de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> la Península.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># An image</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">image</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/satelites/producto/nvdi"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Returning raw results. MIME type: image/gif</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Write and read</span></span></span>
+<span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".gif"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
