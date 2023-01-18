@@ -119,8 +119,7 @@ to estimate values at other unknown points.</p>
 </h2>
 <p>For this analysis, we would need the following libraries:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span> <span class="co"># Base maps of Spain</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span> <span class="co"># spatial shape handling</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r-spatial/gstat/" class="external-link">gstat</a></span><span class="op">)</span> <span class="co"># for spatial interpolation</span></span>
@@ -137,8 +136,7 @@ Spain. Note that on the first half of January, <a href="https://en.wikipedia.org
 brought unusual heavy snowfall to parts of Spain, with Madrid recording
 its heaviest snowfall since 1971. We should be able to spot that.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">clim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_daily.html">aemet_daily_clim</a></span><span class="op">(</span></span>
 <span>  start <span class="op">=</span> <span class="st">"2020-12-21"</span>,</span>
 <span>  end <span class="op">=</span> <span class="st">"2021-03-20"</span>,</span>
 <span>  return_sf <span class="op">=</span> <span class="cn">TRUE</span></span>
@@ -161,8 +159,7 @@ its heaviest snowfall since 1971. We should be able to spot that.</p>
 <p>We load also a basic shapefile of Spain using
 <strong>mapSpain</strong>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">CCAA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html" class="external-link">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">CCAA</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropenspain.github.io/mapSpain/reference/esp_get_ccaa.html" class="external-link">esp_get_ccaa</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="co"># Exclude Canary Islands from analysis</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ine.ccaa.name</span> <span class="op">!=</span> <span class="st">"Canarias"</span><span class="op">)</span></span>
 <span></span>
@@ -243,8 +240,7 @@ of Spain.</p>
 <p>We use here a density of 5000 (m), so the grid density is 5 x 5 kms
 (25 km2):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Create grid 5*5 km (25 km2)</span></span>
+<code class="sourceCode R"><span><span class="co"># Create grid 5*5 km (25 km2)</span></span>
 <span></span>
 <span><span class="va">grd_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html" class="external-link">st_as_sfc</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_make_grid.html" class="external-link">st_make_grid</a></span><span class="op">(</span>cellsize <span class="op">=</span> <span class="fl">5000</span>, what <span class="op">=</span> <span class="st">"centers"</span><span class="op">)</span></span>
@@ -260,8 +256,7 @@ of Spain.</p>
 <p>Now we just need to populate the (empty) grid with the predicted
 values based on the observations:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Test with a single day</span></span>
+<code class="sourceCode R"><span><span class="co"># Test with a single day</span></span>
 <span></span>
 <span><span class="va">test_day</span> <span class="op">&lt;-</span> <span class="va">clim_data_utm</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">fecha</span> <span class="op">==</span> <span class="st">"2021-01-08"</span><span class="op">)</span></span>
 <span></span>
@@ -281,8 +276,7 @@ values based on the observations:</p>
 <p><img src="interpolation_files/figure-html/interpolate-1.png" width="100%"></p>
 <p>Let’s create a nice <strong>ggplot2</strong> plot! See also <span class="citation">Royé (<a href="#ref-roye2020" role="doc-biblioref">2020</a>)</span> for more on this.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Making a nice plot on ggplot2</span></span>
+<code class="sourceCode R"><span><span class="co"># Making a nice plot on ggplot2</span></span>
 <span><span class="va">coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html" class="external-link">st_coordinates</a></span><span class="op">(</span><span class="va">interp_temp</span><span class="op">)</span></span>
 <span><span class="va">values</span> <span class="op">&lt;-</span> <span class="va">interp_temp</span><span class="op">$</span><span class="va">var1.pred</span></span>
 <span></span>
@@ -322,8 +316,7 @@ values based on the observations:</p>
 animation to observe the evolution of temperature through the winter of
 2020/21.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Extending and animating</span></span>
+<code class="sourceCode R"><span><span class="co"># Extending and animating</span></span>
 <span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">fecha</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -364,8 +357,7 @@ animation to observe the evolution of temperature through the winter of
 <span><span class="op">}</span></span></code></pre></div>
 <p>Now we use <strong>gganimate</strong> to create the animation:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">min_temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">interp_res</span><span class="op">$</span><span class="va">temp</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">min_temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">floor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">interp_res</span><span class="op">$</span><span class="va">temp</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">max_temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">interp_res</span><span class="op">$</span><span class="va">temp</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -403,8 +395,7 @@ animation to observe the evolution of temperature through the winter of
 <p>Let’s plot an histogram for each Autonomous Community using the
 <code>geofacet</code> package:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hafen/geofacet" class="external-link">geofacet</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hafen/geofacet" class="external-link">geofacet</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">clim_data_geofacet</span> <span class="op">&lt;-</span> <span class="va">clim_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_drop_geometry</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>

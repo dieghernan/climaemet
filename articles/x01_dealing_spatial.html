@@ -99,7 +99,7 @@ Fernández-Avilés</h4>
                         <h4 data-toc-skip class="author">Diego
 Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2023-01-13</h4>
+            <h4 data-toc-skip class="date">2023-01-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
@@ -142,8 +142,7 @@ R?<a class="anchor" aria-label="anchor" href="#what-do-we-need-to-carry-out-a-ge
 <p>Some useful libraries we are going to use throughout this article
 are:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span> <span class="co"># meteorological data</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span> <span class="co"># meteorological data</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/mapSpain/" class="external-link">mapSpain</a></span><span class="op">)</span> <span class="co"># base maps of Spain</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/" class="external-link">classInt</a></span><span class="op">)</span> <span class="co"># classification</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rspatial.org/raster" class="external-link">raster</a></span><span class="op">)</span> <span class="co"># raster handling</span></span>
@@ -168,8 +167,7 @@ package <span class="citation">(<a href="#ref-pizarro2021" role="doc-biblioref">
 the climatic data from the Spanish Meteorological Agency (AEMET)
 directly using their API. <strong>climaemet</strong> is available on <a href="https://CRAN.R-project.org/package=climaemet" class="external-link"><strong>CRAN</strong></a><strong>:</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Install climaemet</span></span>
+<code class="sourceCode R"><span><span class="co"># Install climaemet</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"climaemet"</span><span class="op">)</span></span></code></pre></div>
 <div class="section level4">
 <h4 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a>
@@ -762,8 +760,7 @@ is known, using data in the neighborhood of the estimation location.</p>
 <p><img src="x01_dealing_spatial_files/figure-html/krig_plot1-1.png" width="100%"></p>
 <p>And, the variance of the prediction:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">kriged_df</span><span class="op">)</span> <span class="op">+</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">kriged_df</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_contour.html" class="external-link">geom_contour_filled</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">coords.x1</span>, <span class="va">coords.x2</span>, z <span class="op">=</span> <span class="va">var1.var</span><span class="op">)</span>,</span>
 <span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1.5</span>, <span class="fl">3</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">kriged_df</span><span class="op">$</span><span class="va">var1.var</span> <span class="op">+</span></span>
 <span>      <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
@@ -943,9 +940,9 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; extent      : -13501.2, 1117513, 3903695, 4858794  (xmin, xmax, ymin, ymax)</span></span>
 <span><span class="co">#&gt; crs         : +proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs </span></span>
 <span><span class="co">#&gt; variables   : 6</span></span>
-<span><span class="co">#&gt; names       :         var1.pred,          var1.var, observed,         residual,            zscore, fold </span></span>
-<span><span class="co">#&gt; min values  : -11.3093417593027, 0.188050141723947,    -14.9, -7.9622724541069, -5.06410729000774,    1 </span></span>
-<span><span class="co">#&gt; max values  :  11.8623927739558,  18.8319619293063,     13.6, 6.93440403096915,  4.51854664114815,  211</span></span></code></pre></div>
+<span><span class="co">#&gt; names       :         var1.pred,         var1.var, observed,          residual,            zscore, fold </span></span>
+<span><span class="co">#&gt; min values  : -11.3093417593026, 0.18805014172394,    -14.9, -7.96227245410684, -5.06410729000771,    1 </span></span>
+<span><span class="co">#&gt; max values  :  11.8623927739557, 18.8319619293063,     13.6,  6.93440403096896,  4.51854664114804,  211</span></span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cross-validation: IDW</span></span>
 <span><span class="va">xv.idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.cv.html" class="external-link">krige.cv</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span><span class="op">)</span></span>
