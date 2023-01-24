@@ -119,8 +119,7 @@ that the user would need to handle the results by him/herself.</p>
 as plain text on natural language. These results are not parsed by
 <strong>climaemet</strong>, but can be retrieved as this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># endpoint, today forecast</span></span>
+<code class="sourceCode R"><span><span class="co"># endpoint, today forecast</span></span>
 <span></span>
 <span><span class="va">today</span> <span class="op">&lt;-</span> <span class="st">"/api/prediccion/nacional/hoy"</span></span>
 <span></span>
@@ -165,40 +164,50 @@ reproducción citando a AEMET como autora de la misma.</td>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Returning raw results. MIME type: text/plain</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Produce a result</span></span>
+<code class="sourceCode R"><span><span class="co"># Produce a result</span></span>
 <span></span>
 <span><span class="va">clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"\r"</span>, <span class="st">"\n"</span>, <span class="va">pred_today</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="st">"\n\n\n"</span>, <span class="st">"\n"</span>, <span class="va">clean</span>, fixed <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"---\n\n"</span>, <span class="va">clean</span>, <span class="st">"\n---"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <hr>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 06
-DE ENERO DE 2023 A LAS 08:36 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-VIERNES 6</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS Probabilidad de chubascos localmente
-fuertes en el oeste de Galicia. Rachas de viento muy fuerte en el norte
-de Galicia a partir de la tarde. Nieblas localmente persistentes en
-áreas del interior peninsular.</p>
-<p>B.- PREDICCIÓN Debido a la aproximación de un frente atlántico, se
-espera un aumento de la nubosidad en la mitad oeste de Galicia, con
-probabilidad de precipitaciones, al final del día, que podrían ser
-localmente fuertes. Intervalos nubosos en el resto de Galicia, meseta
-norte, y al principio en el área del Estrecho y zonas del valle del
-Ebro, Extremadura y de Castilla-La Mancha. Poco nuboso en el resto de la
-Península y Baleares, salvo nieblas localmente persistentes en áreas del
-interior peninsular, sobre todo en La Mancha, Castilla y León y
-depresiones del nordeste, donde además pueden ser engelantes. En
-Canarias, poco nuboso con algunos intervalos nubosos, sin descartar
-algún chubasco débil en las islas de mayor relieve.</p>
-<p>Temperaturas diurnas en descenso en zonas del tercio norte
-peninsular, y con pocos cambios el resto. Habrá heladas débiles en ambas
-mesetas, así como en el sistema Ibérico y en las montañas del sureste
-peninsular. Serán algo más intensas en Pirineos.</p>
-<p>Viento de componente este en el Estrecho y Canarias. Del suroeste y
-sur en Galicia, Cantábrico y Baleares, con rachas de muy fuerte en el
-norte de Galicia a partir de la tarde. Flojo variable en el resto de la
-Península.</p>
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 21
+DE ENERO DE 2023 A LAS 08:50 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+SÁBADO 21</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Nevadas en el Valle de Arán y Mallorca.
+Temperaturas mínimas bajas en Baleares y el nordeste peninsular. Viento
+del norte fuerte o con rachas muy fuertes en Pirineos, Ampurdán y norte
+de Baleares.</p>
+<p>B.- PREDICCIÓN Predominarán los cielos poco nubosos o con intervalos
+nubosos en la Península, salvo en el cuadrante noroeste, donde habrá
+cielos nubosos o cubiertos. Precipitaciones débiles, en Galicia y mitad
+occidental del área cantábrica durante la primera mitad del día, sin
+descartarlas durante la segunda, ni tampoco en el resto del área
+cantábrica. Con baja probabilidad, se espera alguna precipitación débil
+a primeras horas en la meseta norte, algo más probables, en los sistemas
+Central e Ibérico y, al final del día, en los litorales de Andalucía
+oriental. Durante la segunda mitad del día aumentará a nuboso en el
+Pirineo con chubascos. Intervalos nubosos y probabilidad de chubascos
+ocasionales en Baleares y Melilla. En Canarias nuboso con lluvias en el
+norte de las islas de mayor relieve, y poco nuboso tendiendo a
+intervalos nubosos en el resto. Las cotas de nieve se situarán entre 300
+y 600 m en Baleares, entre 200 y 500 m el tercio nordeste peninsular, y
+en los 1500 m bajando a unos 1000 m en el resto de la Península, pero
+solo en Pirineos y el norte de Mallorca se esperan acumulaciones
+significativas.</p>
+<p>Probables bancos de nieblas matinales en los principales sistemas
+montañosos de la Península.</p>
+<p>Temperaturas diurnas en ascenso en los tercios sur y oeste
+peninsulares y en Canarias y en descenso en el resto. Mínimas en
+descenso generalizado, salvo en Canarias, con pocos cambios. Heladas en
+la mitad nordeste peninsular y en la meseta norte, así como en zonas de
+montaña del resto de la Península. Serán fuertes en Pirineos.</p>
+<p>Viento de componente norte, salvo en el Cantábrico donde predominara
+la componente este y en el Estrecho y Alborán donde lo hará el poniente.
+El viento será en general flojo en zonas de interior salvo en el valle
+del Ebro e Ibérica oriental, y llegará a fuerte o con rachas muy fuertes
+en Pirineos, Ampurdán y norte de Baleares. En Canarias, alisios con
+intervalos fuertes entre islas.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -207,8 +216,7 @@ Península.</p>
 <p>AEMET also provides map data, usually on <code>image/gif</code>
 format. One way to get this kind of data is as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Endpoint of a map</span></span>
+<code class="sourceCode R"><span><span class="co"># Endpoint of a map</span></span>
 <span><span class="va">a_map</span> <span class="op">&lt;-</span> <span class="st">"/api/satelites/producto/nvdi"</span></span>
 <span></span>
 <span><span class="co"># Metadata</span></span>
