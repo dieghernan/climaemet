@@ -15,8 +15,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.4/font.css" rel="stylesheet">
-<link href="../deps/Roboto_Mono-0.4.4/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.5/font.css" rel="stylesheet">
+<link href="../deps/Roboto_Mono-0.4.5/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Extending climaemet">
@@ -42,7 +42,7 @@
     <div>
       <img src="../logo.png" alt="climaemet-logo" id="ROS-navbar-logo"><a class="navbar-brand me-2" href="../index.html">climaemet</a>
 
-      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2.9000</small>
+      <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
     </div>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -171,43 +171,40 @@ reproducción citando a AEMET como autora de la misma.</td>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"---\n\n"</span>, <span class="va">clean</span>, <span class="st">"\n---"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <hr>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 21
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 27
 DE ENERO DE 2023 A LAS 08:50 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-SÁBADO 21</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS Nevadas en el Valle de Arán y Mallorca.
-Temperaturas mínimas bajas en Baleares y el nordeste peninsular. Viento
-del norte fuerte o con rachas muy fuertes en Pirineos, Ampurdán y norte
-de Baleares.</p>
-<p>B.- PREDICCIÓN Predominarán los cielos poco nubosos o con intervalos
-nubosos en la Península, salvo en el cuadrante noroeste, donde habrá
-cielos nubosos o cubiertos. Precipitaciones débiles, en Galicia y mitad
-occidental del área cantábrica durante la primera mitad del día, sin
-descartarlas durante la segunda, ni tampoco en el resto del área
-cantábrica. Con baja probabilidad, se espera alguna precipitación débil
-a primeras horas en la meseta norte, algo más probables, en los sistemas
-Central e Ibérico y, al final del día, en los litorales de Andalucía
-oriental. Durante la segunda mitad del día aumentará a nuboso en el
-Pirineo con chubascos. Intervalos nubosos y probabilidad de chubascos
-ocasionales en Baleares y Melilla. En Canarias nuboso con lluvias en el
-norte de las islas de mayor relieve, y poco nuboso tendiendo a
-intervalos nubosos en el resto. Las cotas de nieve se situarán entre 300
-y 600 m en Baleares, entre 200 y 500 m el tercio nordeste peninsular, y
-en los 1500 m bajando a unos 1000 m en el resto de la Península, pero
-solo en Pirineos y el norte de Mallorca se esperan acumulaciones
-significativas.</p>
-<p>Probables bancos de nieblas matinales en los principales sistemas
-montañosos de la Península.</p>
-<p>Temperaturas diurnas en ascenso en los tercios sur y oeste
-peninsulares y en Canarias y en descenso en el resto. Mínimas en
-descenso generalizado, salvo en Canarias, con pocos cambios. Heladas en
-la mitad nordeste peninsular y en la meseta norte, así como en zonas de
-montaña del resto de la Península. Serán fuertes en Pirineos.</p>
-<p>Viento de componente norte, salvo en el Cantábrico donde predominara
-la componente este y en el Estrecho y Alborán donde lo hará el poniente.
-El viento será en general flojo en zonas de interior salvo en el valle
-del Ebro e Ibérica oriental, y llegará a fuerte o con rachas muy fuertes
-en Pirineos, Ampurdán y norte de Baleares. En Canarias, alisios con
-intervalos fuertes entre islas.</p>
+VIERNES 27</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Acumulaciones significativas de nieve en
+el área cantábrica y norte de los sistemas Central e Ibérico. Heladas
+generalizadas, fuertes en Pirineos. Viento fuerte o con rachas muy
+fuertes en los litorales de Galicia, Ampurdán, norte de Baleares,
+Canarias, Pirineos, sistemas Central e Ibérico y valle del Ebro.</p>
+<p>B.- PREDICCIÓN Predominio de cielos nubosos en los tercios noroeste y
+norte peninsulares, con precipitaciones en el nordeste de Galicia y área
+cantábrica, donde podrán ser localmente persistentes en áreas
+montañosas. También se esperan precipitaciones, débiles y dispersas en
+general, en otras zonas del norte de Galicia, Pirineos, alto Ebro, y
+norte de la meseta Norte, y sin descartarlas en los entornos de los
+sistemas Ibérico y Central. Intervalos nubosos en Baleares y Alborán con
+probables chubascos ocasionales, sin descartarlos en los litorales del
+sureste peninsular. Predominio de poco nuboso en el resto del área
+mediterránea, y mitad sur peninsular, con intervalos nubosos en las
+Béticas. Las cotas de nieve en Pirineos estarán en unos 300/500 m,
+600/800 en la Cantábrica occidental, y 400/600 m en el resto del área
+cantábrica y sistemas Central e Ibérico. Se esperan acumulaciones
+significativas en el área cantábrica, norte de los sistemas Central e
+Ibérico y noreste de la meseta Norte. En Canarias, intervalos nubosos
+con probabilidad de precipitaciones débiles durante la segunda mitad del
+día en el norte de las islas de mayor relieve. Probables bancos de
+niebla matinales en zonas de montaña del tercio norte peninsular. Las
+temperaturas tendrán un aumento en la mitad suroeste peninsular, tanto
+las máximas como las mínimas, y con pocos cambios o ligeros descensos en
+el resto del país. Salvo en el extremo suroeste, heladas generalizadas
+en zonas del interior peninsular, más intensas en montaña y llegando a
+fuerte en Pirineos. Vientos del norte y noreste, fuerte en litorales de
+Galicia, tramontana en Ampurdán y norte de Baleares, y con intervalos
+fuertes en Canarias occidentales. Rachas muy fuertes del noroeste en
+Pirineos, sistemas Central e Ibérico y valle del Ebro.</p>
 <hr>
 </div>
 <div class="section level2">
