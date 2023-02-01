@@ -151,7 +151,7 @@ its heaviest snowfall since 1971. We should be able to spot that.</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">$</span><span class="va">tmed</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">#&gt; -15.200   5.000   8.900   8.278  12.000  23.000</span></span>
+<span><span class="co">#&gt; -15.200   6.100   9.500   8.876  12.200  23.000</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">clim_data_clean</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -353,7 +353,7 @@ animation to observe the evolution of temperature through the winter of
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span><span class="op">)</span> <span class="co"># We would need the id later</span></span>
 <span>  <span class="va">interp_day</span><span class="op">$</span><span class="va">fecha</span> <span class="op">&lt;-</span> <span class="va">thisdate</span></span>
 <span></span>
-<span>  <span class="va">interp_res</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">interp_res</span>, <span class="va">interp_day</span><span class="op">)</span></span>
+<span>  <span class="va">interp_res</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span><span class="va">interp_res</span>, <span class="va">interp_day</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Now we use <strong>gganimate</strong> to create the animation:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
