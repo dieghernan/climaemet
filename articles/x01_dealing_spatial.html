@@ -99,7 +99,7 @@ Fernández-Avilés</h4>
                         <h4 data-toc-skip class="author">Diego
 Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2023-02-08</h4>
+            <h4 data-toc-skip class="date">2023-02-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
@@ -597,7 +597,11 @@ the random functions increases with distance.</p>
 semivariogram of our data, which, in a second step, has to be fitted to
 a theoretical one.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">vario.geor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/variog.html" class="external-link">variog</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup.geoR</span>, coords <span class="op">=</span> <span class="va">clim_data_clean_nodup.geoR</span><span class="op">$</span><span class="va">coords</span>, data <span class="op">=</span> <span class="va">clim_data_clean_nodup.geoR</span><span class="op">$</span><span class="va">data</span>, uvec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1000000</span>, l <span class="op">=</span> <span class="fl">25</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">vario.geor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/variog.html" class="external-link">variog</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup.geoR</span>,</span>
+<span>  coords <span class="op">=</span> <span class="va">clim_data_clean_nodup.geoR</span><span class="op">$</span><span class="va">coords</span>,</span>
+<span>  data <span class="op">=</span> <span class="va">clim_data_clean_nodup.geoR</span><span class="op">$</span><span class="va">data</span>,</span>
+<span>  uvec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1000000</span>, l <span class="op">=</span> <span class="fl">25</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; variog: computing omnidirectional variogram</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vario.geor</span>, pch <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/variog.geoR-1.png" width="100%"></p>
@@ -650,13 +654,17 @@ than the sampling interval or both.</p></li>
 directions (0º, 45º, 90º, 135º).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Directional empirical semivariogramin gstat()</span></span>
-<span><span class="va">vgm.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html" class="external-link">variogram</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span>, cutoff <span class="op">=</span> <span class="fl">1000000</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">45</span>, <span class="fl">90</span>, <span class="fl">135</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">vgm.dir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html" class="external-link">variogram</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span>,</span>
+<span>  cutoff <span class="op">=</span> <span class="fl">1000000</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">45</span>, <span class="fl">90</span>, <span class="fl">135</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vgm.dir</span><span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/variog.gstat-1.png" width="100%"></p>
 <p>We can see that all the semivariograms exhibit spatial dependence. We
 choose the 45º semivariogram.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">vgm.dir.45</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html" class="external-link">variogram</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span>, cutoff <span class="op">=</span> <span class="fl">1000000</span>, alpha <span class="op">=</span> <span class="fl">45</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">vgm.dir.45</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/variogram.html" class="external-link">variogram</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span>,</span>
+<span>  cutoff <span class="op">=</span> <span class="fl">1000000</span>, alpha <span class="op">=</span> <span class="fl">45</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>Now, we fit the empirical semivariogram to a theoretical
 semivariogram, which is included in the kriging equations. Note that, in
 our case, the object <code>fit.var</code> contains the value of the
@@ -667,12 +675,14 @@ estimated parameters.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">fit.var</span></span>
 <span><span class="co">#&gt;   model    psill    range</span></span>
-<span><span class="co">#&gt; 1   Sph 47.75425 831278.5</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   Sph 47.75424 831277.4</span></span></code></pre></div>
 <p>Finally, we plot the empirical and the theoretical semivariograms
 together.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot empirical (dots) and theoretical (line) semivariograms</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vgm.dir.45</span>, <span class="va">fit.var</span>, main <span class="op">=</span> <span class="st">"Empirical (dots) and theoretical (line) semivariograms "</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">vgm.dir.45</span>, <span class="va">fit.var</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">"Empirical (dots) and theoretical (line) semivariograms "</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/variog.gstat.fit-1.png" width="100%"></p>
 </div>
 </div>
@@ -940,9 +950,9 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; extent      : -13501.2, 1117513, 3903695, 4858794  (xmin, xmax, ymin, ymax)</span></span>
 <span><span class="co">#&gt; crs         : +proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs </span></span>
 <span><span class="co">#&gt; variables   : 6</span></span>
-<span><span class="co">#&gt; names       :         var1.pred,         var1.var, observed,          residual,            zscore, fold </span></span>
-<span><span class="co">#&gt; min values  : -11.3093417593026, 0.18805014172394,    -14.9, -7.96227245410684, -5.06410729000771,    1 </span></span>
-<span><span class="co">#&gt; max values  :  11.8623927739557, 18.8319619293063,     13.6,  6.93440403096896,  4.51854664114804,  211</span></span></code></pre></div>
+<span><span class="co">#&gt; names       :         var1.pred,          var1.var, observed,          residual,            zscore, fold </span></span>
+<span><span class="co">#&gt; min values  : -11.3093455431305, 0.188050354791862,    -14.9, -7.96227183369194, -5.06410602744108,    1 </span></span>
+<span><span class="co">#&gt; max values  :  11.8623739643312,  18.8319775890432,     13.6,   6.9344046585317,  4.51854666030957,  211</span></span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cross-validation: IDW</span></span>
 <span><span class="va">xv.idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.cv.html" class="external-link">krige.cv</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup_sp</span><span class="op">)</span></span>
@@ -953,8 +963,8 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; crs         : +proj=utm +zone=30 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs </span></span>
 <span><span class="co">#&gt; variables   : 6</span></span>
 <span><span class="co">#&gt; names       :         var1.pred, var1.var, observed,          residual, zscore, fold </span></span>
-<span><span class="co">#&gt; min values  : -8.32680888015506,       NA,    -14.9, -10.0346740378265,     NA,    1 </span></span>
-<span><span class="co">#&gt; max values  :   10.022587169628,       NA,     13.6,  10.2821527026009,     NA,  211</span></span></code></pre></div>
+<span><span class="co">#&gt; min values  : -8.32680792171056,       NA,    -14.9, -10.0346755961979,     NA,    1 </span></span>
+<span><span class="co">#&gt; max values  :  10.0226003707503,       NA,     13.6,  10.2821655821116,     NA,  211</span></span></code></pre></div>
 <p>Now, we plot the leave-one-out cross validation residuals and observe
 that the residuals with OK are smaller than with OK.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
@@ -964,8 +974,14 @@ that the residuals with OK are smaller than with OK.</p>
 <span><span class="va">keys</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html" class="external-link">classIntervals</a></span><span class="op">(</span><span class="va">allvalues</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">$</span><span class="va">brks</span></span>
 <span></span>
 <span></span>
-<span><span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/bubble.html" class="external-link">bubble</a></span><span class="op">(</span><span class="va">xv.ok</span>, <span class="st">"residual"</span>, main <span class="op">=</span> <span class="st">"Tmin: leave-one-out cross validation residuals with OK"</span>, key.entries <span class="op">=</span> <span class="va">keys</span><span class="op">)</span></span>
-<span><span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/bubble.html" class="external-link">bubble</a></span><span class="op">(</span><span class="va">xv.idw</span>, <span class="st">"residual"</span>, main <span class="op">=</span> <span class="st">"Tmin: leave-one-out cross validation residuals with IDW"</span>, key.entries <span class="op">=</span> <span class="va">keys</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/bubble.html" class="external-link">bubble</a></span><span class="op">(</span><span class="va">xv.ok</span>, <span class="st">"residual"</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">"Tmin: leave-one-out cross validation residuals with OK"</span>,</span>
+<span>  key.entries <span class="op">=</span> <span class="va">keys</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu">sp</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/sp/man/bubble.html" class="external-link">bubble</a></span><span class="op">(</span><span class="va">xv.idw</span>, <span class="st">"residual"</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">"Tmin: leave-one-out cross validation residuals with IDW"</span>,</span>
+<span>  key.entries <span class="op">=</span> <span class="va">keys</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><img src="x01_dealing_spatial_files/figure-html/unnamed-chunk-7-1.png" width="50%"><img src="x01_dealing_spatial_files/figure-html/unnamed-chunk-7-2.png" width="50%"></p>
 <p>Moreover, calculating the diagnostic statistics from the results it
 is a good way to select the best interpolation method. The error-based

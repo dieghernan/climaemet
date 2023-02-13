@@ -97,7 +97,7 @@
                         <h4 data-toc-skip class="author">Diego
 Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2023-01-27</h4>
+            <h4 data-toc-skip class="date">2023-02-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/climaemet.Rmd" class="external-link"><code>vignettes/climaemet.Rmd</code></a></small>
       <div class="d-none name"><code>climaemet.Rmd</code></div>
@@ -172,20 +172,20 @@ as double, etc.).</p>
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 23 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi    pres    hr stdvv    ts pres_…¹ tamin</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2023-01-26 17:00:00     0   249  12.6   5.8   316  41.7   323 ZARA…  986.    49   0.9   8.6   1016    9  </span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2023-01-26 18:00:00     0   249   9.5   6.2   316  41.7   308 ZARA…  986     52   1.1   7.2   1017.   7.8</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2023-01-26 19:00:00     0   249  14.7   9.1   315  41.7   320 ZARA…  986.    59   1.5   6.4   1017.   6.8</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2023-01-26 20:00:00     0   249  16.5  10.7   311  41.7   310 ZARA…  986.    58   1.8   5.7   1017    6.1</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2023-01-26 21:00:00     0   249  16.4   9.8   306  41.7   313 ZARA…  987.    60   1.8   5.5   1017.   5.7</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2023-01-26 22:00:00     0   249  14.9   9.5   310  41.7   303 ZARA…  987.    59   1.9   5.2   1018.   5.4</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2023-01-26 23:00:00     0   249  17.8  10.8   314  41.7   315 ZARA…  987.    57   1.8   4.9   1018.   5.1</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2023-01-27 00:00:00     0   249  17.1  10.4   303  41.7   313 ZARA…  987     57   2     4.2   1018    4.3</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2023-01-27 01:00:00     0   249  12.8   6.3   285  41.7   288 ZARA…  987.    64   1.2   3.5   1018.   3.8</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2023-01-27 02:00:00     0   249  12.1   5.9   295  41.7   320 ZARA…  986.    65   1.5   4.2   1017.   3.8</span></span>
-<span><span class="co">#&gt; # … with 13 more rows, 8 more variables: ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; # A tibble: 24 × 25</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr stdvv    ts pres_…¹ tamin</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2023-02-12 15:00:00     0   249   5.9   4     131  41.7   125 ZARAG… 1002.    50   0.7  12.6   1033.  10.7</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2023-02-12 16:00:00     0   249   5.8   3.7   127  41.7   128 ZARAG… 1002.    43   0.6  12.1   1032.  11  </span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2023-02-12 17:00:00     0   249   5.4   2.6   106  41.7   130 ZARAG… 1002.    42   0.3   9.3   1033.  10.3</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2023-02-12 18:00:00     0   249   3.3   2.4   125  41.7   148 ZARAG… 1002.    58   0.2   6     1033.   7.5</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2023-02-12 19:00:00     0   249   3.5   1.7   148  41.7   140 ZARAG… 1002.    63   0.3   4.9   1034.   6.4</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2023-02-12 20:00:00     0   249   1.8   1.2   112  41.7    98 ZARAG… 1003.    70   0.4   1.5   1034.   4.7</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2023-02-12 21:00:00     0   249   1.4   0.7   148  41.7    75 ZARAG… 1003.    73   0.2   0.9   1035.   3.5</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2023-02-12 22:00:00     0   249   2.2   0.6    71  41.7   195 ZARAG… 1003.    75   0.2   0.4   1035.   2.8</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2023-02-12 23:00:00     0   249   2.7   1.9   159  41.7   128 ZARAG… 1004.    77   0.2   1.7   1035.   2.2</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2023-02-13 00:00:00     0   249   3.4   1.7   127  41.7   120 ZARAG… 1004.    79   0.3   1.1   1036.   2.1</span></span>
+<span><span class="co">#&gt; # … with 14 more rows, 8 more variables: ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;, and abbreviated variable name ¹​pres_nmar</span></span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are
 converted to the right format.</p>
