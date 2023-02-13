@@ -179,8 +179,8 @@ to the whole territory.</p>
 been made, we would need to interpolate the data. On this example we
 would use the <strong>terra</strong> package and we would apply the <a href="https://rspatial.org/terra/analysis/4-interpolation.html#inverse-distance-weighted" class="external-link">Inverse
 Distance Weighted method</a>, that is one of several approaches to
-perform spatial interpolation. We recommend <a href="https://rspatial.org/terra/analysis/4-interpolation.html" class="external-link">this
-article</a> on how to perform these analysis on <strong>R</strong>.</p>
+perform spatial interpolation. We recommend <span class="citation">Hijmans (<a href="#ref-hijmans2023" role="doc-biblioref">2023</a>)</span> on how to perform these analysis
+on <strong>R</strong>.</p>
 <p>The process would be as follow:</p>
 <ul>
 <li>Create an spatial object (SpatRaster) where the predicted values
@@ -238,7 +238,7 @@ Spain.</p>
 <p>Now, we create a regular grid using <strong>terra</strong>. This grid
 is composed to equally spaced points over the whole extent (bounding
 box) of Spain.</p>
-<p>We use here a density of 5000 (m), so the grid density is 5 x 5 kms
+<p>We use here a density of 5,000 (m), so the grid density is 5 x 5 kms
 (25 km2):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create grid 5*5 km (25 km2)</span></span>
@@ -265,9 +265,12 @@ values based on the observations:</p>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/terra/man/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"XY"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">gs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/gstat.html" class="external-link">gstat</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">tmed</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">init_p</span><span class="op">)</span></span>
+<span><span class="va">gs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">tmed</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">init_p</span>,</span>
+<span>  set <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>idp <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">interp_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/interpolate.html" class="external-link">interpolate</a></span><span class="op">(</span><span class="va">grd</span>, <span class="va">gs</span>, idp <span class="op">=</span> <span class="fl">2.0</span><span class="op">)</span></span>
+<span><span class="va">interp_temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/interpolate.html" class="external-link">interpolate</a></span><span class="op">(</span><span class="va">grd</span>, <span class="va">gs</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
 <span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
 <span></span>
@@ -334,215 +337,49 @@ evolution of temperature through the winter of 2020/21.</p>
 <span>  <span class="va">interp_day</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/interpolate.html" class="external-link">interpolate</a></span><span class="op">(</span><span class="va">grd</span>, <span class="va">gs_day</span>, idp <span class="op">=</span> <span class="fl">2.0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span>interpolated <span class="op">=</span> <span class="va">var1.pred</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"interp_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">thisdate</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">thisdate</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">interp_day</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
-<span><span class="co">#&gt; [inverse distance weighted interpolation]</span></span>
 <span></span>
 <span><span class="co"># Concatenate to a single SpatRaster</span></span>
 <span><span class="va">interp_rast</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">c</span>, <span class="va">interp_list</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/mask.html" class="external-link">mask</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/vect.html" class="external-link">vect</a></span><span class="op">(</span><span class="va">CCAA_utm</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/time.html" class="external-link">time</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">dates</span></span></code></pre></div>
+<p>Now we can check the results:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">interp_rast</span></span>
+<span><span class="co">#&gt; class       : SpatRaster </span></span>
+<span><span class="co">#&gt; dimensions  : 193, 228, 90  (nrow, ncol, nlyr)</span></span>
+<span><span class="co">#&gt; resolution  : 5000, 5000  (x, y)</span></span>
+<span><span class="co">#&gt; extent      : -13968.29, 1126032, 3892750, 4857750  (xmin, xmax, ymin, ymax)</span></span>
+<span><span class="co">#&gt; coord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) </span></span>
+<span><span class="co">#&gt; source(s)   : memory</span></span>
+<span><span class="co">#&gt; names       : 2020-12-21, 2020-12-22, 2020-12-23, 2020-12-24, 2020-12-25, 2020-12-26, ... </span></span>
+<span><span class="co">#&gt; min values  :    3.64035,   5.250856,    1.93330,  -1.738997,  -5.718913,  -6.667536, ... </span></span>
+<span><span class="co">#&gt; max values  :   19.35072,  18.833013,   16.75938,  16.739283,  16.131249,  14.181120, ... </span></span>
+<span><span class="co">#&gt; time (days) : 2020-12-21 to 2021-03-20</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/dimensions.html" class="external-link">nlyr</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 90</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/headtail.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "interp_2020-12-21" "interp_2020-12-22" "interp_2020-12-23"</span></span>
-<span><span class="co">#&gt; [4] "interp_2020-12-24" "interp_2020-12-25" "interp_2020-12-26"</span></span>
+<span><span class="co">#&gt; [1] "2020-12-21" "2020-12-22" "2020-12-23" "2020-12-24" "2020-12-25"</span></span>
+<span><span class="co">#&gt; [6] "2020-12-26"</span></span>
 <span></span>
-<span><span class="co"># Facet map with January data only</span></span>
-<span><span class="va">jan_only</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html" class="external-link">which</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"2021-01"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co"># Facet map with some data</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">interp_rast</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html" class="external-link">all_of</a></span><span class="op">(</span><span class="va">jan_only</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/geom_spatraster.html" class="external-link">geom_spatraster</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">interp_rast</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">lyr</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://dieghernan.github.io/tidyterra/reference/scale_whitebox.html" class="external-link">scale_fill_whitebox_c</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"pi_y_g"</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Temperatures on Jan 2021"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="interpolation_files/figure-html/interp_SpatRaster-1.png" width="100%"></p>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Temperatures (selected)"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="interpolation_files/figure-html/interp2-1.png" width="100%"></p>
 <p>And finally we loop through each layer to produce a plot (png file)
 for each date. The last step is to concatenate each png file into a gif
 file with <strong>gifski</strong>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Extending and animating</span></span>
 <span><span class="co"># Create gif</span></span>
 <span></span>
@@ -583,12 +420,13 @@ file with <strong>gifski</strong>.</p>
 <span>  <span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">this</span>, <span class="st">".png"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="va">tmp</span>, <span class="va">g</span>, width <span class="op">=</span> <span class="fl">1600</span>, height <span class="op">=</span> <span class="fl">1200</span>, units <span class="op">=</span> <span class="st">"px"</span>, bg <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>Now we use <strong>gifski</strong> to create the animation:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<p>And finally we use <strong>gifski</strong> to create the
+animation:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create gif from temporary pngs</span></span>
 <span><span class="va">allfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">all_layers</span>, <span class="st">".png"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">gifski</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gifski/man/gifski.html" class="external-link">gifski</a></span><span class="op">(</span><span class="va">allfiles</span>,</span>
-<span>  loop <span class="op">=</span> <span class="cn">TRUE</span>, delay <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">4</span>,</span>
+<span>  loop <span class="op">=</span> <span class="cn">TRUE</span>, delay <span class="op">=</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">6</span>,</span>
 <span>  gif_file <span class="op">=</span> <span class="st">"winter_2021.gif"</span>,</span>
 <span>  width <span class="op">=</span> <span class="fl">1600</span>, height <span class="op">=</span> <span class="fl">1200</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -599,7 +437,7 @@ file with <strong>gifski</strong>.</p>
 </h2>
 <p>Let’s plot an histogram for each Autonomous Community using the
 <code>geofacet</code> package:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hafen/geofacet" class="external-link">geofacet</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">clim_data_geofacet</span> <span class="op">&lt;-</span> <span class="va">clim_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -681,6 +519,9 @@ file with <strong>gifski</strong>.</p>
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-hijmans2023" class="csl-entry">
+Hijmans, Robert J. 2023. <em>Spatial Data Analysis</em>. Online. <a href="https://rspatial.org/spatial/" class="external-link">https://rspatial.org/spatial/</a>.
+</div>
 <div id="ref-roye2020" class="csl-entry">
 Royé, Dominic. 2020. <span>“Climate Animation of Maximum
 Temperatures.”</span> <a href="https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/" class="external-link">https://dominicroye.github.io/en/2020/climate-animation-of-maximum-temperatures/</a>.
