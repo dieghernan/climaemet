@@ -118,25 +118,23 @@ information between the client and server.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 415442N GIRONA    143     0367       GIRONA AEROPUERTO      <span style="color: #949494;">"</span>08184<span style="color: #949494;">"</span>  024548E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 415848N GIRONA    95      0370B      GIRONA, ANTIC INSTITUT <span style="color: #949494;">""</span>       024931E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 420616N GIRONA    157     0372C      PORQUERES              <span style="color: #949494;">"</span>08120<span style="color: #949494;">"</span>  024549E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 281 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 281 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_metadata_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora              perio…¹ descr…² formato copyr…³ notaL…⁴ campo…⁵</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Servicio del Banco de Datos N… 1 vez … Invent… applic… © AEME… https:… latitud</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Servicio del Banco de Datos N… 1 vez … Invent… applic… © AEME… https:… provin…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Servicio del Banco de Datos N… 1 vez … Invent… applic… © AEME… https:… indica…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Servicio del Banco de Datos N… 1 vez … Invent… applic… © AEME… https:… altitud</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Servicio del Banco de Datos N… 1 vez … Invent… applic… © AEME… https:… nombre </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Servicio del Banco de Datos N… 1 vez … Invent… applic… © AEME… https:… indsin…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Servicio del Banco de Datos N… 1 vez … Invent… applic… © AEME… https:… longit…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 3 more variables: campos$descripcion &lt;chr&gt;, $tipo_datos &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   $requerido &lt;lgl&gt;, and abbreviated variable names ¹​periodicidad,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​descripcion, ³​copyright, ⁴​notaLegal, ⁵​campos$id</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   unidad_generadora         periodicidad descripcion formato copyright notaLegal</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Servicio del Banco de Da… 1 vez al día Inventario… applic… © AEMET.… https://…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: campos &lt;df[,4]&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># We can get data from any API endpoint</span></span></span>
 <span class="r-in"><span></span></span>
@@ -149,38 +147,39 @@ information between the client and server.</p></dd>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 22 DE MARZO DE 2023 A LAS 07:55 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 29 DE MARZO DE 2023 A LAS 08:48 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 29</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Intervalos y/o rachas de viento fuerte en las islas occidentales</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de Canarias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Intervalos de viento fuerte en el litoral gallego y el Estrecho.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rachas de viento muy fuertes en el noroeste de Galicia y en El</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Hierro, La Gomera y Gran Canaria. Temperaturas máximas superiores</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> a 34 grados en Gran Canaria y Fuerteventura.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Un frente atlántico, poco activo, dejará cielos nubosos y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> precipitaciones, en general débiles, en el oeste de Galicia y con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> baja probabilidad en el resto de Galicia y el oeste de Asturias.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Podrían llegar a ser localmente moderadas y persistentes en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> suroeste de Coruña y zonas de Pontevedra. En el resto de la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Península predominarán los cielos poco nubosos o con intervalos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de nubes medias y altas, más abundantes en el tercio norte.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> También esperamos intervalos de nubes bajas matinales en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares, en los litorales del norte del Mediterráneo, de Murcia,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> bajo Ebro y en el oeste de Salamanca y Extremadura, con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> probabilidad de brumas o bancos de niebla matinales. En Canarias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> se esperan intervalos de nubes, predominantemente de tipo medio y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> alto, tendiendo a poco nuboso. Probabilidad de calimas que se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> irán extendiendo de este a oeste del archipiélago. Las</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> temperaturas máximas tenderán a subir en la mayor parte de la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Península y en ambos archipiélagos, pero descenderán en Galicia</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y en el extremo noroeste de Castilla y León. Las mínimas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tendrán ligeros ascensos en el sureste, alto Ebro y Canarias, y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> pocos cambios o ligeros descensos en el resto. Se esperan heladas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> débiles en Pirineos. Vientos del oeste y suroeste en Galicia y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cantábrico occidental y predominio de vientos de componente</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> oeste, flojos en general, en el resto de la Península. Soplarán</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> vientos del sur en Baleares, y alisios en Canarias, con intervalos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes en islas occidentales.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nubosidad en aumento en Galicia, con lluvias débiles en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> segunda mitad del día, sobre todo en el oeste. Poco nuboso o con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> intervalos nubosos de tipo medio y alto en el área cantábrica y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el Pirineo occidental. Poco nuboso o despejado en el resto del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> país, con nubes bajas matinales en el sur de Cataluña y el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> entorno del Estrecho y nubosidad de tipo alto en  buena parte de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> la Península.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Probable entrada de calima en Canarias, de este a oeste.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Temperaturas en ascenso en la mayor parte del país, notable el de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> las mínimas en el Cantábrico oriental y el Pirineo. Se espera</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> que las máximas superen los 30 grados en puntos del valle del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Guadalquivir y los 34 en puntos de Gran Canaria y Fuerteventura.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Intervalos de levante fuerte en el Estrecho y Alborán, amainando.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alisios poco intensos en Canarias, arreciando a lo largo del día,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> con rachas muy fuertes durante la tarde. Viento flojo variable en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el interior del sureste peninsular. Viento de componente sur en el</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> resto del país, predominando los surestes en el este de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Península y Baleares y los suroestes en el tercio noroccidental,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> con intervalos de fuerte en el litoral gallego y rachas muy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes en el noroeste de Galicia.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>

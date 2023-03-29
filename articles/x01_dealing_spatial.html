@@ -99,7 +99,7 @@ Fernández-Avilés</h4>
                         <h4 data-toc-skip class="author">Diego
 Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2023-03-22</h4>
+            <h4 data-toc-skip class="date">2023-03-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
@@ -477,7 +477,7 @@ prepare our data for spatial interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08  -<span style="color: #BB0000;">4.6</span> (732768.1 4479471)</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08   6.3 (718904.1 4250119)</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08  -<span style="color: #BB0000;">5.9</span> (448918.1 4689595)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 201 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 201 more rows</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -710,7 +710,7 @@ is known, using data in the neighborhood of the estimation location.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08  -<span style="color: #BB0000;">4.6</span> <span style="text-decoration: underline;">732</span>768. 4<span style="text-decoration: underline;">479</span>471.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08   6.3 <span style="text-decoration: underline;">718</span>904. 4<span style="text-decoration: underline;">250</span>119.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08  -<span style="color: #BB0000;">5.9</span> <span style="text-decoration: underline;">448</span>918. 4<span style="text-decoration: underline;">689</span>595.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 201 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 201 more rows</span></span></span>
 <span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">clim_data_clean_nodup.df</span>,</span>
