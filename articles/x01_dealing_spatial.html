@@ -93,7 +93,7 @@ Fernández-Avilés</h4>
                         <h4 data-toc-skip class="author">Diego
 Hernangómez</h4>
             
-            <h4 data-toc-skip class="date">2023-07-12</h4>
+            <h4 data-toc-skip class="date">2023-07-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/articles/x01_dealing_spatial.Rmd" class="external-link"><code>vignettes/articles/x01_dealing_spatial.Rmd</code></a></small>
       <div class="d-none name"><code>x01_dealing_spatial.Rmd</code></div>
@@ -456,15 +456,15 @@ prepare our data for spatial interpolation.</p>
 <span><span class="co">#&gt; [1] 215</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/dimensions.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 211</span></span>
+<span><span class="co">#&gt; [1] 212</span></span>
 <span></span>
 <span><span class="va">clim_data_clean_nodup</span></span>
-<span><span class="co">#&gt; Simple feature collection with 211 features and 2 fields</span></span>
+<span><span class="co">#&gt; Simple feature collection with 212 features and 2 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
 <span><span class="co">#&gt; Bounding box:  xmin: -13501.2 ymin: 3903695 xmax: 1117513 ymax: 4858794</span></span>
 <span><span class="co">#&gt; Projected CRS: ETRS89 / UTM zone 30N</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 211 × 3</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 212 × 3</span></span></span>
 <span><span class="co">#&gt;    fecha       tmin           geometry</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;POINT [m]&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   2.9 (250389.4 4315791)</span></span>
@@ -476,8 +476,8 @@ prepare our data for spatial interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2021-01-08  -<span style="color: #BB0000;">1.4</span> (99540.33 4697342)</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08  -<span style="color: #BB0000;">4.6</span> (732768.1 4479471)</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08   6.3 (718904.1 4250119)</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08  -<span style="color: #BB0000;">5.9</span> (448918.1 4689595)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 201 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08  -<span style="color: #BB0000;">5.9</span> (448826.6 4689596)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 202 more rows</span></span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -502,7 +502,7 @@ coordinates, (iii) the distance and (iv) the data.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/geoR/man/as.geodata.html" class="external-link">as.geodata</a></span><span class="op">(</span>coords.col <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, data.col <span class="op">=</span> <span class="st">"tmin"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">clim_data_clean_nodup.geoR</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Number of data points: 211 </span></span>
+<span><span class="co">#&gt; Number of data points: 212 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Coordinates summary</span></span>
 <span><span class="co">#&gt;             X       Y</span></span>
@@ -510,12 +510,12 @@ coordinates, (iii) the distance and (iv) the data.</p>
 <span><span class="co">#&gt; max 1117513.0 4858794</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Distance summary</span></span>
-<span><span class="co">#&gt;         min         max </span></span>
-<span><span class="co">#&gt;    1125.199 1179604.366 </span></span>
+<span><span class="co">#&gt;          min          max </span></span>
+<span><span class="co">#&gt; 2.252607e+01 1.179604e+06 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Data summary</span></span>
-<span><span class="co">#&gt;      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. </span></span>
-<span><span class="co">#&gt; -14.90000  -4.60000  -0.50000  -0.62891   3.50000  13.60000</span></span></code></pre></div>
+<span><span class="co">#&gt;        Min.     1st Qu.      Median        Mean     3rd Qu.        Max. </span></span>
+<span><span class="co">#&gt; -14.9000000  -4.6000000  -0.5500000  -0.6358491   3.5000000  13.6000000</span></span></code></pre></div>
 <p>Second, we generate several exploratory geostatistical plots. The
 first is a quartile map, the next two show <code>tmin</code> against the
 <code>X</code> and <code>Y</code> coordinates and the last is an
@@ -656,7 +656,7 @@ estimated parameters.</p>
 <span></span>
 <span><span class="va">fit.var</span></span>
 <span><span class="co">#&gt;   model    psill    range</span></span>
-<span><span class="co">#&gt; 1   Sph 47.75424 831277.4</span></span></code></pre></div>
+<span><span class="co">#&gt; 1   Sph 47.19944 821304.6</span></span></code></pre></div>
 <p>Finally, we plot the empirical and the theoretical semivariograms
 together.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -698,7 +698,7 @@ is known, using data in the neighborhood of the estimation location.</p>
 <span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"XY"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">clim_data_clean_nodup.df</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 211 × 4</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 212 × 4</span></span></span>
 <span><span class="co">#&gt;    fecha       tmin       x        y</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2021-01-08   2.9 <span style="text-decoration: underline;">250</span>389. 4<span style="text-decoration: underline;">315</span>791.</span></span>
@@ -710,8 +710,8 @@ is known, using data in the neighborhood of the estimation location.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2021-01-08  -<span style="color: #BB0000;">1.4</span>  <span style="text-decoration: underline;">99</span>540. 4<span style="text-decoration: underline;">697</span>342.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2021-01-08  -<span style="color: #BB0000;">4.6</span> <span style="text-decoration: underline;">732</span>768. 4<span style="text-decoration: underline;">479</span>471.</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2021-01-08   6.3 <span style="text-decoration: underline;">718</span>904. 4<span style="text-decoration: underline;">250</span>119.</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08  -<span style="color: #BB0000;">5.9</span> <span style="text-decoration: underline;">448</span>918. 4<span style="text-decoration: underline;">689</span>595.</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 201 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2021-01-08  -<span style="color: #BB0000;">5.9</span> <span style="text-decoration: underline;">448</span>827. 4<span style="text-decoration: underline;">689</span>596.</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 202 more rows</span></span></span>
 <span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/gstat.html" class="external-link">gstat</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, locations <span class="op">=</span> <span class="op">~</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>, data <span class="op">=</span> <span class="va">clim_data_clean_nodup.df</span>,</span>
@@ -890,8 +890,8 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 7</span></span></span>
 <span><span class="co">#&gt;   stat  var1.pred var1.var observed residual zscore  fold</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min       -<span style="color: #BB0000;">11.3</span>    0.188    -<span style="color: #BB0000;">14.9</span>    -<span style="color: #BB0000;">7.96</span>  -<span style="color: #BB0000;">5.06</span>     1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        11.9   18.8       13.6     6.93   4.52   211</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min       -<span style="color: #BB0000;">11.3</span>  0.003<span style="text-decoration: underline;">88</span>    -<span style="color: #BB0000;">14.9</span>    -<span style="color: #BB0000;">7.96</span>  -<span style="color: #BB0000;">5.06</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max        11.7 18.8         13.6     6.94   4.52   212</span></span></code></pre></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Cross-validation: IDW</span></span>
 <span><span class="va">xv.idw</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/gstat/man/krige.cv.html" class="external-link">krige.cv</a></span><span class="op">(</span><span class="va">tmin</span> <span class="op">~</span> <span class="fl">1</span>, <span class="va">clim_data_clean_nodup</span><span class="op">)</span></span>
@@ -909,8 +909,8 @@ selected in a kriging interpolation.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 7</span></span></span>
 <span><span class="co">#&gt;   stat  var1.pred var1.var observed residual zscore  fold</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min       -<span style="color: #BB0000;">8.33</span>       <span style="color: #BB0000;">NA</span>    -<span style="color: #BB0000;">14.9</span>    -<span style="color: #BB0000;">10.0</span>     <span style="color: #BB0000;">NA</span>     1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max       10.0        <span style="color: #BB0000;">NA</span>     13.6     10.3     <span style="color: #BB0000;">NA</span>   211</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> min       -<span style="color: #BB0000;">8.32</span>       <span style="color: #BB0000;">NA</span>    -<span style="color: #BB0000;">14.9</span>    -<span style="color: #BB0000;">10.0</span>     <span style="color: #BB0000;">NA</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> max       10.0        <span style="color: #BB0000;">NA</span>     13.6     10.3     <span style="color: #BB0000;">NA</span>   212</span></span></code></pre></div>
 <p>Now, we plot the leave-one-out cross validation residuals and observe
 that the residuals with OK are smaller than with OK.</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
@@ -979,13 +979,13 @@ IDW.</p>
 <tbody>
 <tr class="odd">
 <td align="left">OK</td>
-<td align="right">-0.016</td>
-<td align="right">1.997</td>
+<td align="right">-0.005</td>
+<td align="right">1.988</td>
 </tr>
 <tr class="even">
 <td align="left">IDW</td>
-<td align="right">0.025</td>
-<td align="right">2.756</td>
+<td align="right">0.028</td>
+<td align="right">2.757</td>
 </tr>
 </tbody>
 </table>
