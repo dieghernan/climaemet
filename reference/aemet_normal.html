@@ -64,9 +64,18 @@ aemet_normal_clim_all(). Standard climatology from 1981 to 2010."><meta property
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">aemet_normal_clim</span><span class="op">(</span>station <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, return_sf <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">aemet_normal_clim</span><span class="op">(</span></span>
+<span>  station <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">aemet_normal_clim_all</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">FALSE</span>, return_sf <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">aemet_normal_clim_all</span><span class="op">(</span></span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -86,6 +95,11 @@ information between the client and server.</p></dd>
 Should the function return an <code>sf</code> spatial object? If <code>FALSE</code>
 (the default value) it returns a tibble. Note that you need to
 have the <code>sf</code> package installed.</p></dd>
+
+
+<dt>extract_metadata</dt>
+<dd><p>Logical <code>TRUE/FALSE</code>. On <code>TRUE</code> the output is
+a <code>tibble</code> with the description of the fields.</p></dd>
 
 </dl></div>
     <div class="section level2">
