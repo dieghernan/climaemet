@@ -167,23 +167,22 @@ as double, etc.).</p>
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 24 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2023-07-19 09:00:00     0   249  10.9   7.2   314  41.7   315</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2023-07-19 10:00:00     0   249   9.5   5.1   322  41.7   303</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2023-07-19 11:00:00     0   249   9.3   6.3   305  41.7   295</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2023-07-19 12:00:00     0   249   8.3   4.8   316  41.7   298</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2023-07-19 13:00:00     0   249   7.8   3.3   298  41.7   295</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2023-07-19 14:00:00     0   249   6.7   4.2   291  41.7   295</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2023-07-19 15:00:00     0   249   9     6.6   303  41.7   303</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2023-07-19 16:00:00     0   249   8.7   5.5   311  41.7   293</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2023-07-19 17:00:00     0   249   9     6.3   309  41.7   315</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2023-07-19 18:00:00     0   249  10.3   7.2   319  41.7   310</span></span>
-<span><span class="co">#&gt; # ℹ 14 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 23 × 25</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi     pres    hr</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2023-07-19 10:00:00     0   249   9.5   5.1   322  41.7   303 ZARAG…  989.    54</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2023-07-19 11:00:00     0   249   9.3   6.3   305  41.7   295 ZARAG…  989.    50</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2023-07-19 12:00:00     0   249   8.3   4.8   316  41.7   298 ZARAG…  988.    46</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2023-07-19 13:00:00     0   249   7.8   3.3   298  41.7   295 ZARAG…  987.    41</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2023-07-19 14:00:00     0   249   6.7   4.2   291  41.7   295 ZARAG…  986     37</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2023-07-19 15:00:00     0   249   9     6.6   303  41.7   303 ZARAG…  985.    35</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2023-07-19 16:00:00     0   249   8.7   5.5   311  41.7   293 ZARAG…  985.    35</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2023-07-19 17:00:00     0   249   9     6.3   309  41.7   315 ZARAG…  984.    33</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2023-07-19 18:00:00     0   249  10.3   7.2   319  41.7   310 ZARAG…  984.    37</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2023-07-19 19:00:00     0   249  12.2   8.7   313  41.7   315 ZARAG…  985.    41</span></span>
+<span><span class="co">#&gt; # ℹ 13 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 12 more variables: stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are
 converted to the right format.</p>
 </div>
@@ -204,14 +203,11 @@ latitude/longitude (unprojected coordinates):</p>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">all_stations</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span>return_sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in UseMethod("distinct"): no applicable method for 'distinct' applied to an object of class "NULL"</span></span>
 <span><span class="co"># Last hour</span></span>
 <span><span class="va">all_last</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">all_stations</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">fint</span> <span class="op">==</span> <span class="va">all_stations</span><span class="op">[[</span><span class="st">"fint"</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'all_stations' not found</span></span>
 <span></span>
 <span><span class="va">last_hour</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">all_last</span><span class="op">$</span><span class="va">fint</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'all_last' not found</span></span>
 <span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">all_last</span><span class="op">)</span> <span class="op">+</span></span>
@@ -238,8 +234,12 @@ latitude/longitude (unprojected coordinates):</p>
 <span>    plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,</span>
 <span>    legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,</span>
 <span>    legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in eval(expr, envir, enclos): object 'all_last' not found</span></span></code></pre></div>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="spatial-1.png" alt="Example: Temperature in Spain" width="100%"><p class="caption">
+Example: Temperature in Spain
+</p>
+</div>
 </div>
 </div>
 <div class="section level2">
