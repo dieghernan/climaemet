@@ -10,7 +10,7 @@
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../logo.png" alt="climaemet logo" height="40" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -61,9 +61,9 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">x</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">x</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, extract_metadata <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">aemet_forecast_hourly</span><span class="op">(</span><span class="va">x</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">aemet_forecast_hourly</span><span class="op">(</span><span class="va">x</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, extract_metadata <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -77,6 +77,11 @@
 <dt>verbose</dt>
 <dd><p>Logical <code>TRUE/FALSE</code>. Provides information about the flow of
 information between the client and server.</p></dd>
+
+
+<dt>extract_metadata</dt>
+<dd><p>Logical <code>TRUE/FALSE</code>. On <code>TRUE</code> the output is
+a <code>tibble</code> with the description of the fields.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -95,6 +100,8 @@ Although <span class="pkg">climaemet</span> returns a <code>tibble</code>, each 
 provided as a nested <code>tibble</code>. <code><a href="aemet_forecast_utils.html">aemet_forecast_tidy()</a></code> helper function can
 unnest these values an provide a single unnested <code>tibble</code> for the requested
 variable.</p>
+<p>If <code>extract_metadata = TRUE</code> a simple <code>tibble</code> describing the value of
+each field of the forecast is returned.</p>
     </div>
     <div class="section level2">
     <h2 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
@@ -137,6 +144,23 @@ variable.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">daily</span> <span class="op">&lt;-</span> <span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Metadata</span></span></span>
+<span class="r-in"><span><span class="fu">aemet_forecast_daily</span><span class="op">(</span><span class="va">munis</span>, extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 46 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    id                      descripcion               tipo_datos requerido unidad</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> id                      Indicativo de municipio   string     TRUE      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> version                 Versión                   float      TRUE      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> elaborado               Fecha de elaboración      dataTime   TRUE      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> nombre                  Nombre del municipio      string     TRUE      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> provincia               Provincia a la que perte… string     TRUE      <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> fecha                   Período de validez de la… date       FALSE     <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> probPrecipitacion       Valor de la probabilidad… string     FALSE     Tanto…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> cotaNieveProv           Valor de la cota de nieve string     FALSE     metro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> estadoCielo_periodo     Periodo de validez para … string     FALSE     <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> estadoCielo_descripcion Descripción del estado d… string     FALSE     <span style="color: #BB0000;">NA</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 36 more rows</span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Vars available</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="aemet_forecast_utils.html">aemet_forecast_vars_available</a></span><span class="op">(</span><span class="va">daily</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "probPrecipitacion" "cotaNieveProv"     "estadoCielo"      </span>
@@ -173,20 +197,20 @@ variable.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 14 × 14</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elaborado           municipio nombre provincia id    version uvMax fecha     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2023-07-20 <span style="color: #949494;">09:04:34</span> 15078     Santi… A Coruña  15078       1     8 2023-07-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2023-07-20 <span style="color: #949494;">09:04:34</span> 15078     Santi… A Coruña  15078       1     7 2023-07-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2023-07-20 <span style="color: #949494;">09:04:34</span> 15078     Santi… A Coruña  15078       1     8 2023-07-22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2023-07-20 <span style="color: #949494;">09:04:34</span> 15078     Santi… A Coruña  15078       1     8 2023-07-23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2023-07-20 <span style="color: #949494;">09:04:34</span> 15078     Santi… A Coruña  15078       1     8 2023-07-24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2023-07-20 <span style="color: #949494;">09:04:34</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2023-07-25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2023-07-20 <span style="color: #949494;">09:04:34</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2023-07-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2023-07-20 <span style="color: #949494;">07:32:51</span> 27028     Lugo   Lugo      27028       1     8 2023-07-20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2023-07-20 <span style="color: #949494;">07:32:51</span> 27028     Lugo   Lugo      27028       1     8 2023-07-21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2023-07-20 <span style="color: #949494;">07:32:51</span> 27028     Lugo   Lugo      27028       1     8 2023-07-22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2023-07-20 <span style="color: #949494;">07:32:51</span> 27028     Lugo   Lugo      27028       1     8 2023-07-23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2023-07-20 <span style="color: #949494;">07:32:51</span> 27028     Lugo   Lugo      27028       1     8 2023-07-24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2023-07-20 <span style="color: #949494;">07:32:51</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2023-07-25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2023-07-20 <span style="color: #949494;">07:32:51</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2023-07-26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2023-07-20 <span style="color: #949494;">12:16:29</span> 15078     Santi… A Coruña  15078       1     8 2023-07-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2023-07-20 <span style="color: #949494;">12:16:29</span> 15078     Santi… A Coruña  15078       1     7 2023-07-21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2023-07-20 <span style="color: #949494;">12:16:29</span> 15078     Santi… A Coruña  15078       1     8 2023-07-22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2023-07-20 <span style="color: #949494;">12:16:29</span> 15078     Santi… A Coruña  15078       1     8 2023-07-23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2023-07-20 <span style="color: #949494;">12:16:29</span> 15078     Santi… A Coruña  15078       1     8 2023-07-24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2023-07-20 <span style="color: #949494;">12:16:29</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2023-07-25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2023-07-20 <span style="color: #949494;">12:16:29</span> 15078     Santi… A Coruña  15078       1    <span style="color: #BB0000;">NA</span> 2023-07-26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2023-07-20 <span style="color: #949494;">12:20:41</span> 27028     Lugo   Lugo      27028       1     8 2023-07-20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2023-07-20 <span style="color: #949494;">12:20:41</span> 27028     Lugo   Lugo      27028       1     8 2023-07-21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2023-07-20 <span style="color: #949494;">12:20:41</span> 27028     Lugo   Lugo      27028       1     8 2023-07-22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 2023-07-20 <span style="color: #949494;">12:20:41</span> 27028     Lugo   Lugo      27028       1     8 2023-07-23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 2023-07-20 <span style="color: #949494;">12:20:41</span> 27028     Lugo   Lugo      27028       1     8 2023-07-24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 2023-07-20 <span style="color: #949494;">12:20:41</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2023-07-25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 2023-07-20 <span style="color: #949494;">12:20:41</span> 27028     Lugo   Lugo      27028       1    <span style="color: #BB0000;">NA</span> 2023-07-26</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: temperatura_maxima &lt;int&gt;, temperatura_minima &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_6 &lt;int&gt;, temperatura_12 &lt;int&gt;, temperatura_18 &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   temperatura_24 &lt;int&gt;</span></span>

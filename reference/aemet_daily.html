@@ -14,7 +14,7 @@ of aemet_daily_clim()."><meta property="og:image" content="https://ropenspain.gi
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../logo.png" alt="climaemet logo" height="40" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -72,7 +72,8 @@ of <code>aemet_daily_clim()</code>.</p>
 <span>  start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">7</span>,</span>
 <span>  end <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">aemet_daily_period</span><span class="op">(</span></span>
@@ -80,14 +81,16 @@ of <code>aemet_daily_clim()</code>.</p>
 <span>  start <span class="op">=</span> <span class="fl">2020</span>,</span>
 <span>  end <span class="op">=</span> <span class="fl">2020</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">aemet_daily_period_all</span><span class="op">(</span></span>
 <span>  start <span class="op">=</span> <span class="fl">2020</span>,</span>
 <span>  end <span class="op">=</span> <span class="fl">2020</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -112,6 +115,11 @@ information between the client and server.</p></dd>
 Should the function return an <code>sf</code> spatial object? If <code>FALSE</code>
 (the default value) it returns a tibble. Note that you need to
 have the <code>sf</code> package installed.</p></dd>
+
+
+<dt>extract_metadata</dt>
+<dd><p>Logical <code>TRUE/FALSE</code>. On <code>TRUE</code> the output is
+a <code>tibble</code> with the description of the fields.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -171,6 +179,18 @@ representing the year(s) to be extracted: "2020", "2018".</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMax <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "07", "00", "24", "08", "08", "07", "Varias", "08"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ presMin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 985.8, 979.2, 979.3, 983.1, 939.9, 936.8, 936.8, 938.2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMin <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "18", "18", "16", "17", "19", "19", "Varias", "Varias"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Metadata</span></span></span>
+<span class="r-in"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu">aemet_daily_clim</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"9434"</span>, <span class="st">"3195"</span><span class="op">)</span>, extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">meta</span><span class="op">$</span><span class="va">campos</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ id          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "fecha", "indicativo", "nombre", "provincia", "altitud", "…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ descripcion <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "fecha del dia (AAAA-MM-DD)", "indicativo climatológico", …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tipo_datos  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "string", "string", "string", "string", "float", "float", …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ requerido   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, …</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ unidad      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, NA, NA, "m", "°C", "mm (Ip = inferior a 0,1 mm) (A…</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

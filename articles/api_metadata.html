@@ -39,7 +39,7 @@
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../logo.png" alt="climaemet logo" height="40" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.1.9000</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -281,11 +281,560 @@ más próxima)</td>
 Show metadata
 </summary><table class="table">
 <colgroup>
+<col width="2%">
+<col width="8%">
+<col width="63%">
 <col width="5%">
-<col width="77%">
+<col width="3%">
+<col width="17%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">param</th>
+<th align="left">id</th>
+<th align="left">descripcion</th>
+<th align="left">tipo_datos</th>
+<th align="left">requerido</th>
+<th align="left">unidad</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">V</td>
+<td align="left">indicativo</td>
+<td align="left">Indicativo de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">V</td>
+<td align="left">nombre</td>
+<td align="left">Nombre de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">V</td>
+<td align="left">ubicacion</td>
+<td align="left">Ubicación de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">V</td>
+<td align="left">codigo</td>
+<td align="left">Código de la variable</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">V</td>
+<td align="left">rachMax</td>
+<td align="left">Racha máxima de viento. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">km/h</td>
+</tr>
+<tr class="even">
+<td align="left">V</td>
+<td align="left">mes</td>
+<td align="left">Mes en el que se dio la racha máxima</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">V</td>
+<td align="left">dirRachMax</td>
+<td align="left">Dirección de la racha máxima. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">grados (990 = dirección variable)(880 = sin dato)</td>
+</tr>
+<tr class="even">
+<td align="left">V</td>
+<td align="left">hora</td>
+<td align="left">Hora de la racha máxima. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluta, en HH-MM (donde HH es la hora y MM el minuto)</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">UTC</td>
+</tr>
+<tr class="odd">
+<td align="left">V</td>
+<td align="left">dia</td>
+<td align="left">Día de la racha máxima. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluta.</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">V</td>
+<td align="left">anio</td>
+<td align="left">Año de la racha máxima. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">indicativo</td>
+<td align="left">Indicativo de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">nombre</td>
+<td align="left">Nombre de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">ubicacion</td>
+<td align="left">Ubicación de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">codigo</td>
+<td align="left">Código de la variable</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">temMin</td>
+<td align="left">Temperatura mínima absoluta de la estación. Contiene 13
+campos correspondientes a los 12 meses del año y el último a la mínima
+absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de °C</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">diaMin</td>
+<td align="left">Día del mes en que se dio la mínima absoluta de la
+estación. Contiene 13 campos correspondientes a los 12 meses del año y
+el último al día de la mínima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">anioMin</td>
+<td align="left">Año en que se dio la mímina absoluta de la estación.
+Contiene 13 campos correspondientes a los 12 meses del año y el último
+al año de la mínima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">mesMin</td>
+<td align="left">Mes en que se dio la mínima absoluta de la
+estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">temMax</td>
+<td align="left">Temperatura máxima absoluta de la estación. Contiene 13
+campos correspondientes a los 12 meses del año y el último a la máxima
+absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de °C</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">diaMax</td>
+<td align="left">Día del mes en que se dio la máxima absoluta de la
+estación. Contiene 13 campos correspondientes a los 12 meses del año y
+el último al día de la máxima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">anioMax</td>
+<td align="left">Año en que se dio la máxima absoluta de la estación.
+Contiene 13 campos correspondientes a los 12 meses del año y el último
+al año de la máxima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">mesMax</td>
+<td align="left">Mes en que se dio la máxima absoluta de la
+estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">temMedBaja</td>
+<td align="left">Temperatura media mensual más baja de la estación.
+Contiene 13 campos correspondientes a los 12 meses del año y el último a
+la mínima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de °C</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">anioMedBaja</td>
+<td align="left">Año en que se dio la temperatura media mensual más baja
+de la estación. Contiene 13 campos correspondientes a los 12 meses del
+año y el último al año de la mínima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">mesMedBaja</td>
+<td align="left">Mes en que se dio la temperatura media mensual más baja
+de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">temMedAlta</td>
+<td align="left">Temperatura media mensual mas alta de la estación.
+Contiene 13 campos correspondientes a los 12 meses del año y el último a
+la máxima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de °C</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">anioMedAlta</td>
+<td align="left">Año en que se dio la temperatura media mensual más alta
+de la estación. Contiene 13 campos correspondientes a los 12 meses del
+año y el último al año de la máxima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">mesMedAlta</td>
+<td align="left">Mes en que se dio la temperatura media mensual más alta
+de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">temMedMin</td>
+<td align="left">Temperatura media de las mínimas más baja de la
+estación. Contiene 13 campos correspondientes a los 12 meses del año y
+el último a la mínima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de °C</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">anioMedMin</td>
+<td align="left">Año en que se dio la temperatura media de las mínima
+más baja de la estación. Contiene 13 campos correspondientes a los 12
+meses del año y el último al año de la mínima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">mesMedMin</td>
+<td align="left">Mes en que se dio la temperatura media de las mínima
+más baja de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">temMedMax</td>
+<td align="left">Temperatura media de las máximas más alta de la
+estación. Contiene 13 campos correspondientes a los 12 meses del año y
+el último a la máxima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de °C</td>
+</tr>
+<tr class="odd">
+<td align="left">T</td>
+<td align="left">anioMedMax</td>
+<td align="left">Año en que se dio la temperatura media de las máximas
+más alta de la estación. Contiene 13 campos correspondientes a los 12
+meses del año y el último al año de la máxima absoluta</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">T</td>
+<td align="left">mesMedMax</td>
+<td align="left">Mes en que se dio la temperatura media de las máximas
+más alta de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">indicativo</td>
+<td align="left">Indicativo de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">nombre</td>
+<td align="left">Nombre de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">ubicacion</td>
+<td align="left">Ubicación de la estación</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">codigo</td>
+<td align="left">Código de la variable</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">maxdíasMesPrec</td>
+<td align="left">Máximo nº de días con meteoro lluvia. Contiene 13
+campos correspondientes a los 12 meses del año y el último a la máxima
+absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">anioMaxdíasMesPrec</td>
+<td align="left">Año en que se dio el Máximo nº de días con meteoro
+lluvia. Contiene 13 campos correspondientes a los 12 meses del año y el
+último al año del máximo absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">mesMaxdíasMesPrec</td>
+<td align="left">Mes en que se dio el Máximo nº de días con meteoro
+lluvia</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">maxdíasMesNieve</td>
+<td align="left">Máximo nº de días con meteoro nieve. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">anioMaxdíasMesNieve</td>
+<td align="left">Año en que se dio el Máximo nº de días con meteoro
+nieve. Contiene 13 campos correspondientes a los 12 meses del año y el
+último al año del máximo absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">mesMaxdíasMesNieve</td>
+<td align="left">Mes en que se dio el Máximo nº de días con meteoro
+nieve</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">maxdíasMesTormenta</td>
+<td align="left">Máximo nº de días de tormenta. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">anioMaxdíasMesTormenta</td>
+<td align="left">Año en que se dio el Máximo nº de días con meteoro
+tormenta. Contiene 13 campos correspondientes a los 12 meses del año y
+el último al año del máximo absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">mesMaxdíasMesTormenta</td>
+<td align="left">Mes en que se dio el Máximo nº de días con meteoro
+tormenta</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">precMaxDia</td>
+<td align="left">Precipitación máxima diaria. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de mm (Ip = inferior a 0,1 mm)</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">diaMaxDia</td>
+<td align="left">Día en que se dio la precipitación máxima diaria.
+Contiene 13 campos correspondientes a los 12 meses del año y el último
+al año del máximo absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">anioMaxDia</td>
+<td align="left">Año en que se dio la precipitación máxima diaria.
+Contiene 13 campos correspondientes a los 12 meses del año y el último
+al año del máximo absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">mesMaxMed</td>
+<td align="left">Mes en que se dio la precipitación máxima mensual</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">precMaxMen</td>
+<td align="left">Precipitación máxima mensual. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de mm (Ip = inferior a 0,1 mm)</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">anioMaxMen</td>
+<td align="left">Año en que se dio la precipitación máxima mensual.
+Contiene 13 campos correspondientes a los 12 meses del año y el último
+al año del máximo absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">precMinMen</td>
+<td align="left">Precipitación mínima mensual. Contiene 13 campos
+correspondientes a los 12 meses del año y el último a la máxima
+absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">décimas de mm (Ip = inferior a 0,1 mm)</td>
+</tr>
+<tr class="odd">
+<td align="left">P</td>
+<td align="left">anioMinMen</td>
+<td align="left">Año en que se dio la precipitación mínima mensual.
+Contiene 13 campos correspondientes a los 12 meses del año y el último
+al año del máximo absoluto</td>
+<td align="left">array de string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">P</td>
+<td align="left">mesMinMed</td>
+<td align="left">Mes en que se dio la precipitación mínima mensual</td>
+<td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table></details>
+</div>
+<div class="section level2">
+<h2 id="aemet_forecast_daily">
+<code>aemet_forecast_daily</code><a class="anchor" aria-label="anchor" href="#aemet_forecast_daily"></a>
+</h2>
+<p>See <code><a href="../reference/aemet_forecast.html">?aemet_forecast_daily</a></code> help page.</p>
+<details><summary>
+Show metadata
+</summary><table class="table">
+<colgroup>
+<col width="14%">
+<col width="56%">
 <col width="6%">
-<col width="4%">
 <col width="6%">
+<col width="16%">
 </colgroup>
 <thead><tr class="header">
 <th align="left">id</th>
@@ -296,206 +845,342 @@ Show metadata
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">indicativo</td>
-<td align="left">Indicativo de la estación</td>
+<td align="left">id</td>
+<td align="left">Indicativo de municipio</td>
 <td align="left">string</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">Versión</td>
+<td align="left">float</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">elaborado</td>
+<td align="left">Fecha de elaboración</td>
+<td align="left">dataTime</td>
 <td align="left">TRUE</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
 <td align="left">nombre</td>
-<td align="left">Nombre de la estación</td>
+<td align="left">Nombre del municipio</td>
 <td align="left">string</td>
 <td align="left">TRUE</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">ubicacion</td>
-<td align="left">Ubicación de la estación</td>
+<td align="left">provincia</td>
+<td align="left">Provincia a la que pertenece el municipio</td>
 <td align="left">string</td>
 <td align="left">TRUE</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">codigo</td>
-<td align="left">Código de la variable</td>
+<td align="left">fecha</td>
+<td align="left">Período de validez de la Predicción</td>
+<td align="left">date</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">probPrecipitacion</td>
+<td align="left">Valor de la probabilidad de precipitación</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="even">
+<td align="left">cotaNieveProv</td>
+<td align="left">Valor de la cota de nieve</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">metros (m)</td>
+</tr>
+<tr class="odd">
+<td align="left">estadoCielo_periodo</td>
+<td align="left">Periodo de validez para el estado del cielo (00-06,
+06-12, 12-18, 18-24, 00-12, 00-24, 12-24)</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">estadoCielo_descripcion</td>
+<td align="left">Descripción del estado del cielo</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">estadoCielo</td>
+<td align="left">Código del estado del Cielo</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">viento_velocidad</td>
+<td align="left">Velocidad del viento</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Kilómetros por hora (km/h)</td>
+</tr>
+<tr class="odd">
+<td align="left">rachaMax</td>
+<td align="left">Valor de la Racha máxima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Kilómetros por hora (km/h)</td>
+</tr>
+<tr class="even">
+<td align="left">temperatura_maxima</td>
+<td align="left">Temperatura máxima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="odd">
+<td align="left">temperatura_minima</td>
+<td align="left">Temperatura mínima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="even">
+<td align="left">temperatura</td>
+<td align="left">Valor de la Temperatura prevista</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="odd">
+<td align="left">sensTermica_maxima</td>
+<td align="left">Sensación térmica máxima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="even">
+<td align="left">sensTermica_minima</td>
+<td align="left">Sensación térmica mínima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="odd">
+<td align="left">sensTermica</td>
+<td align="left">Valor de la sensación térmica prevista</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="even">
+<td align="left">humedadRelativa_maxima</td>
+<td align="left">Humedad relativa máxima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">humedadRelativa_minima</td>
+<td align="left">Humedad relativa mínima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="even">
+<td align="left">humedadRelativa</td>
+<td align="left">Valor de la humedad relativa prevista</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">uvMax</td>
+<td align="left">Índice ultravioleta máximo</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table></details>
+</div>
+<div class="section level2">
+<h2 id="aemet_forecast_hourly">
+<code>aemet_forecast_hourly</code><a class="anchor" aria-label="anchor" href="#aemet_forecast_hourly"></a>
+</h2>
+<p>See <code><a href="../reference/aemet_forecast.html">?aemet_forecast_hourly</a></code> help page.</p>
+<details><summary>
+Show metadata
+</summary><table class="table">
+<colgroup>
+<col width="16%">
+<col width="50%">
+<col width="7%">
+<col width="6%">
+<col width="18%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">id</th>
+<th align="left">descripcion</th>
+<th align="left">tipo_datos</th>
+<th align="left">requerido</th>
+<th align="left">unidad</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">id</td>
+<td align="left">Indicativo de municipio</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">version</td>
+<td align="left">Versión</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">elaborado</td>
+<td align="left">Fecha de elaboración</td>
+<td align="left">dataTime</td>
+<td align="left">TRUE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">nombre</td>
+<td align="left">Nombre del municipio</td>
 <td align="left">string</td>
 <td align="left">TRUE</td>
 <td align="left">NA</td>
 </tr>
 <tr class="odd">
-<td align="left">temMin</td>
-<td align="left">Temperatura mínima absoluta de la estación. Contiene 13
-campos correspondientes a los 12 meses del año y el último a la mínima
-absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">décimas de °C</td>
-</tr>
-<tr class="even">
-<td align="left">diaMin</td>
-<td align="left">Día del mes en que se dio la mínima absoluta de la
-estación. Contiene 13 campos correspondientes a los 12 meses del año y
-el último al día de la mínima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">anioMin</td>
-<td align="left">Año en que se dio la mímina absoluta de la estación.
-Contiene 13 campos correspondientes a los 12 meses del año y el último
-al año de la mínima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">mesMin</td>
-<td align="left">Mes en que se dio la mínima absoluta de la
-estación</td>
-<td align="left">string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">temMax</td>
-<td align="left">Temperatura máxima absoluta de la estación. Contiene 13
-campos correspondientes a los 12 meses del año y el último a la máxima
-absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">décimas de °C</td>
-</tr>
-<tr class="even">
-<td align="left">diaMax</td>
-<td align="left">Día del mes en que se dio la máxima absoluta de la
-estación. Contiene 13 campos correspondientes a los 12 meses del año y
-el último al día de la máxima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">anioMax</td>
-<td align="left">Año en que se dio la máxima absoluta de la estación.
-Contiene 13 campos correspondientes a los 12 meses del año y el último
-al año de la máxima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">mesMax</td>
-<td align="left">Mes en que se dio la máxima absoluta de la
-estación</td>
-<td align="left">string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">temMedBaja</td>
-<td align="left">Temperatura media mensual más baja de la estación.
-Contiene 13 campos correspondientes a los 12 meses del año y el último a
-la mínima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">décimas de °C</td>
-</tr>
-<tr class="even">
-<td align="left">anioMedBaja</td>
-<td align="left">Año en que se dio la temperatura media mensual más baja
-de la estación. Contiene 13 campos correspondientes a los 12 meses del
-año y el último al año de la mínima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">mesMedBaja</td>
-<td align="left">Mes en que se dio la temperatura media mensual más baja
-de la estación</td>
+<td align="left">provincia</td>
+<td align="left">Provincia a la que pertenece el municipio</td>
 <td align="left">string</td>
 <td align="left">TRUE</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">temMedAlta</td>
-<td align="left">Temperatura media mensual mas alta de la estación.
-Contiene 13 campos correspondientes a los 12 meses del año y el último a
-la máxima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">décimas de °C</td>
-</tr>
-<tr class="odd">
-<td align="left">anioMedAlta</td>
-<td align="left">Año en que se dio la temperatura media mensual más alta
-de la estación. Contiene 13 campos correspondientes a los 12 meses del
-año y el último al año de la máxima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
+<td align="left">fecha</td>
+<td align="left">Período de validez de la Predicción</td>
+<td align="left">date</td>
+<td align="left">FALSE</td>
 <td align="left">NA</td>
 </tr>
-<tr class="even">
-<td align="left">mesMedAlta</td>
-<td align="left">Mes en que se dio la temperatura media mensual más alta
-de la estación</td>
+<tr class="odd">
+<td align="left">orto</td>
+<td align="left">Hora del amanecer</td>
 <td align="left">string</td>
-<td align="left">TRUE</td>
+<td align="left">FALSE</td>
 <td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">temMedMin</td>
-<td align="left">Temperatura media de las mínimas más baja de la
-estación. Contiene 13 campos correspondientes a los 12 meses del año y
-el último a la mínima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">décimas de °C</td>
 </tr>
 <tr class="even">
-<td align="left">anioMedMin</td>
-<td align="left">Año en que se dio la temperatura media de las mínima
-más baja de la estación. Contiene 13 campos correspondientes a los 12
-meses del año y el último al año de la mínima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left">mesMedMin</td>
-<td align="left">Mes en que se dio la temperatura media de las mínima
-más baja de la estación</td>
+<td align="left">ocaso</td>
+<td align="left">Hora del atardecer</td>
 <td align="left">string</td>
-<td align="left">TRUE</td>
+<td align="left">FALSE</td>
 <td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left">temMedMax</td>
-<td align="left">Temperatura media de las máximas más alta de la
-estación. Contiene 13 campos correspondientes a los 12 meses del año y
-el último a la máxima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
-<td align="left">décimas de °C</td>
 </tr>
 <tr class="odd">
-<td align="left">anioMedMax</td>
-<td align="left">Año en que se dio la temperatura media de las máximas
-más alta de la estación. Contiene 13 campos correspondientes a los 12
-meses del año y el último al año de la máxima absoluta</td>
-<td align="left">array de string</td>
-<td align="left">TRUE</td>
+<td align="left">estadoCielo_periodo</td>
+<td align="left">Hora de validez para el estado del cielo (01/02/03 ….
+/22/23)</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
 <td align="left">NA</td>
 </tr>
 <tr class="even">
-<td align="left">mesMedMax</td>
-<td align="left">Mes en que se dio la temperatura media de las máximas
-más alta de la estación</td>
+<td align="left">estadoCielo_descripcion</td>
+<td align="left">Descripción del estado del cielo</td>
 <td align="left">string</td>
-<td align="left">TRUE</td>
+<td align="left">FALSE</td>
 <td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">estadoCielo</td>
+<td align="left">Código del estado del Cielo</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">precipitacion</td>
+<td align="left">Cantidad total de precipitación durante la hora
+anterior</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">milímetros (mm)</td>
+</tr>
+<tr class="odd">
+<td align="left">probPrecipitacion</td>
+<td align="left">Valor de la probabilidad de precipitación</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="even">
+<td align="left">probTormenta</td>
+<td align="left">Valor de la probabilidad de tormenta</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">nieve</td>
+<td align="left">Cantidad total de nieve que se prevé que caiga durante
+la hora anterior</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">milímetros (mm)</td>
+</tr>
+<tr class="even">
+<td align="left">probNieve</td>
+<td align="left">Valor de la probabilidad de precipitación de nieve</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="odd">
+<td align="left">temperatura</td>
+<td align="left">Valor de la temperatura</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="even">
+<td align="left">sensTermica</td>
+<td align="left">Valor de la sensación térmica</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Grados celsius</td>
+</tr>
+<tr class="odd">
+<td align="left">humedadRelativa</td>
+<td align="left">Valor de la humedad relativa</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Tanto por ciento (%)</td>
+</tr>
+<tr class="even">
+<td align="left">viento_velocidad</td>
+<td align="left">Velocidad del viento</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Kilómetros por hora (km/h)</td>
+</tr>
+<tr class="odd">
+<td align="left">rachaMax</td>
+<td align="left">Valor de la Racha máxima</td>
+<td align="left">string</td>
+<td align="left">FALSE</td>
+<td align="left">Kilómetros por hora (km/h)</td>
 </tr>
 </tbody>
 </table></details>
