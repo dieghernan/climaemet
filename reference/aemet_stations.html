@@ -85,6 +85,11 @@ have the <code>sf</code> package installed.</p></dd>
 <p>A tibble or a <code>sf</code> object</p>
     </div>
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The first result of the API call on each session is (temporarily) cached in
+the assigned <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> for avoiding unneeded API calls.</p>
+    </div>
+    <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
     <p>Code modified from project <a href="https://github.com/SevillaR/aemet" class="external-link">https://github.com/SevillaR/aemet</a></p>
     </div>
@@ -122,6 +127,13 @@ have the <code>sf</code> package installed.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 0370B      <span style="color: #949494;">""</span>       GIRONA, ANTIC INSTITUT GIRONA         95     2.83    42.0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 0372C      <span style="color: #949494;">"</span>08120<span style="color: #949494;">"</span>  PORQUERES              GIRONA        157     2.76    42.1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 281 more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Cached during this R session</span></span></span>
+<span class="r-in"><span><span class="va">stations2</span> <span class="op">&lt;-</span> <span class="fu">aemet_stations</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading stations from temporal cached file saved at 2023-07-21 11:33:20 UTC</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">stations</span>, <span class="va">stations2</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
