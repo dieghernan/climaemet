@@ -78,16 +78,16 @@ of <code>aemet_daily_clim()</code>.</p>
 <span></span>
 <span><span class="fu">aemet_daily_period</span><span class="op">(</span></span>
 <span>  <span class="va">station</span>,</span>
-<span>  start <span class="op">=</span> <span class="fl">2020</span>,</span>
-<span>  end <span class="op">=</span> <span class="fl">2020</span>,</span>
+<span>  start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  end <span class="op">=</span> <span class="va">start</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">aemet_daily_period_all</span><span class="op">(</span></span>
-<span>  start <span class="op">=</span> <span class="fl">2020</span>,</span>
-<span>  end <span class="op">=</span> <span class="fl">2020</span>,</span>
+<span>  start <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"%Y"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  end <span class="op">=</span> <span class="va">start</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
@@ -160,26 +160,26 @@ representing the year(s) to be extracted: "2020", "2018".</p></li>
 <span class="r-in"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rows: 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Columns: 20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ fecha       <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2023-07-13, 2023-07-14, 2023-07-15, 2023-07-16, 2023-07-1…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ fecha       <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2023-07-14, 2023-07-15, 2023-07-16, 2023-07-17, 2023-07-1…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ indicativo  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "9434", "9434", "9434", "9434", "3195", "3195", "3195", "3…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ nombre      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ZARAGOZA, AEROPUERTO", "ZARAGOZA, AEROPUERTO", "ZARAGOZA,…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ provincia   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "ZARAGOZA", "MADRID", …</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ altitud     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 249, 249, 249, 249, 667, 667, 667, 667</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmed        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 26.8, 29.4, 28.2, 25.8, 28.2, 29.8, 26.7, 27.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmed        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 29.4, 28.2, 25.8, 27.7, 29.8, 26.7, 27.2, 30.4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ prec        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmin        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 20.6, 21.1, 19.7, 18.7, 21.4, 22.8, 21.1, 20.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ horatmin    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "05:20", "05:20", "23:59", "Varias", "05:20", "05:30", "06…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmax        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 33.0, 37.6, 36.6, 33.0, 35.1, 36.8, 32.3, 34.0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ horatmax    <span style="color: #949494; font-style: italic;">&lt;time&gt;</span> 17:30:00, 15:50:00, 15:40:00, 16:00:00, 14:40:00, 14:00:00…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ dir         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 30, 13, 32, 31, 25, 16, 23, 23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ velmedia    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.3, 5.0, 6.1, 5.3, 1.7, 2.8, 3.6, 2.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ racha       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.8, 12.8, 16.7, 13.9, 7.5, 10.8, 11.1, 7.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaracha   <span style="color: #949494; font-style: italic;">&lt;time&gt;</span> 07:20:00, 18:30:00, 17:50:00, 01:40:00, 15:30:00, 11:40:00…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ sol         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13.7, 13.1, 13.7, 13.6, NA, NA, NA, NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ presMax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 990.3, 986.9, 987.1, 988.1, 943.4, 941.0, 939.2, 940.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMax <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "07", "00", "24", "08", "08", "07", "Varias", "08"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ presMin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 985.8, 979.2, 979.3, 983.1, 939.9, 936.8, 936.8, 938.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMin <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "18", "18", "16", "17", "19", "19", "Varias", "Varias"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmin        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 21.1, 19.7, 18.7, 20.3, 22.8, 21.1, 20.4, 22.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horatmin    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "05:20", "23:59", "Varias", "02:50", "05:30", "06:10", "05…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ tmax        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 37.6, 36.6, 33.0, 35.1, 36.8, 32.3, 34.0, 38.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horatmax    <span style="color: #949494; font-style: italic;">&lt;time&gt;</span> 15:50:00, 15:40:00, 16:00:00, 17:00:00, 14:00:00, 14:30:00…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ dir         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13, 32, 31, 30, 16, 23, 23, 24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ velmedia    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 5.0, 6.1, 5.3, 3.9, 2.8, 3.6, 2.2, 1.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ racha       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 12.8, 16.7, 13.9, 13.1, 10.8, 11.1, 7.8, 6.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaracha   <span style="color: #949494; font-style: italic;">&lt;time&gt;</span> 18:30:00, 17:50:00, 01:40:00, 00:10:00, 11:40:00, 14:30:00…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ sol         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 13.1, 13.7, 13.6, 8.9, NA, NA, NA, NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ presMax     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 986.9, 987.1, 988.1, 990.1, 941.0, 939.2, 940.5, 942.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMax <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "00", "24", "08", "10", "07", "Varias", "08", "10"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ presMin     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 979.2, 979.3, 983.1, 985.0, 936.8, 936.8, 938.2, 938.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ horaPresMin <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "18", "16", "17", "17", "19", "Varias", "Varias", "18"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
 <span class="r-in"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu">aemet_daily_clim</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"9434"</span>, <span class="st">"3195"</span><span class="op">)</span>, extract_metadata <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
