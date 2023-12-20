@@ -334,7 +334,7 @@ evolution of temperature through the winter of 2020/21.</p>
 <span>  <span class="va">interp_day</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/interpolate.html" class="external-link">interpolate</a></span><span class="op">(</span><span class="va">grd</span>, <span class="va">gs_day</span>, idp <span class="op">=</span> <span class="fl">2.0</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span>interpolated <span class="op">=</span> <span class="va">var1.pred</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">thisdate</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/terra/man/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_day</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">thisdate</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">interp_day</span></span>
 <span><span class="op">}</span><span class="op">)</span></span>
@@ -360,7 +360,7 @@ evolution of temperature through the winter of 2020/21.</p>
 <span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/dimensions.html" class="external-link">nlyr</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 90</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/headtail.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/headtail.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/terra/man/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "2020-12-21" "2020-12-22" "2020-12-23" "2020-12-24" "2020-12-25"</span></span>
 <span><span class="co">#&gt; [6] "2020-12-26"</span></span>
 <span></span>
@@ -387,7 +387,7 @@ file with <strong>gifski</strong>.</p>
 <span><span class="va">max_temp2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">ceiling</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">allvalues</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Loop through all the layers</span></span>
-<span><span class="va">all_layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span></span>
+<span><span class="va">all_layers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/terra/man/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">interp_rast</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">all_layers</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Create a gif for each date</span></span>
@@ -515,7 +515,7 @@ Details
 <span><span class="co">#&gt;  collate  English_United States.utf8</span></span>
 <span><span class="co">#&gt;  ctype    English_United States.utf8</span></span>
 <span><span class="co">#&gt;  tz       UTC</span></span>
-<span><span class="co">#&gt;  date     2023-12-13</span></span>
+<span><span class="co">#&gt;  date     2023-12-20</span></span>
 <span><span class="co">#&gt;  pandoc   2.19.2 @ C:/HOSTED~1/windows/pandoc/219~1.2/x64/PANDOC~1.2/ (via rmarkdown)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB; font-weight: bold;">─ Packages ───────────────────────────────────────────────────────────────────</span></span></span>
@@ -525,7 +525,7 @@ Details
 <span><span class="co">#&gt;  class           7.3-22   <span style="color: #555555;">2023-05-03</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.3.2)</span></span></span>
 <span><span class="co">#&gt;  classInt        0.4-10   <span style="color: #555555;">2023-09-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  cli             3.6.2    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  climaemet     * 1.2.0    <span style="color: #555555;">2023-12-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
+<span><span class="co">#&gt;  climaemet     * 1.2.0    <span style="color: #555555;">2023-12-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">local</span></span></span>
 <span><span class="co">#&gt;  codetools       0.2-19   <span style="color: #555555;">2023-02-01</span> <span style="color: #555555;">[3]</span> <span style="color: #555555;">CRAN (R 4.3.2)</span></span></span>
 <span><span class="co">#&gt;  colorspace      2.1-0    <span style="color: #555555;">2023-01-23</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  countrycode     1.5.0    <span style="color: #555555;">2023-05-30</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
@@ -587,23 +587,23 @@ Details
 <span><span class="co">#&gt;  readr           2.1.4    <span style="color: #555555;">2023-02-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  rlang           1.1.2    <span style="color: #555555;">2023-11-04</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  rmarkdown       2.25     <span style="color: #555555;">2023-09-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  rnaturalearth   1.0.0    <span style="color: #555555;">2023-12-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  rnaturalearth   1.0.1    <span style="color: #555555;">2023-12-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sass            0.4.8    <span style="color: #555555;">2023-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  scales          1.3.0    <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sessioninfo   * 1.2.2    <span style="color: #555555;">2021-12-06</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@1.2.2)</span></span></span>
-<span><span class="co">#&gt;  sf            * 1.0-14   <span style="color: #555555;">2023-07-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  sf            * 1.0-15   <span style="color: #555555;">2023-12-18</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  sp              2.1-2    <span style="color: #555555;">2023-11-26</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  spacetime       1.3-1    <span style="color: #555555;">2023-12-05</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  stringi         1.8.3    <span style="color: #555555;">2023-12-11</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  stringr         1.5.1    <span style="color: #555555;">2023-11-14</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  styler          1.10.2   <span style="color: #555555;">2023-08-29</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">any (@1.10.2)</span></span></span>
 <span><span class="co">#&gt;  systemfonts     1.0.5    <span style="color: #555555;">2023-10-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  terra         * 1.7-55   <span style="color: #555555;">2023-10-13</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  terra         * 1.7-65   <span style="color: #555555;">2023-12-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  textshaping     0.3.7    <span style="color: #555555;">2023-10-09</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tibble          3.2.1    <span style="color: #555555;">2023-03-20</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tidyr           1.3.0    <span style="color: #555555;">2023-01-24</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tidyselect      1.2.0    <span style="color: #555555;">2022-10-10</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
-<span><span class="co">#&gt;  tidyterra     * 0.5.0    <span style="color: #555555;">2023-11-21</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
+<span><span class="co">#&gt;  tidyterra     * 0.5.1    <span style="color: #555555;">2023-12-15</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  tzdb            0.4.0    <span style="color: #555555;">2023-05-12</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  units           0.8-5    <span style="color: #555555;">2023-11-28</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
 <span><span class="co">#&gt;  utf8            1.2.4    <span style="color: #555555;">2023-10-22</span> <span style="color: #555555;">[1]</span> <span style="color: #BB00BB; font-weight: bold;">RSPM</span></span></span>
