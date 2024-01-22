@@ -93,7 +93,7 @@
 Hernangómez
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16"></a></h4>
             
-            <h4 data-toc-skip class="date">2024-01-04</h4>
+            <h4 data-toc-skip class="date">2024-01-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/climaemet.Rmd" class="external-link"><code>vignettes/climaemet.Rmd</code></a></small>
       <div class="d-none name"><code>climaemet.Rmd</code></div>
@@ -169,21 +169,22 @@ as double, etc.).</p>
 <code class="sourceCode R"><span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 23 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi      pres    hr stdvv</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2024-01-03 21:00:00     0   249   3.8   2.7   278  41.7   308 ZARAGO…  989     91   0.3</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2024-01-03 22:00:00     0   249   4     2.6   258  41.7   293 ZARAGO…  989.    91   0.2</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2024-01-03 23:00:00     0   249   7.1   6     273  41.7   283 ZARAGO…  989     79   0.5</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2024-01-04 00:00:00     0   249   9.6   5.2   281  41.7   278 ZARAGO…  989.    75   0.9</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2024-01-04 01:00:00     0   249   7.2   4.3   282  41.7   310 ZARAGO…  989.    78   0.4</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2024-01-04 02:00:00     0   249   4.9   0.4   197  41.7   290 ZARAGO…  988.    81   0.2</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2024-01-04 03:00:00     0   249   2.7   0.8   207  41.7   348 ZARAGO…  988.    88   0.4</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2024-01-04 04:00:00     0   249   2.2   1.4   301  41.7   313 ZARAGO…  988.    90   0.4</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2024-01-04 05:00:00     0   249   2.8   0.9   335  41.7   313 ZARAGO…  987.    91   0.4</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2024-01-04 06:00:00     0   249   2     1     356  41.7   173 ZARAGO…  987.    94   0.3</span></span>
-<span><span class="co">#&gt; # ℹ 13 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 11 more variables: ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; # A tibble: 24 × 25</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2024-01-21 20:00:00     0   249   2     1.2   294  41.7   273</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2024-01-21 21:00:00     0   249   2.4   0.8   213  41.7   220</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2024-01-21 22:00:00     0   249   3.1   1.1   116  41.7   150</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2024-01-21 23:00:00     0   249   1.6   0.5   322  41.7   108</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2024-01-22 00:00:00     0   249   2.8   1.8   163  41.7   153</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2024-01-22 01:00:00     0   249   2.7   0.7    62  41.7   155</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2024-01-22 02:00:00     0   249   1.9   1.4    82  41.7    85</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2024-01-22 03:00:00     0   249   3.3   2.2   124  41.7   130</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2024-01-22 04:00:00     0   249   3.8   3.2   298  41.7   293</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2024-01-22 05:00:00     0   249   3.9   3.1   288  41.7   285</span></span>
+<span><span class="co">#&gt; # ℹ 14 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are
 converted to the right format.</p>
