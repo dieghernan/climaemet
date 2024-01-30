@@ -39,7 +39,7 @@
   <a class="navbar-brand me-2" href="../index.html">
     <img src="../logo.png" alt="climaemet logo" height="40" class="d-inline-block me-1">climaemet</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -93,7 +93,6 @@
 Hernangómez
 <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16"></a></h4>
             
-            <h4 data-toc-skip class="date">2024-01-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenSpain/climaemet/blob/HEAD/vignettes/climaemet.Rmd" class="external-link"><code>vignettes/climaemet.Rmd</code></a></small>
       <div class="d-none name"><code>climaemet.Rmd</code></div>
@@ -170,22 +169,22 @@ as double, etc.).</p>
 <span></span>
 <span><span class="fu"><a href="../reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 24 × 25</span></span>
-<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2024-01-28 21:00:00     0   249   3.9   2.2   132  41.7   138</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2024-01-28 22:00:00     0   249   3.4   2.3   149  41.7   153</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2024-01-28 23:00:00     0   249   3.1   1.6   117  41.7   140</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2024-01-29 00:00:00     0   249   2.7   1.8   136  41.7   128</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2024-01-29 01:00:00     0   249   3.2   2.1   132  41.7   133</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2024-01-29 02:00:00     0   249   3.4   1.8   102  41.7   115</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2024-01-29 03:00:00     0   249   3.2   1.1    65  41.7   118</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2024-01-29 04:00:00     0   249   3.3   2.2   142  41.7   133</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2024-01-29 05:00:00     0   249   3     1.7   163  41.7   160</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2024-01-29 06:00:00     0   249   2.2   1.1   122  41.7   160</span></span>
+<span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax ubi       </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2024-01-29 22:00:00     0   249   1.2   0.9   186  41.7   190 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2024-01-29 23:00:00     0   249   2     0.6   209  41.7   248 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2024-01-30 00:00:00     0   249   1.5   1.2   189  41.7   183 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2024-01-30 01:00:00     0   249   1.6   0.6   165  41.7   195 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2024-01-30 02:00:00     0   249   1.2   0.8   313  41.7   178 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2024-01-30 03:00:00     0   249   1.5   1     281  41.7   275 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2024-01-30 04:00:00     0   249   2.4   1.1   321  41.7   253 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2024-01-30 05:00:00     0   249   1.2   0.7   238  41.7   323 ZARAGOZA …</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2024-01-30 06:00:00     0   249   1.5   0.9   195  41.7   218 ZARAGOZA …</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2024-01-30 07:00:00     0   249   1.4   0.8   281  41.7   198 ZARAGOZA …</span></span>
 <span><span class="co">#&gt; # ℹ 14 more rows</span></span>
-<span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
-<span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 14 more variables: pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;, pres_nmar &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;, stddv &lt;dbl&gt;, inso &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
 <p>Note that when possible, data representing dates and numbers are
 converted to the right format.</p>
 </div>
