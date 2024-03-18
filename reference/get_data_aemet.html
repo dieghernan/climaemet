@@ -4,7 +4,7 @@ tibble."><title>Client tool for AEMET API — get_data_aemet • climaemet</titl
 tibble."><meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@mpizarrozgz"><meta name="twitter:site" content="@rOpenSpain"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rostemplate.css" rel="stylesheet"></head><body>
+<![endif]--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rostemplate.min.css" rel="stylesheet"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
@@ -105,7 +105,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"/api/valores/climatologicos/inventarioestaciones/todasestaciones"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_data_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 360 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 610 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    latitud provincia     altitud indicativo nombre             indsinop longitud</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  025309E </span>
@@ -118,7 +118,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  024247E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N BALEARES      49      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N ILLES BALEARS 8       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 350 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 600 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
@@ -141,6 +141,17 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="co"># Plain text</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">plain</span> <span class="op">&lt;-</span> <span class="fu">get_data_aemet</span><span class="op">(</span><span class="st">"/api/prediccion/nacional/hoy"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> HTTP 500: Hit API Limits. Retrying...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■                      </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 4s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 7s for retry backoff <span style="color: #00BB00;">■■■■■■■■■                       </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 7s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■          </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 7s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■                           </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■                 </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■    </span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Waiting 8s for retry backoff <span style="color: #00BB00;">■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ </span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Results are MIME type: text/plain</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Returning data as string</span>
@@ -148,56 +159,51 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 08 DE MARZO DE 2024 A LAS 09:18 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL VIERNES 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 15 DE MARZO DE 2024 A LAS 08:03 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL VIERNES 15</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nevadas significativas en montañas y zonas próximas de la mitad</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norte y del sudeste peninsular, con cotas entre 800 y 1200 m en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norte y centro. Precipitaciones localmente fuertes o persistentes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en el oeste de Galicia y del sistema Central. Descenso notable de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> las temperaturas máximas en el centro este y sudeste. Viento</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fuerte en litorales de Galicia, Andalucía atlántica, Almería y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> rachas muy fuertes en entornos de montaña de la mitad norte y del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sudeste. Rissagas en Menorca.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No se esperan.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> En la Península y Baleares se prevé la influencia de dos centros</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de bajas presiones, con el paso de varios frentes. Se espera</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> predominio de cielos nubosos o cubiertos y precipitaciones casi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> generalizadas, de forma poco probable y menos intensa en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sudeste peninsular. Serán más abundantes en zonas de la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> vertiente atlántica y del nordeste, especialmente en Galicia,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> oeste del sistema Central, Estrecho, Aragón y Cataluña, zonas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> donde pueden ser localmente fuertes o persistentes, sin descartar</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tormentas ocasionales. En el resto del tercio oriental y Baleares</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> serán ocasionales. Se prevé que sean en forma de nieve en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> montaña y amplias zonas próximas de la mitad norte y del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sudeste, con probables acumulaciones de 10-20 cm en montaña del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> noroeste, oeste del sistema Central y 15 cm en el Pirineo. Se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> esperan cielos nubosos en Canarias, con probables precipitaciones</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> débiles aisladas en el norte de las islas de mayor relieve.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> En la Península y Baleares los restos de un frente atlántico</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dejarán un predominio de los cielos nubosos o cubiertos en la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> vertiente atlántica, alto Ebro y Pirineos, pudiendo producirse</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> alguna precipitación ocasional en el tercio noroeste peninsular,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> más probable en el oeste de Galicia, y tendiendo en general a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> poco nuboso. Se darán intervalos nubosos en los litorales de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cataluña y en Baleares, sin descartar algún chubasco ocasional</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> al principio, y predominarán los cielos poco nubosos en el resto.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> No obstante, se desarrollará nubosidad de evolución en amplias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> zonas del interior peninsular, con posibilidad de algún chubasco</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ocasional en áreas de montaña de la mitad norte, norte de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Extremadura, y de forma más probable en el norte de Cataluña,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> donde podrían ir acompañados de tormenta y granizo ocasional. En</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias se esperan intervalos nubosos en el norte de las islas de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mayor relieve, con tendencia a quedar poco nuboso o despejado en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> todo el archipiélago.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Es posible polvo en suspensión en Baleares al principio, por lo</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> que las precipitaciones podrán ir acompañadas de barro.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Probables bancos de niebla matinales y nocturnos en montaña.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Probables brumas o nieblas matinales en amplias zonas de la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> vertiente atlántica, Cataluña, Pirineo y Baleares. También son</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> posibles las nieblas costeras en el golfo de Cádiz, Alborán,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> litorales del sureste y del mar Balear. No se descarta la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> presencia de polvo en suspensión en el este peninsular y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cota de nieve: 800/1200 m en el norte peninsular, 1000/1200 m en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> el centro y 1000/1200m ascendiendo a 1600/2000 m en sierras del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sudeste.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas aumentarán en el tercio oeste</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular, ambos archipiélagos y litorales mediterráneos,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> descendiendo en interiores del tercio este y Cantábrico, y con</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> pocos cambios en el resto. Las mínimas tenderán a aumentar,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> salvo descensos en el extremo norte peninsular y cuadrante</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> suroeste. Las heladas quedarán restringidas a Pirineos y,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> aisladamente, en otros sistemas montañosos de la mitad norte y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> del sudeste.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas máximas tienden a descender acusadamente en la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Península y en Canarias, de forma notable en el este de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Andalucía y de la meseta Sur. Las mínimas aumentarán en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> extremo nordeste y Baleares, descendiendo en el resto. Se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> producirán heladas débiles en montaña de la mitad norte y del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sudeste, sin descartar zonas próximas, algo más intensas en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pirineos.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Soplará viento intenso con rachas fuertes de componente sur en la</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Península y Baleares, con rachas muy fuertes en litorales de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia y Estrecho, así como en montaña de la mitad norte y del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sudeste. En Canarias componente norte.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> En la Península y Baleares predominarán vientos de componente</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> oeste, flojos en general, y algo más intensos en los litorales y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> norte de Galicia y mitad sur de la costa mediterránea. En</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias soplarán alisios, de flojos a moderados, quedando flojo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> variable en las islas occidentales.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>
@@ -213,7 +219,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpMvpAly\filef987e6d155d.gif' not available or invalid</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYVH7hG\filefb049586f7c.gif' not available or invalid</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
