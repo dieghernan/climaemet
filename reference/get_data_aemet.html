@@ -105,7 +105,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"/api/valores/climatologicos/inventarioestaciones/todasestaciones"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">get_data_aemet</span><span class="op">(</span><span class="va">url</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 690 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 870 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    latitud provincia     altitud indicativo nombre             indsinop longitud</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 394924N ILLES BALEARS 490     B013X      ESCORCA, LLUC      <span style="color: #949494;">"</span>08304<span style="color: #949494;">"</span>  025309E </span>
@@ -118,7 +118,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 394406N ILLES BALEARS 1030    B248       SIERRA DE ALFABIA… <span style="color: #949494;">"</span>08303<span style="color: #949494;">"</span>  024247E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 393621N BALEARES      49      B275E      SON BONET, AEROPU… <span style="color: #949494;">"</span>08302<span style="color: #949494;">"</span>  024224E </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 393339N ILLES BALEARS 8       B278       PALMA DE MALLORCA… <span style="color: #949494;">"</span>08306<span style="color: #949494;">"</span>  024412E </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 680 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 860 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Metadata</span></span></span>
@@ -148,47 +148,48 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="va">plain</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> AGENCIA ESTATAL DE METEOROLOGÍA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN GENERAL PARA ESPAÑA </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 19 DE MARZO DE 2024 A LAS 07:33 HORA OFICIAL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MARTES 19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DÍA 27 DE MARZO DE 2024 A LAS 07:37 HORA OFICIAL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PREDICCIÓN VÁLIDA PARA EL MIÉRCOLES 27</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A.- FENÓMENOS SIGNIFICATIVOS</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Chubascos con tormentas ocasionales en entornos de montaña del</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norte y el este peninsular así como en el Cantábrico oriental.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Nieblas matinales en la mitad norte del área mediterránea.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Precipitaciones localmente fuertes o persistentes en Galicia y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cuadrante sudeste peninsular. Rachas de viento fuerte muy fuertes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> en amplias zonas de la Península, Baleares, Ceuta y Melilla.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nevadas en el entorno de los sistemas montañosos del norte</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> B.- PREDICCIÓN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé un tiempo anticiclónico en la Península y Baleares con</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> predominio de intervalos de nubes medias y altas. No obstante, en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> el extremo norte peninsular se espera una mayor inestabilidad, sin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> descartar chubascos localmente moderados, acompañados</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ocasionalmente de alguna tormenta,en el entorno del Cantábrico</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> oriental y oeste del Pirineo a primeras horas. Por la tarde,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nuevamente se reactivarán los chubascos, fruto de la evolución</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> diurna, cuando podrían afectar a entornos de montaña de la mitad</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norte y tercio este peninsular, también con tormentas, y de</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> manera más probable e intensa al norte de Cataluña. También se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> esperan nubes bajas matinales en el noroeste peninsular. En</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias se esperan intervalos nubosos en los nortes y poco nuboso</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> en el sur.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se prevé que la Península y Baleares continúen bajo la</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> influencia de la borrasca Nelson y paso de frentes atlánticos,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> con predominio de cielos nubosos aumentando a cubiertos y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> precipitaciones casi generalizadas. Se prevén más abundantes en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia, oeste del sistema Central, Extremadura y norte Huelva,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> donde pueden ser localmente fuertes o persistentes. Serán de</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nieve en montaña, con acumulaciones de 5 cm en el extremo norte.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> En el área mediterránea la nubosidad será menor, con intervalos</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nubosos y precipitaciones poco probables, aunque pueden darse</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> chubascos matinales en Baleares. En Canarias intervalos nubosos,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sin descartar precipitaciones débiles ocasionales en las islas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> montañosas.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Probables brumas y nieblas matinales en el extremo norte, meseta</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Norte y áreas de Extremadura, que podrían ser persistentes en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> litorales de la mitad norte del área mediterránea. Calima en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> este de Canarias tendiendo a menos, y siendo tambien probable en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la mitad sur de la Península.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Se esperan brumas y bancos de niebla matinales en montaña</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> peninsular y canaria, así como brumas frontales.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> En la Península y Baleares se espera que las temperaturas</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> máximas desciendan, más acusadamente en el extremo norte y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Galicia. La excepción será la meseta sur, el sur de la meseta</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> norte y el sur de Aragón y Lleida, donde ascenderán. Las</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mínimas tendrán pocos cambios pero tambien descenderán en el</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> tercio oeste, predominando los aumentos en el resto. Descensos</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ligeros en Canarias.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cota de nieve en la Península: 1000/1600 m bajando a 600/1200 en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> el noroeste, 800/1200 m subiendo a 1200/1800 m en el centro y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nordeste, 1000/1200 m subiendo a 1600/2000 m en el sistema Central</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> occidental y 1200/1600 m subiendo a 2000 m en el sudeste.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Alisio en Canarias sin descartar alguna racha localmente muy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> fuerte en zonas favorables. Predominio de viento flojo variable en</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> la Península y Baleares, tendiendo a oeste, soplando en régimen</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> de brisas en entornos mediterráneos.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Las temperaturas aumentarán en la Península, salvo las mínimas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> que podrían descender en el tercio oriental y Baleares. En</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Canarias pocos cambios. Se producirán heladas débiles en</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> montaña de la mitad norte y del sudeste, sin descartar zonas</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> aledañas, más intensas en Pirineos.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Soplará viento intenso del oeste y sudoeste en la Península,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Baleares, Ceuta y Melilla, con intervalos de fuerte y rachas muy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> fuertes en amplias zonas. En Canarias, vientos moderados del</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> noroeste, con flojos variables en horas centrales.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># An image</span></span></span>
@@ -204,7 +205,7 @@ provided by <code><a href="https://httr2.r-lib.org/reference/resp_body_raw.html"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">image</span>, <span class="va">tmp</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gganimate</span><span class="fu">::</span><span class="fu"><a href="https://gganimate.com/reference/gif_file.html" class="external-link">gif_file</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\RtmpSMRDaU\file15a44d532b3a.gif' not available or invalid</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in shell.exec(url):</span> file association for 'C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2RceIi\file1aa866257369.gif' not available or invalid</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
