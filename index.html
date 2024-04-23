@@ -17,7 +17,7 @@
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Climate AEMET Tools">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Climate AEMET Tools">
 <meta property="og:description" content="Tools to download the climatic data of the Spanish Meteorological Agency (AEMET) directly from R using their API and create scientific graphs (climate charts, trend analysis of climate time series, temperature and precipitation anomalies maps, warming stripes graphics, climatograms, etc.).">
 <meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -145,27 +145,27 @@
 <div class="section level2">
 <h2 id="now-climaemet-is-tidy">Now <strong>climaemet</strong> is tidy…<a class="anchor" aria-label="anchor" href="#now-climaemet-is-tidy"></a>
 </h2>
-<p>From <code>v1.0.0</code> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link">tibble format</a>. Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).</p>
+<p>From <code>v1.0.0</code> onward, <strong>climaemet</strong> provides its results in <a href="https://tibble.tidyverse.org/" class="external-link"><code>tibble</code> format</a>. Also, the functions try to guess the correct format of the fields (i.e. something as a Date/Hour now is an hour, numbers are parsed as double, etc.).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropenspain.github.io/climaemet/">climaemet</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># See a tibble in action</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/aemet_last_obs.html">aemet_last_obs</a></span><span class="op">(</span><span class="st">"9434"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 23 × 25</span></span>
+<span><span class="co">#&gt; # A tibble: 24 × 25</span></span>
 <span><span class="co">#&gt;    idema   lon fint                 prec   alt  vmax    vv    dv   lat  dmax</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 9434  -1.00 2024-04-01 19:00:00     0   249  12.1   7.2   268  41.7   283</span></span>
-<span><span class="co">#&gt;  2 9434  -1.00 2024-04-01 20:00:00     0   249  11.3   7.2   266  41.7   280</span></span>
-<span><span class="co">#&gt;  3 9434  -1.00 2024-04-01 21:00:00     0   249   9.4   4.4   249  41.7   263</span></span>
-<span><span class="co">#&gt;  4 9434  -1.00 2024-04-01 22:00:00     0   249   8.8   6.8   266  41.7   258</span></span>
-<span><span class="co">#&gt;  5 9434  -1.00 2024-04-01 23:00:00     0   249   9.8   5.5   268  41.7   270</span></span>
-<span><span class="co">#&gt;  6 9434  -1.00 2024-04-02 00:00:00     0   249  10.1   6.1   265  41.7   268</span></span>
-<span><span class="co">#&gt;  7 9434  -1.00 2024-04-02 01:00:00     0   249   8.4   6.1   263  41.7   250</span></span>
-<span><span class="co">#&gt;  8 9434  -1.00 2024-04-02 02:00:00     0   249  10.1   5.5   258  41.7   263</span></span>
-<span><span class="co">#&gt;  9 9434  -1.00 2024-04-02 03:00:00     0   249   4.8   0.9    79  41.7   235</span></span>
-<span><span class="co">#&gt; 10 9434  -1.00 2024-04-02 04:00:00     0   249   3.2   2.1   205  41.7   208</span></span>
-<span><span class="co">#&gt; # ℹ 13 more rows</span></span>
+<span><span class="co">#&gt;  1 9434  -1.00 2024-04-22 10:00:00     0   249  16.1   9.8   325  41.7   310</span></span>
+<span><span class="co">#&gt;  2 9434  -1.00 2024-04-22 11:00:00     0   249  15.1   8.3   322  41.7   323</span></span>
+<span><span class="co">#&gt;  3 9434  -1.00 2024-04-22 12:00:00     0   249  13.5   7.8   335  41.7   318</span></span>
+<span><span class="co">#&gt;  4 9434  -1.00 2024-04-22 13:00:00     0   249  14.5   9.4   317  41.7   330</span></span>
+<span><span class="co">#&gt;  5 9434  -1.00 2024-04-22 14:00:00     0   249  16.6   9.9   325  41.7   315</span></span>
+<span><span class="co">#&gt;  6 9434  -1.00 2024-04-22 15:00:00     0   249  15.9   8.7   332  41.7   318</span></span>
+<span><span class="co">#&gt;  7 9434  -1.00 2024-04-22 16:00:00     0   249  16.4   8.8   328  41.7   328</span></span>
+<span><span class="co">#&gt;  8 9434  -1.00 2024-04-22 17:00:00     0   249  16.8  10.5   327  41.7   325</span></span>
+<span><span class="co">#&gt;  9 9434  -1.00 2024-04-22 18:00:00     0   249  18.5  12.1   321  41.7   318</span></span>
+<span><span class="co">#&gt; 10 9434  -1.00 2024-04-22 19:00:00     0   249  19.5  10.2   318  41.7   315</span></span>
+<span><span class="co">#&gt; # ℹ 14 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 15 more variables: ubi &lt;chr&gt;, pres &lt;dbl&gt;, hr &lt;dbl&gt;, stdvv &lt;dbl&gt;, ts &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pres_nmar &lt;dbl&gt;, tamin &lt;dbl&gt;, ta &lt;dbl&gt;, tamax &lt;dbl&gt;, tpr &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   stddv &lt;dbl&gt;, inso &lt;dbl&gt;, tss5cm &lt;dbl&gt;, pacutp &lt;dbl&gt;, tss20cm &lt;dbl&gt;</span></span></code></pre></div>
@@ -321,164 +321,164 @@
 <tr class="odd">
 <td align="left">9434</td>
 <td align="right">-1.004167</td>
-<td align="left">2024-04-01 19:00:00</td>
+<td align="left">2024-04-22 10:00:00</td>
 <td align="right">0</td>
 <td align="right">249</td>
-<td align="right">12.1</td>
-<td align="right">7.2</td>
-<td align="right">268</td>
-<td align="right">41.66056</td>
-<td align="right">283</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">984.0</td>
-<td align="right">48</td>
-<td align="right">1.9</td>
-<td align="right">12.4</td>
-<td align="right">1013.9</td>
-<td align="right">13.5</td>
-<td align="right">13.8</td>
-<td align="right">14.8</td>
-<td align="right">3.0</td>
-<td align="right">10</td>
-<td align="right">12.5</td>
-<td align="right">13.6</td>
-<td align="right">0</td>
-<td align="right">13.4</td>
-</tr>
-<tr class="even">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
-<td align="left">2024-04-01 20:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
-<td align="right">11.3</td>
-<td align="right">7.2</td>
-<td align="right">266</td>
-<td align="right">41.66056</td>
-<td align="right">280</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">985.1</td>
-<td align="right">53</td>
-<td align="right">0.8</td>
-<td align="right">11.5</td>
-<td align="right">1015.2</td>
-<td align="right">12.3</td>
-<td align="right">12.6</td>
-<td align="right">13.8</td>
-<td align="right">3.2</td>
-<td align="right">5</td>
-<td align="right">0.0</td>
-<td align="right">12.8</td>
-<td align="right">0</td>
-<td align="right">13.4</td>
-</tr>
-<tr class="odd">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
-<td align="left">2024-04-01 21:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
-<td align="right">9.4</td>
-<td align="right">4.4</td>
-<td align="right">249</td>
-<td align="right">41.66056</td>
-<td align="right">263</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">985.9</td>
-<td align="right">61</td>
-<td align="right">0.4</td>
-<td align="right">9.7</td>
-<td align="right">1016.1</td>
-<td align="right">11.1</td>
-<td align="right">11.2</td>
-<td align="right">12.6</td>
-<td align="right">3.9</td>
-<td align="right">6</td>
-<td align="right">0.0</td>
-<td align="right">12.3</td>
-<td align="right">0</td>
-<td align="right">13.4</td>
-</tr>
-<tr class="even">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
-<td align="left">2024-04-01 22:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
-<td align="right">8.8</td>
-<td align="right">6.8</td>
-<td align="right">266</td>
-<td align="right">41.66056</td>
-<td align="right">258</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">986.5</td>
-<td align="right">56</td>
-<td align="right">0.8</td>
-<td align="right">10.4</td>
-<td align="right">1016.7</td>
-<td align="right">10.9</td>
-<td align="right">11.7</td>
-<td align="right">11.7</td>
-<td align="right">3.2</td>
-<td align="right">7</td>
-<td align="right">0.0</td>
-<td align="right">11.8</td>
-<td align="right">0</td>
-<td align="right">13.3</td>
-</tr>
-<tr class="odd">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
-<td align="left">2024-04-01 23:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
+<td align="right">16.1</td>
 <td align="right">9.8</td>
-<td align="right">5.5</td>
-<td align="right">268</td>
+<td align="right">325</td>
 <td align="right">41.66056</td>
-<td align="right">270</td>
-<td align="left">ZARAGOZA AEROPUERTO</td>
-<td align="right">987.6</td>
-<td align="right">60</td>
-<td align="right">0.4</td>
-<td align="right">9.8</td>
-<td align="right">1017.9</td>
-<td align="right">10.9</td>
-<td align="right">10.9</td>
-<td align="right">12.0</td>
-<td align="right">3.4</td>
-<td align="right">6</td>
-<td align="right">0.0</td>
-<td align="right">11.3</td>
-<td align="right">0</td>
-<td align="right">13.1</td>
-</tr>
-<tr class="even">
-<td align="left">9434</td>
-<td align="right">-1.004167</td>
-<td align="left">2024-04-02 00:00:00</td>
-<td align="right">0</td>
-<td align="right">249</td>
-<td align="right">10.1</td>
-<td align="right">6.1</td>
-<td align="right">265</td>
-<td align="right">41.66056</td>
-<td align="right">268</td>
+<td align="right">310</td>
 <td align="left">ZARAGOZA AEROPUERTO</td>
 <td align="right">988.0</td>
+<td align="right">29</td>
+<td align="right">1.9</td>
+<td align="right">17.0</td>
+<td align="right">1018.1</td>
+<td align="right">11.4</td>
+<td align="right">13.1</td>
+<td align="right">13.4</td>
+<td align="right">-4.5</td>
+<td align="right">11</td>
 <td align="right">60</td>
-<td align="right">0.6</td>
-<td align="right">9.5</td>
-<td align="right">1018.4</td>
-<td align="right">10.6</td>
-<td align="right">10.6</td>
-<td align="right">11.0</td>
-<td align="right">3.2</td>
-<td align="right">5</td>
-<td align="right">0.0</td>
-<td align="right">11.0</td>
+<td align="right">17.5</td>
 <td align="right">0</td>
-<td align="right">12.9</td>
+<td align="right">18.0</td>
+</tr>
+<tr class="even">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2024-04-22 11:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">15.1</td>
+<td align="right">8.3</td>
+<td align="right">322</td>
+<td align="right">41.66056</td>
+<td align="right">323</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">987.5</td>
+<td align="right">26</td>
+<td align="right">1.8</td>
+<td align="right">19.2</td>
+<td align="right">1017.5</td>
+<td align="right">13.1</td>
+<td align="right">14.6</td>
+<td align="right">14.7</td>
+<td align="right">-4.8</td>
+<td align="right">11</td>
+<td align="right">60</td>
+<td align="right">19.1</td>
+<td align="right">0</td>
+<td align="right">17.9</td>
+</tr>
+<tr class="odd">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2024-04-22 12:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">13.5</td>
+<td align="right">7.8</td>
+<td align="right">335</td>
+<td align="right">41.66056</td>
+<td align="right">318</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">987.1</td>
+<td align="right">22</td>
+<td align="right">1.9</td>
+<td align="right">20.6</td>
+<td align="right">1017.0</td>
+<td align="right">14.4</td>
+<td align="right">15.4</td>
+<td align="right">15.5</td>
+<td align="right">-6.4</td>
+<td align="right">14</td>
+<td align="right">60</td>
+<td align="right">21.0</td>
+<td align="right">0</td>
+<td align="right">18.0</td>
+</tr>
+<tr class="even">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2024-04-22 13:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">14.5</td>
+<td align="right">9.4</td>
+<td align="right">317</td>
+<td align="right">41.66056</td>
+<td align="right">330</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">986.6</td>
+<td align="right">22</td>
+<td align="right">1.4</td>
+<td align="right">20.6</td>
+<td align="right">1016.4</td>
+<td align="right">15.4</td>
+<td align="right">16.0</td>
+<td align="right">16.2</td>
+<td align="right">-5.7</td>
+<td align="right">10</td>
+<td align="right">60</td>
+<td align="right">22.6</td>
+<td align="right">0</td>
+<td align="right">18.2</td>
+</tr>
+<tr class="odd">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2024-04-22 14:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">16.6</td>
+<td align="right">9.9</td>
+<td align="right">325</td>
+<td align="right">41.66056</td>
+<td align="right">315</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">986.2</td>
+<td align="right">22</td>
+<td align="right">2.0</td>
+<td align="right">21.3</td>
+<td align="right">1015.9</td>
+<td align="right">15.8</td>
+<td align="right">16.2</td>
+<td align="right">16.5</td>
+<td align="right">-5.7</td>
+<td align="right">11</td>
+<td align="right">60</td>
+<td align="right">23.5</td>
+<td align="right">0</td>
+<td align="right">18.5</td>
+</tr>
+<tr class="even">
+<td align="left">9434</td>
+<td align="right">-1.004167</td>
+<td align="left">2024-04-22 15:00:00</td>
+<td align="right">0</td>
+<td align="right">249</td>
+<td align="right">15.9</td>
+<td align="right">8.7</td>
+<td align="right">332</td>
+<td align="right">41.66056</td>
+<td align="right">318</td>
+<td align="left">ZARAGOZA AEROPUERTO</td>
+<td align="right">985.8</td>
+<td align="right">22</td>
+<td align="right">1.8</td>
+<td align="right">20.4</td>
+<td align="right">1015.6</td>
+<td align="right">15.9</td>
+<td align="right">15.9</td>
+<td align="right">16.5</td>
+<td align="right">-5.7</td>
+<td align="right">13</td>
+<td align="right">60</td>
+<td align="right">23.8</td>
+<td align="right">0</td>
+<td align="right">18.9</td>
 </tr>
 </tbody>
 </table>
@@ -1288,7 +1288,7 @@
 </tr>
 </tbody>
 </table>
-<p>We can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions returns <code>ggplot2</code> plots:</p>
+<p>We can also draw a “warming stripes” graph with the downloaded data from a weather station. These functions returns <strong>ggplot2</strong> plots:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot a climate stripes graph for a period of years for a station</span></span>
 <span></span>
@@ -1396,8 +1396,12 @@ Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet: Climate A
 <div class="section level2">
 <h2 id="links">Links<a class="anchor" aria-label="anchor" href="#links"></a>
 </h2>
-<p>Download from CRAN at <a href="https://cran.r-project.org/package=climaemet" class="external-link uri">https://cran.r-project.org/package=climaemet</a></p>
-<p>Browse source code at <a href="https://github.com/ropenspain/climaemet" class="external-link uri">https://github.com/ropenspain/climaemet</a></p>
+<ul>
+<li>Download from CRAN at <a href="https://cran.r-project.org/package=climaemet" class="external-link uri">https://cran.r-project.org/package=climaemet</a>
+</li>
+<li>Browse source code at <a href="https://github.com/ropenspain/climaemet" class="external-link uri">https://github.com/ropenspain/climaemet</a>
+</li>
+</ul>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -1501,7 +1505,7 @@ Pizarro M, Hernangómez D, Fernández-Avilés G (2021). <em>climaemet: Climate A
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.

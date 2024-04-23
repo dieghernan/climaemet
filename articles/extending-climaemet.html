@@ -17,7 +17,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Extending climaemet">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Extending climaemet">
 <meta property="og:description" content="climaemet">
 <meta property="og:image" content="https://ropenspain.github.io/climaemet/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -110,10 +110,10 @@ that the user would need to handle the results by him/herself.</p>
 <div class="section level2">
 <h2 id="example-normalized-text">Example: Normalized text<a class="anchor" aria-label="anchor" href="#example-normalized-text"></a>
 </h2>
-<p>Some API endpoints, as
-<strong>predicciones-normalizadas-texto</strong>, provides the results
-as plain text on natural language. These results are not parsed by
-<strong>climaemet</strong>, but can be retrieved as this:</p>
+<p>Some API endpoints, as <code>predicciones-normalizadas-texto</code>,
+provides the results as plain text on natural language. These results
+are not parsed by <strong>climaemet</strong>, but can be retrieved as
+this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># endpoint, today forecast</span></span>
 <span></span>
@@ -156,7 +156,10 @@ reproducción citando a AEMET como autora de la misma.</td>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># Data</span></span>
-<span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">pred_today</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">today</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Results are MIME type: text/plain</span></span>
+<span><span class="co">#&gt; Returning data as string</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Produce a result</span></span>
 <span></span>
@@ -165,36 +168,35 @@ reproducción citando a AEMET como autora de la misma.</td>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"---\n\n"</span>, <span class="va">clean</span>, <span class="st">"\n---"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <hr>
-<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 30
-DE MARZO DE 2024 A LAS 08:56 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
-SÁBADO 30</p>
-<p>A.- FENÓMENOS SIGNIFICATIVOS Precipitaciones localmente fuertes o
-persistentes en el oeste de Galicia y del Sistema Central y en
-Andalucía. Intervalos de viento fuerte y rachas muy fuertes en la mitad
-sur del litoral mediterráneo peninsular y Baleares.</p>
-<p>B.- PREDICCIÓN Es probable que la Península y Baleares sigan
-afectadas por la borrasca Nelson, con probables cielos nubosos y
-precipitaciones casi generalizadas. Se esperan más abundantes en el
-oeste de Galicia y del Sistema Central y en Andalucía, donde pueden ser
-localmente fuertes o persistentes y ocasionalmente acompañadas de
-tormenta. En el tercio oriental, valle del Ebro y Cantábrico serán más
-dispersas y ocasionales. Serán en forma de nieve en montaña. En Canarias
-se esperan intervalos nubosos y posibilidad de precipitaciones débiles,
-más probables en las islas montañosas, especialmente en La Palma.</p>
-<p>En zonas de montaña peninsular se podrían dar bancos de niebla, y
-algo de calima en el extremo este peninsular y Baleares tendiendo a
-remitir.</p>
-<p>Cota de nieve: 900/1200 m en el cuadrante noroeste, 1000/1400 m en el
-Pirineo ascendiendo a 1400/1600 m, 1400/1700 en el sudeste y 1200/1600
-en el resto.</p>
-<p>Las temperaturas tienden a descender en el tercio oriental peninsular
-y Baleares, y con pocos cambios en el resto salvo un ascenso moderado de
-las máximas en País Vasco y norte de Castilla y León. Heladas débiles en
-montaña de la mitad norte y del sudeste, moderadas en Pirineos.</p>
-<p>Vientos del suroeste en la mayor parte de la Península y Baleares,
-con intervalos de fuerte y rachas muy fuertes en la mitad sur del
-litoral mediterráneo peninsular y Baleares. En Canarias moderados del
-oeste, con algunos intervalos de fuerte.</p>
+<p>AGENCIA ESTATAL DE METEOROLOGÍA PREDICCIÓN GENERAL PARA ESPAÑA DÍA 06
+DE ABRIL DE 2024 A LAS 08:55 HORA OFICIAL PREDICCIÓN VÁLIDA PARA EL
+SÁBADO 6</p>
+<p>A.- FENÓMENOS SIGNIFICATIVOS Posibilidad de precipitaciones
+localmente fuertes en Canarias. Intervalos y/o rachas de viento fuerte o
+muy fuertes en Galicia, cordillera Cantábrica, norte de la Ibérica y
+Pirineos. Calimas en buena parte de Península y Baleares.</p>
+<p>B.- PREDICCIÓN En la Península y Canarias se prevé la entrada de un
+frente atlántico por el noroeste, asociado a la borrasca Kathleen, que
+dejará cielos nubosos o cubiertos a su paso y precipitaciones en
+Galicia, Asturias, oeste de Castilla y León y gran parte del
+archipiélago canario. Con menor probabilidad cuanto más al este y sur,
+pueden extenderse a otras zonas de los tercios noroeste y oeste de la
+Península, pero no se espera que alcancen al resto de zonas y Baleares,
+donde predominarán intervalos de nubes altas. No se descarta que las
+precipitaciones sean localmente fuertes en las islas Canarias
+montañosas.</p>
+<p>Son posibles brumas y bancos de niebla matinales en puntos del área
+mediterránea oriental y en el noroeste peninsular. Es probable la
+presencia de calima en gran parte de la Península.</p>
+<p>Las temperaturas máximas descenderán en la mitad oeste peninsular y
+en Canarias, incluso en medianía de forma notable, y subirán en el
+cuadrante nordeste peninsular. Las mínimas descenderán en Galicia y
+Cantábrico, aumentando en el centro y sur peninsular.</p>
+<p>Viento de componente este en Andalucía y Murcia, con Levante moderado
+en el Estrecho. Predominarán en el resto de la Península y Baleares los
+vientos de componente sur, con intervalos y/o rachas de fuerte o muy
+fuerte en Galicia, cordillera Cantábrica, norte de la Ibérica y
+Pirineos. En Canarias, viento del norte y noroeste.</p>
 <hr>
 </div>
 <div class="section level2">
@@ -239,6 +241,9 @@ reproducción citando a AEMET como autora de la misma.</td>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">the_map</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_data_aemet.html">get_data_aemet</a></span><span class="op">(</span><span class="va">a_map</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Results are MIME type: image/gif</span></span>
+<span><span class="co">#&gt; Returning raw data</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Write as gif and include it</span></span>
@@ -282,7 +287,7 @@ Example: Surface analysis map provided by AEMET
   <div class="container">
     <div class="row">
       <div class="col-md text-center text-lg-start">
-        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
+        <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
       </div>
       <div class="col-md offset-md-4 text-center text-lg-start">
       <p>Template <a href="https://github.com/ropenspain/rostemplate/" class="external-link">rostemplate</a> by <a href="https://github.com/dieghernan/" class="external-link">dieghernan</a>, based on <a href="https://bootstrapious.com/" class="external-link">Bootstrapious</a>.
