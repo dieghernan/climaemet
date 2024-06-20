@@ -68,13 +68,15 @@ aemet_normal_clim_all(). Standard climatology from 1981 to 2010."><meta property
 <span>  station <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  progress <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">aemet_normal_clim_all</span><span class="op">(</span></span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  return_sf <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  extract_metadata <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  progress <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -101,6 +103,11 @@ you need to have the <a href="https://CRAN.R-project.org/package=sf" class="exte
 <dd><p>Logical <code>TRUE/FALSE</code>. On <code>TRUE</code> the output is
 a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> with the description of the fields. See also
 <code><a href="get_data_aemet.html">get_metadata_aemet()</a></code>.</p></dd>
+
+
+<dt>progress</dt>
+<dd><p>Logical, display a <code><a href="https://cli.r-lib.org/reference/cli_progress_bar.html" class="external-link">cli::cli_progress_bar()</a></code> object. If
+<code>verbose = TRUE</code> won't be displayed.</p></dd>
 
 </dl></div>
     <div class="section level2">
