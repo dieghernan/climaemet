@@ -75,12 +75,12 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>station</dt>
 <dd><p>Character string with station identifier code(s)
-(see <code><a href="aemet_stations.html">aemet_stations()</a></code>)</p></dd>
+(see <code><a href="aemet_stations.html">aemet_stations()</a></code>).</p></dd>
 
 
 <dt>parameter</dt>
-<dd><p>Character string as temperature ("T"),
-precipitation ("P") or wind ("V") parameter.</p></dd>
+<dd><p>Character string as temperature (<code>"T"</code>),
+precipitation (<code>"P"</code>) or wind (<code>"V"</code>) parameter.</p></dd>
 
 
 <dt>verbose</dt>
@@ -110,7 +110,8 @@ a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="exte
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> or a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object</p>
+<p>A <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code> or a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object. If the function
+finds an error when parsing it would return the result as a <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="api-key">API Key<a class="anchor" aria-label="anchor" href="#api-key"></a></h2>
