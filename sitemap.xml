@@ -49,6 +49,9 @@
     <loc>https://ropenspain.github.io/climaemet/reference/aemet_api_key.html</loc>
   </url>
   <url>
+    <loc>https://ropenspain.github.io/climaemet/reference/aemet_beaches.html</loc>
+  </url>
+  <url>
     <loc>https://ropenspain.github.io/climaemet/reference/aemet_daily.html</loc>
   </url>
   <url>
@@ -59,6 +62,9 @@
   </url>
   <url>
     <loc>https://ropenspain.github.io/climaemet/reference/aemet_forecast.html</loc>
+  </url>
+  <url>
+    <loc>https://ropenspain.github.io/climaemet/reference/aemet_forecast_beaches.html</loc>
   </url>
   <url>
     <loc>https://ropenspain.github.io/climaemet/reference/aemet_forecast_utils.html</loc>
